@@ -5,7 +5,7 @@ import ToggleButton from "./ToggleButton";
 export default function Navegation() {
     return (
         <nav className={` 
-            flex items-center h-14 w-screen bg-gray-200 dark:bg-gray-700
+            flex items-center h-14 w-screen bg-gray-300 dark:bg-gray-700
         `}>
             <div className="flex justify-start items-center w-1/2 h-full px-4">
                 <ToggleButton />

@@ -1,5 +1,5 @@
 import useAppData from "@/data/hooks/useAppData"
-import { IconeLua, IconeSol } from "../../../public/icons"
+import { IconeMoon, IconSun } from "../../../public/icons"
 
 export default function ToggleTheme() {
     const { theme, switchTheme } = useAppData()
@@ -11,7 +11,7 @@ export default function ToggleTheme() {
                  h-6 w-6 bg-gray-700 rounded-full text-white p-0.5
                  transition-transform duration-500 transform -translate-x-0
             `}>
-                {IconeLua}
+                {IconeMoon}
             </div>
             
         </div>
@@ -23,7 +23,7 @@ export default function ToggleTheme() {
                 h-6 w-6 bg-white rounded-full text-yellow-700 p-0.5
                 transition-transform duration-500 transform translate-x-5
             `}>
-                {IconeSol}
+                {IconSun}
             </div>
 
         </div>
