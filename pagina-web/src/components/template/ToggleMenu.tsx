@@ -1,7 +1,7 @@
 import useToggleData from "@/data/hooks/useToggleData";
 import Link from "next/link";
 import Button from "./Button";
-import { IconUser, IconProjects, IconComments } from "../../../public/icons";
+import { IconUser, IconProjects, IconEletro } from "../../../public/icons";
 
 export default function ToggleMenu() {
     const { isActivate } = useToggleData()
@@ -15,10 +15,10 @@ export default function ToggleMenu() {
                 <Button name="Sobre mim" color="blue" icon={IconUser} />
                 
             </Link>
-            <Link href={'#'}>
-                <Button name="Projetos" color="blue" icon={IconProjects} />
+            <Link href={'#Skills'}>
+                <Button name="Habilidades" color="blue" icon={IconEletro} />
             </Link>
-            <Link href={'#'}>
+            <Link href={'#Projects'}>
                 <Button name="Projetos" color="blue" icon={IconProjects} />
             </Link>
         </div>

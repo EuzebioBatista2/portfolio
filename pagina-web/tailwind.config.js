@@ -16,10 +16,6 @@ module.exports = {
     {
       pattern: /^to-(blue|gray)-(400|500|700)/
     },
-    'active:fill-blue-400',
-    'active:fill-blue-600',
-    'active:fill-green-400',
-    'active:fill-orange-600',
     '-translate-x-100',
     '-translate-x-200',
     '-translate-x-300',

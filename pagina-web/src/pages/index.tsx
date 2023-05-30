@@ -10,6 +10,8 @@ import AboutMe from '../components/template/AboutMe'
 import PageDown from '@/components/template/PageDown'
 import Cards from '@/components/template/Cards'
 import Layout from '@/components/template/Loyout'
+import Projects from '@/components/template/Projects'
+import Comments from '@/components/template/Comments'
 
 const poppins = Poppins({ 
     weight: ['100', '200', '300', '600', '700', '800'],
@@ -49,6 +51,14 @@ export default function Home() {
                 </Layout>
                 <Layout theme='dark' >
                     <Cards />
+                    <PageDown />
+                </Layout>
+                <Layout theme='white'>
+                    <Projects />
+                    <PageDown />
+                </Layout>
+                <Layout theme='dark'>
+                    <Comments />
                     <PageDown />
                 </Layout>
             </main>

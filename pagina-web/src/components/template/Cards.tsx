@@ -1,7 +1,7 @@
 import CardsItens from "./CardsItens"
 import { IconReact, IconTS, IconTail, IconFireBase, IconEletro } from "../../../public/icons"
 import ButtonSkills from "./ButtonSkills"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function Cards() {
     const [ item, setItem ] = useState(0)
@@ -18,7 +18,7 @@ export default function Cards() {
         },
         {
             description:
-                "O Tailwind CSS é uma ferramenta que ajuda os desenvolvedores de sites a criar visualmente suas páginas da web. Ele oferece uma maneira fácil de adicionar estilos e formatos aos elementos da página, como botões, textos e caixas.",
+                "Tailwind-CSS é uma ferramenta que ajuda os desenvolvedores de sites a criar visualmente suas páginas da web. Ele oferece uma maneira fácil de adicionar estilos e formatos aos elementos da página, como botões, textos e caixas.",
             icon: IconTail
         },
         {
@@ -30,22 +30,28 @@ export default function Cards() {
     let timeItem = item
     function itemActive(value: number) {
         setItem(value)
-        clearTimeout(time)
         timeItem = value
     }
-    const time = setTimeout(() => {
-        
-        if(timeItem >= 300) setItem(0)
-        else setItem(timeItem + 100)
-    }, 3000)
+    useEffect(() => {
+        setTimeout(() => {
+            if(timeItem >= 300) setItem(0)
+            else setItem(timeItem + 100)
+        }, 10000)
+    }, [timeItem])
+    
     
     return (
-        <section className={`h-[560px] w-full overflow-hidden`}>
+        <section id="Skills" className={`h-[560px] w-full overflow-hidden`}>
             <h1 className="flex items-center justify-center h-[60px] text-3xl font-bold mt-2 text-black dark:text-gray-200">
                     <i>{IconEletro}</i> &nbsp; Habilidades
             </h1>
             <div className={`flex h-[420px] transition-transform duration-500 transform -translate-x-${item}`}>
-                {items.map((item, index) => <CardsItens key={index} description={item.description} icon={item.icon}/>)}
+                {items.map((item, index) => {
+                    const words = item.description.split(' ')
+                    const firstWord = words[0] + ' '
+                    const restOfDescription = words.slice(1).join(' ')
+                    return <CardsItens key={index} firstWord={firstWord} description={restOfDescription} icon={item.icon}/>
+                })}
             </div>
             <div className="flex items-center justify-center h-[80px]">
                 <ButtonSkills value={0} isActive={itemActive} icon={IconReact}  
@@ -57,7 +63,6 @@ export default function Cards() {
                 <ButtonSkills value={300} isActive={itemActive} icon={IconFireBase}
                 className={item === 300 ? 'animate-bounce fill-orange-600' : ''} />
             </div>
-            
         </section>
     )
 }

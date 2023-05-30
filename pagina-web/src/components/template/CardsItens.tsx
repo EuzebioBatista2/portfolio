@@ -1,6 +1,7 @@
 interface ICardsItensProps {
     description: string
     icon: any
+    firstWord: string
 }
 export default function carsItens(props: ICardsItensProps) {
     return (
@@ -8,7 +9,9 @@ export default function carsItens(props: ICardsItensProps) {
             <i className="flex items-center justify-center w-36 h-36 opacity-50 fill-black dark:fill-white">
                 {props.icon}
             </i>
-            <p className="mt-6 text-black dark:text-gray-200">{props.description}</p>
+            <p className="mt-6 text-black dark:text-gray-200">
+                <strong>{props.firstWord}</strong>{props.description}
+            </p>
         </div>
     )
 }
