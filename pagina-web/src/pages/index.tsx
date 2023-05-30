@@ -8,6 +8,8 @@ import { IconGitHub, IconLinkedin } from '../../public/icons'
 import Head from 'next/head'
 import AboutMe from '../components/template/AboutMe'
 import PageDown from '@/components/template/PageDown'
+import Cards from '@/components/template/Cards'
+import Layout from '@/components/template/Loyout'
 
 const poppins = Poppins({ 
     weight: ['100', '200', '300', '600', '700', '800'],
@@ -26,27 +28,29 @@ export default function Home() {
             <Head>
                 <title>Portfolio Euzebio</title>
             </Head>
-            <header className={`
-                flex flex-col items-center bg-gray-200 dark:bg-gray-800
-                transtion duration-500 ease-in-out h-screen w-screen
-            `}>
-                <Navegation />
-                <div className='w-full flex flex-col items-center relative'>
-                    <ToggleMenu />
-                    <Profile title='Euzebio Batista' subtitle='Web Developer.' />
-                    <div className='mt-8'>
-                        <Button name='Linkedin' color='blue' icon={IconLinkedin} />
-                        <Button name='GitHub' color='gray' icon={IconGitHub} />
+            <header>
+                <Layout theme='dark'>
+                    <Navegation />
+                    <div className='w-full flex flex-col items-center relative'>
+                        <ToggleMenu />
+                        <Profile title='Euzebio Batista' subtitle='Web Developer.' />
+                        <div className='mt-8'>
+                            <Button name='Linkedin' color='blue' icon={IconLinkedin} />
+                            <Button name='GitHub' color='gray' icon={IconGitHub} />
+                        </div>
+                        <PageDown />
                     </div>
-                </div>
-                <PageDown />
+                </Layout>
             </header>
-            <main className={`
-                flex flex-col items-center p-4 h-screen
-                bg-gray-800 dark:bg-gray-300 relative overflow-hidden
-            `}>
-                <AboutMe />
-                <PageDown />
+            <main>
+                <Layout theme='white'>
+                    <AboutMe />
+                    <PageDown />
+                </Layout>
+                <Layout theme='dark' >
+                    <Cards />
+                    <PageDown />
+                </Layout>
             </main>
         </div>
     )
