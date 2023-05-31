@@ -42,10 +42,10 @@ export default function Cards() {
     
     return (
         <section id="Skills" className={`h-[560px] w-full overflow-hidden`}>
-            <h1 className="flex items-center justify-center h-[60px] text-3xl font-bold mt-2 text-black dark:text-gray-200">
-                    <i>{IconEletro}</i> &nbsp; Habilidades
+            <h1 className="flex items-center justify-center pt-16 text-3xl font-bold text-black dark:text-gray-200">
+                    <i>{IconEletro}</i>&nbsp;Habilidades
             </h1>
-            <div className={`flex h-[420px] transition-transform duration-500 transform -translate-x-${item}`}>
+            <div className={`flex h-[380px] transition-transform duration-500 transform -translate-x-${item}`}>
                 {items.map((item, index) => {
                     const words = item.description.split(' ')
                     const firstWord = words[0] + ' '

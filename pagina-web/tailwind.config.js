@@ -19,6 +19,10 @@ module.exports = {
     '-translate-x-100',
     '-translate-x-200',
     '-translate-x-300',
+    'bg-opacity-50',
+    'bg-opacity-100',
+    'dark:bg-opacity-50',
+    'dark:bg-opacity-100'
   ],
   darkMode: 'class',
   theme: {

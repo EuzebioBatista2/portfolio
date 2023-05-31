@@ -1,6 +1,6 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -8,8 +8,12 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   display: flex;
+  margin: 0;
+  padding: 0;
 }

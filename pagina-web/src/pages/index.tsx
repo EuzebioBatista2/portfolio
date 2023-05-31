@@ -32,10 +32,9 @@ export default function Home() {
                 <title>Portfolio Euzebio</title>
             </Head>
             <header>
+                <Navegation />
                 <Layout theme='dark'>
-                    <Navegation />
-                    <div className='w-full flex flex-col items-center relative'>
-                        <ToggleMenu />
+                    <div className='w-full flex flex-col items-center pt-14'>
                         <Profile title='Euzebio Batista' subtitle='Web Developer.' />
                         <div className='mt-8'>
                             <Button name='Linkedin' color='blue' icon={IconLinkedin} />
@@ -60,10 +59,11 @@ export default function Home() {
                 </Layout>
                 <Layout theme='dark'>
                     <Comments />
-                    {/* <PageDown className='bg-gray-800 dark:bg-gray-300' /> */}
                 </Layout>
-                <Footer />
             </main>
+            <footer>
+                <Footer />
+            </footer>
         </div>
     )
 }

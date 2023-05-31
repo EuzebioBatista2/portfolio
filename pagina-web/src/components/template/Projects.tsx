@@ -23,9 +23,9 @@ export default function Projects() {
         },
     ]
     return (
-        <section id="Projects" className="h-[560px] px-4">
+        <section id="Projects" className="h-[560px] px-4 pt-16">
             <h1 className={`
-                flex items-center justify-center h-[60px] text-3xl font-bold mt-2 
+                flex items-center justify-center text-3xl font-bold
                 text-gray-200 dark:text-black
             `}>
                 <i>{IconProjects}</i> &nbsp; Projetos
