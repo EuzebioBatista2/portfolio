@@ -12,6 +12,7 @@ import Cards from '@/components/template/Cards'
 import Layout from '@/components/template/Loyout'
 import Projects from '@/components/template/Projects'
 import Comments from '@/components/template/Comments'
+import Footer from '@/components/template/Footer'
 
 const poppins = Poppins({ 
     weight: ['100', '200', '300', '600', '700', '800'],
@@ -59,8 +60,9 @@ export default function Home() {
                 </Layout>
                 <Layout theme='dark'>
                     <Comments />
-                    <PageDown />
+                    {/* <PageDown className='bg-gray-800 dark:bg-gray-300' /> */}
                 </Layout>
+                <Footer />
             </main>
         </div>
     )

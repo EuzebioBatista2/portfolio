@@ -1,25 +1,89 @@
-import { IconComments, IconPost } from "../../../public/icons";
+import { useEffect, useState } from "react";
+import { IconComments } from "../../../public/icons";
+import { addDoc, collection, getDocs } from "firebase/firestore";
+import db from "../../backend/config";
+import CardComment from "./CardComment";
 
 export default function Comments() {
+    const [dataName, setDataName] = useState('')
+    const [dataComment, setDataComment] = useState('')
+
+    const [comments, setComments] = useState<{name: string, comment: string}[]>([])
+
+    const dataChangeName = (name:any) => {
+        let nameData = name.target.value
+        setDataName(nameData)
+    }
+    const dataChangeComment = (comment:any) => {
+        let commentData = comment.target.value
+        setDataComment(commentData)
+    }
+
+    const handleSubmit = (event:any) => {
+        event.preventDefault()
+        addData(dataName, dataComment)
+        setComments([...comments, { name: dataName, comment: dataComment }])
+        setDataName('')
+        setDataComment('')
+    }
+
+
+    const addData = async(name: any, comment: any) => {
+        try {
+            await addDoc(collection(db, 'comments'), {
+                name: name, 
+                comment: comment
+            })
+        } catch(e) {
+            console.error(e)
+        }
+    }
+
+    const queryData = async () => {
+        try {
+            let queryData = await getDocs(collection(db, 'comments'))
+            setComments(queryData.docs.map(doc => ({name: doc.data().name, comment: doc.data().comment})))
+        } catch(e) {
+            console.error(e)
+        }
+    }
+
+    useEffect(() => {
+        queryData()
+    }, [])
     return (
-        <section id="comments" className="flex flex-col h-[560px] items-center justify-center w-full px-4">
+        <section id="Comments" className="flex flex-col h-screen items-center justify-center w-full px-4">
             <h1 className={`
                 flex items-center justify-center h-[60px] text-3xl font-bold mt-2 
                 text-black dark:text-gray-200
             `}>
                 <i>{IconComments}</i> &nbsp; Comentários
             </h1>
-            <div className="flex flex-col h-[440px]">
-                <h1>Aqui fica as mensagens</h1>
+            <div className="flex flex-col w-full h-[360px] overflow-y-auto px-4">
+                {comments.map((value, index) => <CardComment key={index}
+                    name={value.name} comment={value.comment} 
+                    side={index % 2 === 0 ? 'start' : 'end'}
+                />)}
             </div>
-            <div className="flex items-center justify-center h-[60px] bg-gray-800 w-screen">
-                <form action="#comments" method="post" className="w-full">
-                    <label htmlFor="message">Mensagem</label>
-                    <input type="text" name="" id="message" className={`
-                       flex bg-gray-600 rounded-sm px-2 py-1 border border-black
-                    `}/>
-                    <button type="submit">
-                        <i className="flex h-8 w-8">{IconPost}</i>
+            <div className=" bg-gray-800 dark:bg-gray-300 w-screen grow pt-2">
+                <form action="#comments" method="post" onSubmit={handleSubmit}
+                className="flex flex-col items-center justify-center w-full px-4">
+                    <input type="text" id="name" value={dataName} onChange={dataChangeName} className={`
+                        flex w-full bg-gray-300 dark:bg-gray-800 text-black dark:text-white
+                        rounded-md px-2 py-1 border border-black
+                        outline-none my-1
+                    `} placeholder="Insira seu Nome..." required/>
+                    <input type="text" id="message" value={dataComment} onChange={dataChangeComment} className={`
+                        flex w-full bg-gray-300 dark:bg-gray-800 text-black dark:text-white
+                        rounded-md px-2 py-1 border border-black
+                        outline-none my-1
+                    `} placeholder="Insira seu Comentário..." required/>
+                    <button type="submit" className={`
+                        flex items-center justify-center
+                        w-full rounded-md mt-1 bg-blue-600 border border-black px-2 py-1
+                        text-black dark:text-white
+                    `}>
+                        Enviar &nbsp; <i className="flex h-6 w-6">{IconComments}</i>
                     </button>
                 </form>
             </div>
