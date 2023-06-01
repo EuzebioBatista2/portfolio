@@ -22,7 +22,9 @@ module.exports = {
     'bg-opacity-50',
     'bg-opacity-100',
     'dark:bg-opacity-50',
-    'dark:bg-opacity-100'
+    'dark:bg-opacity-100',
+    'hover:bg-blue-900',
+    'hover:bg-gray-900'
   ],
   darkMode: 'class',
   theme: {
@@ -39,12 +41,18 @@ module.exports = {
         },
       },
       animation: {
-        'ping-fast': 'ping 0.7s ease-in-out infinite'
+        'ping-fast': 'ping 0.7s ease-in-out infinite',
+        'bounce-slow': 'bounce 1.5s infinite',
+        'bounce-verySlow': 'bounce 2s infinite'
       },
       translate: {
         '100': '100%',
         '200': '200%',
         '300': '300%',
+      },
+      screens: {
+        'tall': { 'raw': '(min-height: 660px)' },
+        'big': { 'raw': '(min-height: 840px)'}
       }
     },
   },

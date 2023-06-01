@@ -9,9 +9,9 @@ interface ICardCommentProps {
 export default function CardComment(props: ICardCommentProps) {
     return (
         <div className={`
-        flex flex-col w-3/4 p-2 border border-gray-800 dark:border-black rounded-md my-4 animate-bounce
+        flex flex-col w-3/4 p-2 border border-gray-800 dark:border-black rounded-md my-4
         bg-gray-100 dark:bg-gray-700
-        ${props.side === 'start' ? 'self-start' : 'self-end' }
+        ${props.side === 'start' ? 'self-start animate-bounce-slow' : 'self-end animate-bounce-verySlow' }
         `}>
             <div className="flex items-center justify-center mb-2">
                 <div className={`

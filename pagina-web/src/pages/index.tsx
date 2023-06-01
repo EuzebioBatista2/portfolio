@@ -2,7 +2,6 @@ import useAppData from '../data/hooks/useAppData'
 import Button from '@/components/template/Button'
 import Navegation from '@/components/template/Navegation'
 import Profile from '@/components/template/Profile'
-import ToggleMenu from '@/components/template/ToggleMenu'
 import { Poppins } from 'next/font/google'
 import { IconGitHub, IconLinkedin } from '../../public/icons'
 import Head from 'next/head'
@@ -34,14 +33,14 @@ export default function Home() {
             <header>
                 <Navegation />
                 <Layout theme='dark'>
-                    <div className='w-full flex flex-col items-center pt-14'>
+                    <div id='Home' className='w-full flex flex-col md:flex-row h-5/6 md:px-8 items-center pt-14'>
                         <Profile title='Euzebio Batista' subtitle='Web Developer.' />
-                        <div className='mt-8'>
+                        <div className='flex flex-col justify-center items-center h-full w-full md:w-1/3 px-8 gap-1'>
                             <Button name='Linkedin' color='blue' icon={IconLinkedin} />
                             <Button name='GitHub' color='gray' icon={IconGitHub} />
                         </div>
-                        <PageDown />
                     </div>
+                    <PageDown />
                 </Layout>
             </header>
             <main>

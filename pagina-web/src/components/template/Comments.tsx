@@ -79,7 +79,7 @@ export default function Comments() {
                         outline-none my-1
                     `} placeholder="Insira seu Comentário..." required/>
                     <button type="submit" className={`
-                        flex items-center justify-center
+                        flex items-center justify-center active:bg-blue-800
                         w-full rounded-md mt-1 bg-blue-600 border border-black px-2 py-1
                         text-black dark:text-white transition duration-500 ease-in-out
                     `}>

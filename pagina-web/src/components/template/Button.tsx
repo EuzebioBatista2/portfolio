@@ -5,7 +5,10 @@ interface IButtonProps {
 }
 export default function Button(props: IButtonProps) {
     return (
-        <button className={`w-80 flex justify-center items-center bg-${props.color}-700 p-2 rounded-md mt-2`}>
+        <button className={`
+            w-full flex justify-center items-center bg-${props.color}-700 hover:bg-${props.color}-900 p-2 
+            rounded-md transition duration-500 ease-in-out`
+        }>
             <i className="w-6 mr-1 fill-white text-white">{props.icon}</i>
             <h2 className="text-lg text-white">{props.name}</h2>
         </button>
