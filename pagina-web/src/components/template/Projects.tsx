@@ -6,35 +6,38 @@ export default function Projects() {
         {
             title: 'Calculadora React',
             link: 'https://calculadora-react-ar8q.vercel.app/',
-            icons: [IconReactM],
+            icons: [IconHtml, IconCss, IconReactM],
             description: 'Calculadora desenvolvida com a funcionalidade de auxiliar e permitir apenas equações validas.'
         },
         {
             title: 'Pagina Web PHP',
-            link: '#',
+            link: '#Projects',
             icons: [IconHtml, IconCss, IconPhp, IconMySql],
             description: 'Projeto para representar uma página de login e sessão de login, com cadastro e esqueci minha senha.'
         },
         {
             title: 'Pagina CRUD',
-            link: '#',
+            link: '#Projects',
             icons: [IconHtml, IconCss, IconBootStrap, IconJquery],
             description: 'Pagina CRUD usando os métodos GET, POST, PUT e DELETE usando o XMLHttprequest.'
         },
     ]
     return (
-        <section id="Projects" className="h-[560px] px-4 pt-16">
+        <section id="Projects" className="flex flex-col h-5/6 px-4">
             <h1 className={`
                 flex items-center justify-center text-3xl font-bold
-                text-gray-200 dark:text-black
+                text-gray-200 dark:text-black h-1/5 pt-16
             `}>
-                <i>{IconProjects}</i> &nbsp; Projetos
+                <i>{IconProjects}</i>&nbsp;Projetos
             </h1>
-            <div className="flex flex-col items-center justify-center h-[500px]">
-                {projects.map((project, index) => 
-                    <ProjectCard key={index} title={project.title} link={project.link} icons={project.icons} 
-                    description={project.description} />)
-                }  
+            <div className="flex flex-col md:flex-row items-center justify-center h-4/5">
+                <img src="./images/projects.png" alt="imagem" className="hidden md:flex md:w-1/2 md:h-full"/>
+                <div className="flex flex-col items-center justify-center w-full md:w-1/2">
+                    {projects.map((project, index) => 
+                        <ProjectCard key={index} title={project.title} link={project.link} icons={project.icons} 
+                        description={project.description} />)
+                    }  
+                </div>
             </div>
         </section>
     )

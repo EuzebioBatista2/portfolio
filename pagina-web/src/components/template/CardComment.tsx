@@ -9,7 +9,7 @@ interface ICardCommentProps {
 export default function CardComment(props: ICardCommentProps) {
     return (
         <div className={`
-        flex flex-col w-3/4 p-2 border border-gray-800 dark:border-black rounded-md my-4
+        flex flex-col w-3/4 sm:w-1/3 p-2 border border-gray-800 dark:border-black rounded-md my-4
         bg-gray-100 dark:bg-gray-700
         ${props.side === 'start' ? 'self-start animate-bounce-slow' : 'self-end animate-bounce-verySlow' }
         `}>

@@ -27,25 +27,29 @@ export default function Cards() {
             icon: IconFireBase
         },
     ]
-    let timeItem = item
     function itemActive(value: number) {
         setItem(value)
-        timeItem = value
     }
+
     useEffect(() => {
-        setTimeout(() => {
-            if(timeItem >= 300) setItem(0)
-            else setItem(timeItem + 100)
-        }, 10000)
-    }, [timeItem])
-    
+        let time = setTimeout(() => {
+          if (item >= 300) setItem(0);
+          else setItem(item + 100);
+        }, 10000);
+      
+        return () => {
+          clearTimeout(time);
+        };
+    }, [item]);
     
     return (
-        <section id="Skills" className={`h-[560px] w-full overflow-hidden`}>
-            <h1 className="flex items-center justify-center pt-16 text-3xl font-bold text-black dark:text-gray-200">
+        <section id="Skills" className={`h-5/6 w-full overflow-hidden`}>
+            <h1 className={`flex h-1/5 items-center justify-center pt-16 text-3xl 
+                font-bold text-black dark:text-gray-200
+            `}>
                     <i>{IconEletro}</i>&nbsp;Habilidades
             </h1>
-            <div className={`flex h-[380px] transition-transform duration-500 transform -translate-x-${item}`}>
+            <div className={`flex h-3/5 transition-transform duration-500 transform -translate-x-${item}`}>
                 {items.map((item, index) => {
                     const words = item.description.split(' ')
                     const firstWord = words[0] + ' '
@@ -53,7 +57,7 @@ export default function Cards() {
                     return <CardsItens key={index} firstWord={firstWord} description={restOfDescription} icon={item.icon}/>
                 })}
             </div>
-            <div className="flex items-center justify-center h-[80px]">
+            <div className="flex items-center justify-center h-1/5">
                 <ButtonSkills value={0} isActive={itemActive} icon={IconReact}  
                 className={item === 0 ? 'animate-bounce fill-blue-400' : ''} />
                 <ButtonSkills value={100} isActive={itemActive} icon={IconTS}

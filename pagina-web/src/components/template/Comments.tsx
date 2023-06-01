@@ -52,39 +52,53 @@ export default function Comments() {
         queryData()
     }, [])
     return (
-        <section id="Comments" className="flex flex-col h-full items-center justify-center w-full px-4 pt-16">
+        <section id="Comments" className="flex flex-col h-full items-center justify-center w-full pt-8">
             <h1 className={`
                 flex items-center justify-center text-3xl font-bold
-                text-black dark:text-gray-200
+                text-black dark:text-gray-200 h-1/6
             `}>
-                <i>{IconComments}</i> &nbsp; Comentários
+                <i>{IconComments}</i>&nbsp;Comentários
             </h1>
-            <div className="flex flex-col w-full h-3/5 overflow-y-auto px-4">
-                {comments.map((value, index) => <CardComment key={index}
-                    name={value.name} comment={value.comment} 
-                    side={index % 2 === 0 ? 'start' : 'end'}
-                />)}
+            <div className="flex flex-col w-full items-center overflow-y-auto px-4 h-3/6">
+                <div className="flex flex-col w-full sm:w-3/4">
+                    {comments.map((value, index) => <CardComment key={index}
+                        name={value.name} comment={value.comment} 
+                        side={index % 2 === 0 ? 'start' : 'end'}
+                    />)}
+                </div>
             </div>
-            <div className=" bg-gray-800 dark:bg-gray-300 w-screen grow pt-2 transition duration-500 ease-in-out">
+            <div className={`
+                flex items-center justify-center
+                bg-gray-800 dark:bg-gray-300 grow pt-2 transition duration-500 ease-in-out
+                w-full h-2/6
+            `}>
                 <form action="#comments" method="post" onSubmit={handleSubmit}
-                className="flex flex-col items-center justify-center w-full px-4">
-                    <input type="text" id="name" value={dataName} onChange={dataChangeName} className={`
-                        flex w-full bg-gray-300 dark:bg-gray-800 text-black dark:text-white
-                        rounded-md px-2 py-1 border border-black transition duration-500 ease-in-out
-                        outline-none my-1
-                    `} placeholder="Insira seu Nome..." required/>
-                    <input type="text" id="message" value={dataComment} onChange={dataChangeComment} className={`
-                        flex w-full bg-gray-300 dark:bg-gray-800 text-black dark:text-white
-                        rounded-md px-2 py-1 border border-black transition duration-500 ease-in-out
-                        outline-none my-1
-                    `} placeholder="Insira seu Comentário..." required/>
-                    <button type="submit" className={`
-                        flex items-center justify-center active:bg-blue-800
-                        w-full rounded-md mt-1 bg-blue-600 border border-black px-2 py-1
-                        text-black dark:text-white transition duration-500 ease-in-out
-                    `}>
-                        Enviar &nbsp; <i className="flex h-6 w-6">{IconComments}</i>
-                    </button>
+                className={`
+                    flex flex-col items-center justify-center w-full px-4 sm:w-1/2 sm:flex-row 
+                    gap-0 sm:gap-1 sm:h-1/3
+                `}>
+                    <div className="flex flex-col items-center justify-center w-full h-full sm:w-3/4 py-1.5 gap-1">
+                        <input type="text" id="name" value={dataName} onChange={dataChangeName} className={`
+                            flex w-full bg-gray-300 dark:bg-gray-800 text-black dark:text-white
+                            rounded-md px-2 py-1 border border-black transition duration-500 ease-in-out
+                            outline-none
+                        `} placeholder="Insira seu Nome..." required/>
+                        <input type="text" id="message" value={dataComment} onChange={dataChangeComment} className={`
+                            flex w-full bg-gray-300 dark:bg-gray-800 text-black dark:text-white
+                            rounded-md px-2 py-1 border border-black transition duration-500 ease-in-out
+                            outline-none
+                        `} placeholder="Insira seu Comentário..." required/>
+                    </div>
+                    <div className="flex items-center justify-center h-full w-full sm:w-1/4 p-0 sm:pt-0.5 sm:pb-1.5">
+                        <button type="submit" className={`
+                            active:bg-blue-800 flex items-center justify-center
+                            rounded-md mt-1 bg-blue-600 border border-black
+                            text-black dark:text-white transition duration-500 ease-in-out
+                            hover:bg-blue-700 w-full h-full px-2 py-1
+                        `}>
+                            Enviar &nbsp; <i className="flex h-6 w-6">{IconComments}</i>
+                        </button>
+                    </div>
                 </form>
             </div>
         </section>

@@ -23,7 +23,7 @@ export default function Navegation() {
         
     return (
         <nav className={` 
-            flex items-center h-14 w-screen bg-gray-300 dark:bg-gray-700 fixed z-50 
+            flex items-center h-14 w-full bg-gray-300 dark:bg-gray-700 fixed z-50 
             bg-opacity-${opacity} dark:bg-opacity-${opacity}
             transition duration-500 ease-in-out
         `}>

@@ -35,7 +35,7 @@ export default function Home() {
                 <Layout theme='dark'>
                     <div id='Home' className='w-full flex flex-col md:flex-row h-5/6 md:px-8 items-center pt-14'>
                         <Profile title='Euzebio Batista' subtitle='Web Developer.' />
-                        <div className='flex flex-col justify-center items-center h-full w-full md:w-1/3 px-8 gap-1'>
+                        <div className='flex flex-col justify-center items-center h-full w-5/6 sm:w-2/3 md:w-1/3 sm:px-8 gap-1'>
                             <Button name='Linkedin' color='blue' icon={IconLinkedin} />
                             <Button name='GitHub' color='gray' icon={IconGitHub} />
                         </div>
