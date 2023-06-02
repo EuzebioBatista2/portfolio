@@ -11,7 +11,7 @@ export default function Projects() {
         },
         {
             title: 'Pagina Web PHP',
-            link: '#Projects',
+            link: 'pageWebPHP',
             icons: [IconHtml, IconCss, IconPhp, IconMySql, IconJs],
             description: 'Projeto para representar uma página de login e sessão de login, com cadastro e esqueci minha senha.'
         },

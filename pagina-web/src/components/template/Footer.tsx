@@ -7,7 +7,7 @@ export default function Footer() {
             flex w-full items-center h-14 bg-gray-800 dark:bg-gray-300 text-sm px-2
             transition duration-500 ease-in-out
         `}>
-            <div className="flex small:hidden px-1">
+            <div className="hidden sm:flex px-1">
                 <Link href={''}>
                     <i className="flex h-5 w-5 mr-1 fill-gray-200 dark:fill-black">{IconLinkedin}</i>
                 </Link>

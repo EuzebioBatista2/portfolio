@@ -59,7 +59,7 @@ export default function Comments() {
             `}>
                 <i>{IconComments}</i>&nbsp;Comentários
             </h1>
-            <div className="flex flex-col w-full items-center overflow-y-auto px-4 h-3/6">
+            <div className="flex flex-col w-11/12 items-center overflow-y-scroll px-4 h-3/6">
                 <div className="flex flex-col w-full lg:w-3/4">
                     {comments.map((value, index) => <CardComment key={index}
                         name={value.name} comment={value.comment} 
@@ -107,7 +107,7 @@ export default function Comments() {
                 </form>
                 <div className={`
                     flex h-2/5 items-center justify-center px-6 tall:text-sm big:text-base small:text-xs
-                    text-gray-200 dark:text-black
+                    text-gray-200 dark:text-black text-xs lg:text-base
                 `}>
                     <p>Deixe um comentário sobre o que achou do meu projeto ou até mesmo um feedback sobre uma possível melhoria, ficarei grato!</p>
                 </div>

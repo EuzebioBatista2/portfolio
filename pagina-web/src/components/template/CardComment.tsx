@@ -28,7 +28,7 @@ export default function CardComment(props: ICardCommentProps) {
             <hr className="border-gray-800 dark:border-black" />
             <h2 className="flex items-center mt-2 text-gray-800 dark:text-gray-300">
                 <strong className="text-xs mr-1">Comentario:&nbsp;</strong>
-                <span className="border-l border-gray-800 dark:border-black pl-1">{props.comment}</span>
+                <span className="border-l border-gray-800 dark:border-black pl-1 small:text-xs">{props.comment}</span>
             </h2>
         </div>
     )

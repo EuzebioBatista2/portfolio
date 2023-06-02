@@ -16,7 +16,7 @@ export default function AboutMe() {
                     <h2 className={` 
                         text-gray-200 dark:text-black border-white dark:border-black
                         p-2 border-dashed border-2 rounded-md text-sm shadow-xl small:text-xs tall:text-sm 
-                        big:text-base extraBig:text-xl lg:text-2xl md:text-1xl
+                        big:text-base extraBig:text-xl lg:text-2xl md:text-1xl dark:shadow-xl
                     `}>
                         “ Meu nome é <strong>Euzebio Batista</strong>, estudo ADS 
                         (Análise e Desenvolvimento de Sistemas). 

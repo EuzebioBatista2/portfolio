@@ -1,9 +1,9 @@
-import ToggleTheme from "./ToggleTheme";
-import ToggleButton from "./ToggleButton";
-import ToggleMenu from "./ToggleMenu";
 import { useEffect, useState } from "react";
+interface INavegationProps {
+    children: any
+}
 
-export default function Navegation() {
+export default function Navegation(props: INavegationProps) {
     const [opacity, setOpacity] = useState(100)
     const [menuActive, setMenuActive] = useState(true)
 
@@ -27,13 +27,7 @@ export default function Navegation() {
             bg-opacity-${opacity} dark:bg-opacity-${opacity}
             transition duration-500 ease-in-out
         `}>
-            <div className="flex justify-start items-center w-1/2 h-full px-4">
-                <ToggleButton />
-            </div>
-            <div className="flex justify-end items-center w-1/2 h-full px-4">
-                <ToggleTheme />
-            </div>
-            <ToggleMenu />
+            {props.children}
         </nav>
     )
 }
