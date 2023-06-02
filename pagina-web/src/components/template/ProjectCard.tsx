@@ -15,7 +15,7 @@ export default function ProjectCard(props: IProjectCardProps) {
         `}>
             <Link href={props.link}>
                 <div className="flex mb-1 w-full">
-                    <h2 className=" text-gray-200 dark:text-black"><strong>{props.title}</strong></h2>
+                    <h2 className=" text-gray-200 dark:text-black small:text-sm"><strong>{props.title}</strong></h2>
                     <span className="flex grow items-end justify-end">
                         {props.icons.map((icon, index) => 
                             <i key={index} className="flex h-6 w-6 fill-gray-200 dark:fill-black">{icon}</i>)}
@@ -23,7 +23,7 @@ export default function ProjectCard(props: IProjectCardProps) {
                 </div>
                 <hr className="border-gray-200 dark:border-black"/>
                 <div className="mt-1">
-                    <p className="text-gray-400 dark:text-gray-700 font-medium text-sm">{props.description}</p>
+                    <p className="text-gray-400 dark:text-gray-700 font-medium text-sm small:text-xs">{props.description}</p>
                 </div>
             </Link>  
         </div>

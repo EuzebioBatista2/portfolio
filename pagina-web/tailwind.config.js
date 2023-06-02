@@ -51,10 +51,12 @@ module.exports = {
         '300': '300%',
       },
       screens: {
-        'small': { 'raw': '(min-height: 60px) and (max-width: 750px)'},
+        'mini': { 'raw': '(min-height: 500px) and (max-width: 750px)'},
+        'small': { 'raw': '(min-height: 600px) and (max-width: 300px)'},
         'tall': { 'raw': '(min-height: 660px) and (max-width: 750px)'},
         'big': { 'raw': '(min-height: 840px) and (max-width: 750px)'},
-        'extraBig': { 'raw': '(min-height: 900px) and (max-width: 750px)'},
+        'extraBig': { 'raw': '(min-height: 1000px)'},
+        'nest': { 'raw': '(min-height: 600px) and(min-width: 1024px'}
       }
     },
   },
