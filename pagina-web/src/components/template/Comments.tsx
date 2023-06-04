@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { IconComments } from "../../../public/icons";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import db from "../../backend/config";
-import CardComment from "./CardComment";
+import CardComment from "../assets/CardComment";
 
 export default function Comments() {
     const [dataName, setDataName] = useState('')

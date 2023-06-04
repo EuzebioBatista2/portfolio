@@ -8,7 +8,7 @@ import Head from "next/head";
 import Button from "@/components/assets/Button";
 import { useEffect, useState } from "react";
 
-export default function pageWebPHP() {
+export default function pageWebCrud() {
     const { theme } = useAppData()
     const [displayH, setDisplayH] = useState<number>();
 
@@ -34,7 +34,7 @@ export default function pageWebPHP() {
                     <a href='/'><i className="flex h-8 w-8 text-black dark:text-gray-200">{IconBack}</i></a>
                 </div>
                 <div className="flex w-3/5 items-center justify-center">
-                    <h1 className="text-2xl text-black dark:text-gray-200 small:text-base tall:text-lg">Pagina Web PHP</h1>
+                    <h1 className="text-2xl text-black dark:text-gray-200 small:text-base tall:text-lg">Pagina CRUD</h1>
                 </div>
                 <div className="flex w-1/5 items-center justify-end pr-4">
                     <ToggleTheme />
@@ -58,7 +58,7 @@ export default function pageWebPHP() {
                             extraBig:h-11/12
                             md:w-9/12 md:h-full
                             lg:w-11/12
-                        `} link="Cj0no1s2538"/>
+                        `} link="CwI7wXdqGRw"/>
                     </div>
                     <div className="flex flex-col items-center justify-center small:justify-start px-2 h-1/2 lg:w-2/5 w-full gap-8">
                         <h2 className={`
@@ -66,13 +66,13 @@ export default function pageWebPHP() {
                             small:text-xs
                             tall:text-sm
                             lg:text-lg
-                        `}>Olá, me chamo <strong>Euzebio</strong>, estudo ADS(Analise e desenvolvimento de sistema), aqui tá um projeto no qual eu fiz usando as linguagens: 
-                        <strong>HTML</strong>, <strong>CSS</strong>, <strong>JS</strong>, <strong>PHP</strong> e <strong>MYSQL(WAMP)</strong>.
-                            O projeto tem como intuito de representar uma página de login completa. Desde do próprio login, como suas funções de cadastro e esqueci senha.
-                            OBS: Para realizar a página de esqueci minha senha,  utilizei uma ferramenta chamada: <strong>Composer</strong>. Que tem com a função de utilizar um e-mail configurado para enviar um conteúdo para outros 
-                            e-mails. Para mais informações, acesse meu <strong>GitHub</strong>.
+                        `}>Olá, me chamo <strong>Euzebio</strong>, estudo ADS(Analise e desenvolvimento de sistema), esse projeto consiste em 
+                            representar uma página <strong>CRUD</strong>. Onde realiza as 4 requisições 
+                            principais: <strong>GET</strong>, <strong>POST</strong>, <strong>PUT</strong> e <strong>DELETE</strong>. 
+                            Nesse projeto foi utilizado: <strong>HTML</strong>, <strong>CSS</strong>, <strong>JS</strong>, <strong>BOOTSTRAP</strong> e <strong>JQUERY</strong>.
+                            Para mais informações, acesse meu <strong>GitHub</strong>.
                         </h2>
-                        <a href='https://github.com/EuzebioBatista2/PaginaPHP' className="flex w-full justify-center items-center">
+                        <a href='https://github.com/EuzebioBatista2/ProjetoPaginaWeb' className="flex w-full justify-center items-center">
                             <Button name='GitHub' color='gray' icon={IconGitHub} />
                         </a>
                     </div>

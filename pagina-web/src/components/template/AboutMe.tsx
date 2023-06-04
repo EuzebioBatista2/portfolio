@@ -27,7 +27,7 @@ export default function AboutMe() {
                 </div>
                 <div className={`
                     flex h-1/2 w-2/3 small:h-1/2 md:h-3/5 mini:h-3/5 mini:w-1/3 items-center justify-center
-                    lg:h-full lg:w-1/3 md:w-1/3 sm:w-1/4 tall:w-1/2 small:w-1/2 extraBig:w-1/2
+                    lg:h-full lg:w-1/3 md:w-1/3 sm:w-1/4 tall:w-1/2 small:w-1/2 extraBig:w-1/3
                 `}>
                     <div className='flex relative'>
                         <i className={`

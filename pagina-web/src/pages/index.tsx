@@ -1,21 +1,21 @@
 import useAppData from '../data/hooks/useAppData'
-import Button from '@/components/template/Button'
+import Button from '@/components/assets/Button'
 import Navegation from '@/components/template/Navegation'
-import Profile from '@/components/template/Profile'
+import Profile from '@/components/assets/Profile'
 import { Poppins } from 'next/font/google'
 import { IconGitHub, IconLinkedin } from '../../public/icons'
 import Head from 'next/head'
 import AboutMe from '../components/template/AboutMe'
-import PageDown from '@/components/template/PageDown'
+import PageDown from '@/components/assets/PageDown'
 import Cards from '@/components/template/Cards'
-import Layout from '@/components/template/Loyout'
+import Layout from '@/components/assets/Loyout'
 import Projects from '@/components/template/Projects'
 import Comments from '@/components/template/Comments'
 import Footer from '@/components/template/Footer'
-import ToggleButton from '@/components/template/ToggleButton'
-import NavDesktop from '@/components/template/NavDesktop'
-import ToggleTheme from '@/components/template/ToggleTheme'
-import ToggleMenu from '@/components/template/ToggleMenu'
+import ToggleButton from '@/components/assets/ToggleButton'
+import NavDesktop from '@/components/assets/NavDesktop'
+import ToggleTheme from '@/components/assets/ToggleTheme'
+import ToggleMenu from '@/components/assets/ToggleMenu'
 
 const poppins = Poppins({ 
     weight: ['100', '200', '300', '600', '700', '800'],
@@ -59,8 +59,12 @@ export default function Home() {
                     <div id='Home' className='w-full flex flex-col md:flex-row h-5/6 md:px-8 items-center pt-14'>
                         <Profile title='Euzebio Batista' subtitle='Web Developer.' />
                         <div className='flex flex-col justify-center items-center h-full w-5/6 sm:w-2/3 md:w-1/3 sm:px-8 gap-1'>
-                            <Button name='Linkedin' color='blue' icon={IconLinkedin} />
-                            <Button name='GitHub' color='gray' icon={IconGitHub} />
+                            <a href='https://www.linkedin.com/in/euzebio-batista/' className="flex w-full justify-center items-center">
+                                <Button name='Linkedin' color='blue' icon={IconLinkedin} />
+                            </a>
+                            <a href='https://github.com/EuzebioBatista2' className="flex w-full justify-center items-center">
+                                <Button name='GitHub' color='gray' icon={IconGitHub} />
+                            </a>
                         </div>
                     </div>
                     <PageDown />

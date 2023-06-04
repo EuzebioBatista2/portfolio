@@ -1,5 +1,5 @@
 import { IconBootStrap, IconCss, IconHtml, IconJquery, IconJs, IconMySql, IconPhp, IconProjects, IconReactM } from "../../../public/icons";
-import ProjectCard from "./ProjectCard";
+import ProjectCard from "../assets/ProjectCard";
 
 export default function Projects() {
     const projects = [
@@ -17,7 +17,7 @@ export default function Projects() {
         },
         {
             title: 'Pagina CRUD',
-            link: '#Projects',
+            link: 'pageWebCrud',
             icons: [IconHtml, IconCss, IconBootStrap, IconJquery, IconJs],
             description: 'Pagina CRUD usando os métodos GET, POST, PUT e DELETE usando o XMLHttprequest.'
         },

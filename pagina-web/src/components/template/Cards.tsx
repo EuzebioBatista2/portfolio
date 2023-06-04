@@ -1,6 +1,6 @@
-import CardsItens from "./CardsItens"
+import CardsItens from "../assets/CardsItens"
 import { IconReact, IconTS, IconTail, IconFireBase, IconEletro } from "../../../public/icons"
-import ButtonSkills from "./ButtonSkills"
+import ButtonSkills from "../assets/ButtonSkills"
 import { useEffect, useState } from "react"
 
 export default function Cards() {

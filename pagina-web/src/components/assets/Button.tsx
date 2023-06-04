@@ -2,6 +2,7 @@ interface IButtonProps {
     name:  string
     color: 'blue' | 'gray'
     icon?: any
+    link?: string
 }
 export default function Button(props: IButtonProps) {
     return (

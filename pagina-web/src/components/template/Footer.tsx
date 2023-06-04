@@ -8,12 +8,12 @@ export default function Footer() {
             transition duration-500 ease-in-out
         `}>
             <div className="hidden sm:flex px-1">
-                <Link href={''}>
+                <a href='https://www.linkedin.com/in/euzebio-batista/'>
                     <i className="flex h-5 w-5 mr-1 fill-gray-200 dark:fill-black">{IconLinkedin}</i>
-                </Link>
-                <Link href={''}>
+                </a>
+                <a href='https://github.com/EuzebioBatista2'>
                     <i className="flex h-5 w-5 fill-gray-200 dark:fill-black">{IconGitHub}</i>
-                </Link>
+                </a>
             </div>
             <p className={`
                 flex items-center justify-end w-full mr-2 lg:mr-4 small:text-xs
