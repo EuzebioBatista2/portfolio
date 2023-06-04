@@ -20,8 +20,11 @@ const VideoPlay = (props: IVideoPlayProps) => {
         event.target.setPlaybackRate(2)
     };
     
-    const onEnd = () => {
-        player.playVideo();
+    const onStateChange = (event: any) => {
+        if (event.data === 0) {
+          player.seekTo(0);
+          player.playVideo();
+        }
     };
 
     return (
@@ -31,7 +34,7 @@ const VideoPlay = (props: IVideoPlayProps) => {
             iframeClassName={`w-full h-full`}
             className={`${props.className}`}
             onReady={onReady}
-            onEnd={onEnd}
+            onStateChange={onStateChange}
         />
     )
 }
