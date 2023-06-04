@@ -8,9 +8,13 @@ interface IVideoPlayProps {
 const VideoPlay = (props: IVideoPlayProps) => {
     const [player, setPlayer] = useState<any>(null);
 
+    let page: any
+    if (typeof window !== 'undefined') { page = window.location.origin }
+    
     const opts = {
         playerVars: {
             mute: 1,
+            origin: page
         }
     }
 
@@ -20,11 +24,8 @@ const VideoPlay = (props: IVideoPlayProps) => {
         event.target.setPlaybackRate(2)
     };
     
-    const onStateChange = (event: any) => {
-        if (event.data === 0) {
-          player.seekTo(0);
-          player.playVideo();
-        }
+    const onEnd = () => {
+        player.playVideo();
     };
 
     return (
@@ -34,7 +35,7 @@ const VideoPlay = (props: IVideoPlayProps) => {
             iframeClassName={`w-full h-full`}
             className={`${props.className}`}
             onReady={onReady}
-            onStateChange={onStateChange}
+            onEnd={onEnd}
         />
     )
 }
