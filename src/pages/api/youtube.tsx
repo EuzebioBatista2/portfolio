@@ -8,13 +8,9 @@ interface IVideoPlayProps {
 const VideoPlay = (props: IVideoPlayProps) => {
     const [player, setPlayer] = useState<any>(null);
 
-    let page: any
-    if (typeof window !== 'undefined') { page = window.location.origin }
-    
     const opts = {
         playerVars: {
             mute: 1,
-            origin: page
         }
     }
 
