@@ -1,15 +1,16 @@
 import Layout from "@/components/assets/Loyout";
 import Navegation from "@/components/template/Navegation";
 import ToggleTheme from "@/components/assets/ToggleTheme";
-import useAppData from "@/data/hooks/useAppData";
 import { IconBack, IconGitHub } from "../../public/icons";
 import VideoPlay from "./api/youtube";
 import Head from "next/head";
 import Button from "@/components/assets/Button";
 import { useEffect, useState } from "react";
+import UseAppData from "../data/hooks/UseAppData";
+import Link from "next/link";
 
-export default function pageWebCrud() {
-    const { theme } = useAppData()
+export default function PageWebCrud() {
+    const { theme } = UseAppData()
     const [displayH, setDisplayH] = useState<number>();
 
     useEffect(() => {
@@ -31,7 +32,7 @@ export default function pageWebCrud() {
             </Head>
             <Navegation>
                 <div className="flex w-1/5 items-center justify-start pl-4">
-                    <a href='/'><i className="flex h-8 w-8 text-black dark:text-gray-200">{IconBack}</i></a>
+                    <Link href='/'><i className="flex h-8 w-8 text-black dark:text-gray-200">{IconBack}</i></Link>
                 </div>
                 <div className="flex w-3/5 items-center justify-center">
                     <h1 className="text-2xl text-black dark:text-gray-200 small:text-base tall:text-lg">Pagina CRUD</h1>

@@ -1,3 +1,5 @@
+import Image from "next/image"
+
 interface IProfileProps {
     title: string,
     subtitle: string
@@ -7,7 +9,7 @@ export default function Profile(props: IProfileProps) {
         <div className={`
             flex flex-col md:flex-row justify-center items-center px-7 w-2/3 h-full
         `}>
-            <img src="./images/profile.jpg" alt="MeuPerfil" className={`
+            <Image src="/images/profile.jpg" alt="MeuPerfil" className={`
                 w-56 lg:w-72 rounded-full border-2 border-black
             `} />
             <div className='lg:ml-2'>

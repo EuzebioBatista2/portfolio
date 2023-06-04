@@ -1,4 +1,4 @@
-import useToggleData from "@/data/hooks/useToggleData"
+import useToggleData from "@/data/hooks/UseToggleData"
 
 export default function ToggleButton() {
     const {isActivate, isRotate} = useToggleData()

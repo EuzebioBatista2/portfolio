@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { IconBootStrap, IconCss, IconHtml, IconJquery, IconJs, IconMySql, IconPhp, IconProjects, IconReactM } from "../../../public/icons";
 import ProjectCard from "../assets/ProjectCard";
 
@@ -11,13 +12,13 @@ export default function Projects() {
         },
         {
             title: 'Pagina Web PHP',
-            link: 'pageWebPHP',
+            link: 'PageWebPHP',
             icons: [IconHtml, IconCss, IconPhp, IconMySql, IconJs],
             description: 'Projeto para representar uma página de login e sessão de login, com cadastro e esqueci minha senha.'
         },
         {
             title: 'Pagina CRUD',
-            link: 'pageWebCrud',
+            link: 'PageWebCrud',
             icons: [IconHtml, IconCss, IconBootStrap, IconJquery, IconJs],
             description: 'Pagina CRUD usando os métodos GET, POST, PUT e DELETE usando o XMLHttprequest.'
         },
@@ -31,7 +32,7 @@ export default function Projects() {
                 <i>{IconProjects}</i>&nbsp;Projetos
             </h1>
             <div className="flex flex-col md:flex-row items-center justify-center h-4/5">
-                <img src="./images/projects.png" alt="imagem" className="hidden extraBig:hidden extraBig:h-full md:flex md:w-1/3 md:h-full"/>
+                <Image src="/images/projects.png" alt="imagem" className="hidden extraBig:hidden extraBig:h-full md:flex md:w-1/3 md:h-full"/>
                 <div className="flex flex-col items-center justify-center w-full md:w-2/3">
                     {projects.map((project, index) => 
                         <ProjectCard key={index} title={project.title} link={project.link} icons={project.icons} 

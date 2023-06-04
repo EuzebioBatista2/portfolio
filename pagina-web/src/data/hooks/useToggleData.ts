@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import ToggleContext from "../context/ToggleContext";
 
-const useToggleData = () => useContext(ToggleContext)
+const UseToggleData = () => useContext(ToggleContext)
 
-export default useToggleData
+export default UseToggleData

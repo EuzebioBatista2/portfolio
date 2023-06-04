@@ -1,10 +1,10 @@
-import useToggleData from "@/data/hooks/useToggleData";
 import Button from "./Button";
 import { IconUser, IconProjects, IconEletro, IconComments, IconHome } from "../../../public/icons";
+import UseToggleData from "../../data/hooks/UseToggleData"
 
 
 export default function ToggleMenu() {
-    const { isActivate, isRotate } = useToggleData()
+    const { isActivate, isRotate } = UseToggleData()
 
     return (
         <div className={`

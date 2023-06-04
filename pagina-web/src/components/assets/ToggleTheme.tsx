@@ -1,8 +1,9 @@
-import useAppData from "@/data/hooks/useAppData"
+import UseAppData from "../../data/hooks/UseAppData"
 import { IconeMoon, IconSun } from "../../../public/icons"
 
+
 export default function ToggleTheme() {
-    const { theme, switchTheme } = useAppData()
+    const { theme, switchTheme } = UseAppData()
     return theme === 'dark' ? (
         <div onClick={switchTheme} className={`
             flex items-center h-7 w-12 bg-slate-500 rounded-full px-0.5 cursor-pointer

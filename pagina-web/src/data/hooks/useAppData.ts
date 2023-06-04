@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import AppContext from "../context/AppContext";
 
-const useAppData = () => useContext(AppContext)
+const UseAppData = () => useContext(AppContext)
 
-export default useAppData
+export default UseAppData

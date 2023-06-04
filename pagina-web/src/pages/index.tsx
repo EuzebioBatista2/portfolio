@@ -1,4 +1,4 @@
-import useAppData from '../data/hooks/useAppData'
+import useAppData from '../data/hooks/UseAppData'
 import Button from '@/components/assets/Button'
 import Navegation from '@/components/template/Navegation'
 import Profile from '@/components/assets/Profile'
