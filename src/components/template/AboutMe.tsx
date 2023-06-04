@@ -34,7 +34,7 @@ export default function AboutMe() {
                 `}>
                     <div className='flex relative'>
                         <i className={`
-                            flex h-9 w-9 sm:h-10 sm:w-10 lg:h-12 lg:w-12 absolute top-1/4 left-0 p-1 sm:p-2 lg:p-3 border rounded-full
+                            flex h-9 w-9 sm:h-10 sm:w-10 lg:h-12 lg:w-12 absolute top-1/4 left-0 p-1.5 lg:p-2 border rounded-full
                             bg-white fill-blue-400 animate-bounce
                         `}>{IconLinkedin}</i>
                         <i className={`
@@ -55,7 +55,7 @@ export default function AboutMe() {
                             bg-white fill-orange-600 animate-bounce
                         `}>{IconHtml}</i>
                         <i className={`
-                            flex h-9 w-9 sm:h-10 sm:w-10 lg:h-12 lg:w-12 absolute left-3/4 top-2 p-1 sm:p-2 border rounded-full
+                            flex h-9 w-9 sm:h-10 sm:w-10 lg:h-12 lg:w-12 absolute left-3/4 top-2 p-1 lg:p-1.5 border rounded-full
                             bg-white fill-blue-500 animate-bounce-verySlow
                         `}>{IconTS}</i>
                         <Image width={400} height={400} src="/images/about.png" alt="about" priority={true} />
