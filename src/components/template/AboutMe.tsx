@@ -56,7 +56,7 @@ export default function AboutMe() {
                             flex h-8 w-8  small:h-6 small:w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 lg:h-14 lg:w-14 absolute left-3/4 top-2 p-1 md:p-2 border rounded-full
                             bg-white fill-blue-500 animate-bounce-verySlow
                         `}>{IconTS}</i>
-                        <Image src="/images/about.png" alt="about" />
+                        <Image width={400} height={200} src="/images/about.png" alt="about" priority={true} />
                     </div>
                 </div>
             </div>

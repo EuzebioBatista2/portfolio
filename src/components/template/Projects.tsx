@@ -32,8 +32,10 @@ export default function Projects() {
                 <i>{IconProjects}</i>&nbsp;Projetos
             </h1>
             <div className="flex flex-col md:flex-row items-center justify-center h-4/5">
-                <Image src="/images/projects.png" alt="imagem" className="hidden extraBig:hidden extraBig:h-full md:flex md:w-1/3 md:h-full"/>
-                <div className="flex flex-col items-center justify-center w-full md:w-2/3">
+                <Image width={200} height={200} priority={true}
+                src="/images/projects.png" alt="imagem" 
+                className="hidden extraBig:hidden extraBig:h-full md:flex md:w-1/2"/>
+                <div className="flex flex-col items-center justify-center w-full md:w-1/2">
                     {projects.map((project, index) => 
                         <ProjectCard key={index} title={project.title} link={project.link} icons={project.icons} 
                         description={project.description} />)
