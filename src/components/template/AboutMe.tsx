@@ -11,8 +11,8 @@ export default function AboutMe() {
             </h1>
             <div className='flex flex-col lg:flex-row items-center justify-center h-4/5 w-full'>
                 <div className={`
-                    flex h-1/2 md:h-2/5 mini:h-2/5 items-center justify-center p-4 md:px-8
-                    small:h-1/2 lg:h-full lg:w-2/3
+                    flex h-1/2 md:h-2/5 mini:h-2/5 items-center justify-center p-4 md:px-8 lg:px-16
+                    small:h-1/2 lg:h-full lg:w-2/3 
                 `}>
                     <h2 className={` 
                         text-gray-200 dark:text-black border-white dark:border-black
@@ -27,8 +27,8 @@ export default function AboutMe() {
                     </h2>
                 </div>
                 <div className={`
-                    flex h-1/2 w-2/3 small:h-1/2 md:h-3/5 mini:h-3/5 mini:w-1/3 items-center justify-center
-                    lg:h-full lg:w-1/3 md:w-1/3 sm:w-1/4 tall:w-1/2 small:w-1/2 extraBig:w-1/3
+                    flex h-1/2 w-2/5 small:h-1/2 md:h-3/5 mini:h-3/5 mini:w-1/3 items-center justify-center
+                    lg:h-full lg:w-1/3 md:w-1/3 sm:w-1/3 tall:w-1/2 small:w-1/2 extraBig:w-1/3
                 `}>
                     <div className='flex relative'>
                         <i className={`
@@ -56,7 +56,7 @@ export default function AboutMe() {
                             flex h-8 w-8  small:h-6 small:w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 lg:h-14 lg:w-14 absolute left-3/4 top-2 p-1 md:p-2 border rounded-full
                             bg-white fill-blue-500 animate-bounce-verySlow
                         `}>{IconTS}</i>
-                        <Image width={400} height={200} src="/images/about.png" alt="about" priority={true} />
+                        <Image width={400} height={400} src="/images/about.png" alt="about" priority={true} />
                     </div>
                 </div>
             </div>
