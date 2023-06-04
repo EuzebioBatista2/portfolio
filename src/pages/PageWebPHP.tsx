@@ -29,6 +29,7 @@ export default function PageWebPHP() {
         <div className={`${theme}`}>
             <Head>
                 <title>Portfolio Euzebio</title>
+                <link rel="icon" href="/favicon.png" />
             </Head>
             <Navegation>
                 <div className="flex w-1/5 items-center justify-start pl-4">

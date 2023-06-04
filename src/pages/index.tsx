@@ -33,6 +33,7 @@ export default function Home() {
         <div className={`${theme} ${poppins.className}`}>
             <Head>
                 <title>Portfolio Euzebio</title>
+                <link rel="icon" href="/favicon.png" />
             </Head>
             <header>
                 <Navegation>
