@@ -72,7 +72,7 @@ export default function Comments() {
                 bg-gray-800 dark:bg-gray-300 grow transition duration-500 ease-in-out
                 w-full h-2/6 px-4
             `}>
-                <form action="#comments" method="post" onSubmit={handleSubmit}
+                <form action="#Comments" method="post" onSubmit={handleSubmit}
                 className={`
                     flex flex-col items-center justify-center w-full px-4 lg:w-1/2 lg:flex-row 
                     gap-1 small:h-3/5 tall:h-3/5 lg:h-2/5 pt-2 lg:pt-0

@@ -67,21 +67,21 @@ export default function Home() {
                             </a>
                         </div>
                     </div>
-                    <PageDown />
+                    <PageDown link='AboutMe' />
                 </Layout>
             </header>
             <main>
                 <Layout theme='white'>
                     <AboutMe />
-                    <PageDown />
+                    <PageDown link='Skills' />
                 </Layout>
                 <Layout theme='dark' >
                     <Cards />
-                    <PageDown />
+                    <PageDown link='Projects' />
                 </Layout>
                 <Layout theme='white'>
                     <Projects />
-                    <PageDown />
+                    <PageDown link='Comments' />
                 </Layout>
                 <Layout theme='dark'>
                     <Comments />
