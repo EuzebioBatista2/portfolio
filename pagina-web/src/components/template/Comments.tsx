@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { IconComments } from "../../../public/icons";
+import { IconComments, IconSmile } from "../../../public/icons";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import db from "../../backend/config";
 import CardComment from "../assets/CardComment";
@@ -65,6 +65,11 @@ export default function Comments() {
                         name={value.name} comment={value.comment} 
                         side={index % 2 === 0 ? 'start' : 'end'}
                     />)}
+                    {comments.length > 0 ? '' : 
+                    <div className="flex w-full items-center justify-center text-black dark:text-gray-200">
+                        <h2 className="lg:text-base small:text-xs tall:text-xs big:text-sm">Deixe um comentário sobre o que achou&nbsp;</h2>
+                        <i className="flex w-8 h-8 small:w-6 small:h-6">{IconSmile}</i>
+                    </div>}
                 </div>
             </div>
             <div className={`
