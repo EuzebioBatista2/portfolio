@@ -85,12 +85,12 @@ export default function Comments() {
                     <div className={`
                         flex flex-col items-center justify-center w-full h-1/2 small:h-2/3 lg:h-full lg:w-3/4 gap-2 small:gap-1
                     `}>
-                        <input type="text" id="name" value={dataName} onChange={dataChangeName} className={`
+                        <input type="text" id="name" value={dataName} onChange={dataChangeName} autoComplete="off" className={`
                             flex w-full bg-gray-300 dark:bg-gray-800 text-black dark:text-white
                             rounded-md px-2 py-1 border border-black transition duration-500 ease-in-out
                             outline-none h-1/2 small:h-2/5
                         `} placeholder="Insira seu Nome..." required/>
-                        <input type="text" id="message" value={dataComment} onChange={dataChangeComment} className={`
+                        <input type="text" id="message" value={dataComment} onChange={dataChangeComment} autoComplete="off" className={`
                             flex w-full bg-gray-300 dark:bg-gray-800 text-black dark:text-white
                             rounded-md px-2 py-1 border border-black transition duration-500 ease-in-out
                             outline-none h-1/2 small:h-2/5
