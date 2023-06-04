@@ -27,33 +27,35 @@ export default function AboutMe() {
                     </h2>
                 </div>
                 <div className={`
-                    flex h-1/2 w-2/5 small:h-1/2 md:h-3/5 mini:h-3/5 mini:w-1/3 items-center justify-center
-                    lg:h-full lg:w-1/3 md:w-1/3 sm:w-1/3 tall:w-1/2 small:w-1/2 extraBig:w-1/3
+                    flex h-full items-center justify-center
+                    w-2/3
+                    lg:w-1/3 
+                    extraBig:w-2/5
                 `}>
                     <div className='flex relative'>
                         <i className={`
-                            flex h-8 w-8 small:h-6 small:w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 lg:h-14 lg:w-14 absolute top-1/4 left-0 p-1 md:p-2 lg:p-3 border rounded-full
+                            flex h-9 w-9 sm:h-10 sm:w-10 lg:h-12 lg:w-12 absolute top-1/4 left-0 p-1 sm:p-2 lg:p-3 border rounded-full
                             bg-white fill-blue-400 animate-bounce
                         `}>{IconLinkedin}</i>
                         <i className={`
-                            flex h-8 w-8 small:h-6 small:w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 lg:h-14 lg:w-14 absolute left-3/4 p-1 border rounded-full
+                            flex h-9 w-9 sm:h-10 sm:w-10 lg:h-12 lg:w-12 absolute left-3/4 p-1 border rounded-full
                             top-2/4
                             bg-white fill-orange-500 animate-bounce-slow
                         `}>{IconGitHub}</i>
                         <i className={`
-                            flex h-8 w-8  small:h-6 small:w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 lg:h-14 lg:w-14 absolute left-4 top-3/4 p-1 border rounded-full
+                            flex h-9 w-9 sm:h-10 sm:w-10 lg:h-12 lg:w-12 absolute left-4 top-3/4 p-1 border rounded-full
                             bg-white fill-blue-400 animate-bounce-verySlow
                         `}>{IconReact}</i>
                         <i className={`
-                            flex h-8 w-8  small:h-6 small:w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 lg:h-14 lg:w-14 absolute left-6 lg:left-8 top-2 lg:top-4 p-1 border rounded-full
+                            flex h-9 w-9 sm:h-10 sm:w-10 lg:h-12 lg:w-12 absolute left-6 lg:left-8 top-2 lg:top-4 p-1 border rounded-full
                             bg-white fill-blue-600 animate-bounce-slow
                         `}>{IconCss}</i>
                         <i className={`
-                            flex h-8 w-8  small:h-6 small:w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 lg:h-14 lg:w-14 absolute left-2/4 top-3/4 p-1 border rounded-full
+                            flex h-9 w-9 sm:h-10 sm:w-10 lg:h-12 lg:w-12 absolute left-2/4 top-3/4 p-1 border rounded-full
                             bg-white fill-orange-600 animate-bounce
                         `}>{IconHtml}</i>
                         <i className={`
-                            flex h-8 w-8  small:h-6 small:w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 lg:h-14 lg:w-14 absolute left-3/4 top-2 p-1 md:p-2 border rounded-full
+                            flex h-9 w-9 sm:h-10 sm:w-10 lg:h-12 lg:w-12 absolute left-3/4 top-2 p-1 sm:p-2 border rounded-full
                             bg-white fill-blue-500 animate-bounce-verySlow
                         `}>{IconTS}</i>
                         <Image width={400} height={400} src="/images/about.png" alt="about" priority={true} />
