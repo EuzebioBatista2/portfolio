@@ -7,11 +7,7 @@ export default function ToggleMenu() {
     const { isActivate, isRotate } = UseToggleData()
 
     return (
-        <div className={`
-            flex flex-col items-center justify-start absolute overflow-hidden ${isActivate ? 'h-72 py-1' : 'h-0'} 
-            w-full bg-gray-300 dark:bg-gray-700 bg-opacity-50 dark:bg-opacity-50 top-14
-            transtion duration-500 ease-in-out 
-        `}>
+        <div className={`flex flex-col items-center justify-start absolute overflow-hidden ${isActivate ? 'h-72 py-1' : 'h-0'} w-full bg-gray-300 dark:bg-gray-700 bg-opacity-50 dark:bg-opacity-50 top-14 transtion duration-500 ease-in-out `}>
             <a href='#Home' onClick={isRotate} className="flex w-2/3 mt-2 mb-1 items-center justify-center">
                 <Button name="Home" color="blue" icon={IconHome} />
             </a>

@@ -43,36 +43,13 @@ export default function PageWebCrud() {
                 </div>
             </Navegation>
             <Layout theme="dark" hOption={displayH}>
-                <section className={`
-                    flex flex-col lg:flex-row w-full h-[768px] items-center justify-center
-                    gap-3 pt-14 px-4 small:px-1 md:px-8 extraBig:px-8
-                `}>
-                    <div className={`
-                        flex items-center justify-center lg:h-3/5 h-1/2 lg:w-3/5 w-full 
-                        lg:border-black lg:border-r-2
-                    `}>
-                        <VideoPlay className={`
-                            flex justify-center items-center 
-                            h-full w-11/12 p-2
-                            small:w-full small:h-5/6
-                            tall:w-full tall:h-5/6
-                            big:w-full big:h-5/6
-                            extraBig:h-11/12
-                            md:w-9/12 md:h-full
-                            lg:w-11/12
-                        `} link="CwI7wXdqGRw"/>
+                <section className={`flex flex-col lg:flex-row w-full h-[768px] items-center justify-center gap-3 pt-14 px-4 small:px-1 md:px-8 extraBig:px-8`}>
+                    <div className={`flex items-center justify-center lg:h-3/5 h-1/2 lg:w-3/5 w-full lg:border-black lg:border-r-2`}>
+                        <VideoPlay className={`flex justify-center items-center h-full w-11/12 p-2 small:w-full small:h-5/6 tall:w-full tall:h-5/6 big:w-full big:h-5/6 extraBig:h-11/12 md:w-9/12 md:h-full lg:w-11/12`} link="CwI7wXdqGRw"/>
                     </div>
                     <div className="flex flex-col items-center justify-center small:justify-start px-2 h-1/2 lg:w-2/5 w-full gap-8">
-                        <h2 className={`
-                            text-black dark:text-gray-200
-                            small:text-xs
-                            tall:text-sm
-                            lg:text-lg
-                        `}>Olá, me chamo <strong>Euzebio</strong>, estudo ADS(Analise e desenvolvimento de sistema), esse projeto consiste em 
-                            representar uma página <strong>CRUD</strong>. Onde realiza as 4 requisições 
-                            principais: <strong>GET</strong>, <strong>POST</strong>, <strong>PUT</strong> e <strong>DELETE</strong>. 
-                            Nesse projeto foi utilizado: <strong>HTML</strong>, <strong>CSS</strong>, <strong>JS</strong>, <strong>BOOTSTRAP</strong> e <strong>JQUERY</strong>.
-                            Para mais informações, acesse meu <strong>GitHub</strong>.
+                        <h2 className={`text-black dark:text-gray-200 small:text-xs tall:text-sm lg:text-lg`}>
+                            Olá, me chamo <strong>Euzebio</strong>, estudo ADS(Analise e desenvolvimento de sistema), esse projeto consiste em representar uma página <strong>CRUD</strong>. Onde realiza as 4 requisições principais: <strong>GET</strong>, <strong>POST</strong>, <strong>PUT</strong> e <strong>DELETE</strong>. Nesse projeto foi utilizado: <strong>HTML</strong>, <strong>CSS</strong>, <strong>JS</strong>, <strong>BOOTSTRAP</strong> e <strong>JQUERY</strong>. Para mais informações, acesse meu <strong>GitHub</strong>.
                         </h2>
                         <a href='https://github.com/EuzebioBatista2/ProjetoPaginaWeb' className="flex w-full justify-center items-center">
                             <Button name='GitHub' color='gray' icon={IconGitHub} />

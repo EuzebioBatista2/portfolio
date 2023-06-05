@@ -22,11 +22,7 @@ export default function Navegation(props: INavegationProps) {
     }, [menuActive])
         
     return (
-        <nav className={` 
-            flex items-center h-14 w-full bg-gray-300 dark:bg-gray-700 fixed z-50 
-            bg-opacity-${opacity} dark:bg-opacity-${opacity}
-            transition duration-500 ease-in-out
-        `}>
+        <nav className={`flex items-center h-14 w-full bg-gray-300 dark:bg-gray-700 fixed z-50 bg-opacity-${opacity} dark:bg-opacity-${opacity} transition duration-500 ease-in-out`}>
             {props.children}
         </nav>
     )

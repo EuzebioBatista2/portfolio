@@ -25,16 +25,11 @@ export default function Projects() {
     ]
     return (
         <section id="Projects" className="flex flex-col h-5/6 px-4">
-            <h1 className={`
-                flex items-center justify-center text-3xl font-bold
-                text-gray-200 dark:text-black h-1/5 pt-16
-            `}>
+            <h1 className={`flex items-center justify-center text-3xl font-bold text-gray-200 dark:text-black h-1/5 pt-16`}>
                 <i>{IconProjects}</i>&nbsp;Projetos
             </h1>
             <div className="flex flex-col md:flex-row items-center justify-center h-4/5">
-                <Image width={200} height={200} priority={true}
-                src="/images/projects.png" alt="imagem" 
-                className="hidden extraBig:hidden extraBig:h-full md:flex md:w-1/2"/>
+                <Image width={200} height={200} priority={true} src="/images/projects.png" alt="imagem" className="hidden extraBig:hidden extraBig:h-full md:flex md:w-1/2"/>
                 <div className="flex flex-col items-center justify-center w-full md:w-1/2">
                     {projects.map((project, index) => 
                         <ProjectCard key={index} title={project.title} link={project.link} icons={project.icons} 

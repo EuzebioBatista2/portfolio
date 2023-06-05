@@ -43,36 +43,13 @@ export default function PageWebPHP() {
                 </div>
             </Navegation>
             <Layout theme="dark" hOption={displayH}>
-                <section className={`
-                    flex flex-col lg:flex-row w-full h-[768px] items-center justify-center
-                    gap-3 pt-14 px-4 small:px-1 md:px-8 extraBig:px-8
-                `}>
-                    <div className={`
-                        flex items-center justify-center lg:h-3/5 h-1/2 lg:w-3/5 w-full 
-                        lg:border-black lg:border-r-2
-                    `}>
-                        <VideoPlay className={`
-                            flex justify-center items-center 
-                            h-full w-11/12 p-2
-                            small:w-full small:h-5/6
-                            tall:w-full tall:h-5/6
-                            big:w-full big:h-5/6
-                            extraBig:h-11/12
-                            md:w-9/12 md:h-full
-                            lg:w-11/12
-                        `} link="Cj0no1s2538"/>
+                <section className={`flex flex-col lg:flex-row w-full h-[768px] items-center justify-center gap-3 pt-14 px-4 small:px-1 md:px-8 extraBig:px-8`}>
+                    <div className={`flex items-center justify-center lg:h-3/5 h-1/2 lg:w-3/5 w-full lg:border-black lg:border-r-2`}>
+                        <VideoPlay className={`flex justify-center items-center h-full w-11/12 p-2 small:w-full small:h-5/6 tall:w-full tall:h-5/6 big:w-full big:h-5/6 extraBig:h-11/12 md:w-9/12 md:h-full lg:w-11/12`} link="Cj0no1s2538"/>
                     </div>
                     <div className="flex flex-col items-center justify-center small:justify-start px-2 h-1/2 lg:w-2/5 w-full gap-8">
-                        <h2 className={`
-                            text-black dark:text-gray-200
-                            small:text-xs
-                            tall:text-sm
-                            lg:text-lg
-                        `}>Olá, me chamo <strong>Euzebio</strong>, estudo ADS(Analise e desenvolvimento de sistema), aqui tá um projeto no qual eu fiz usando as linguagens: 
-                        <strong>HTML</strong>, <strong>CSS</strong>, <strong>JS</strong>, <strong>PHP</strong> e <strong>MYSQL(WAMP)</strong>.
-                            O projeto tem como intuito de representar uma página de login completa. Desde do próprio login, como suas funções de cadastro e esqueci senha.
-                            OBS: Para realizar a página de esqueci minha senha,  utilizei uma ferramenta chamada: <strong>Composer</strong>. Que tem com a função de utilizar um e-mail configurado para enviar um conteúdo para outros 
-                            e-mails. Para mais informações, acesse meu <strong>GitHub</strong>.
+                        <h2 className={`text-black dark:text-gray-200 small:text-xs tall:text-sm lg:text-lg`}>
+                            Olá, me chamo <strong>Euzebio</strong>, estudo ADS(Analise e desenvolvimento de sistema), aqui tá um projeto no qual eu fiz usando as linguagens: <strong>HTML</strong>, <strong>CSS</strong>, <strong>JS</strong>, <strong>PHP</strong> e <strong>MYSQL(WAMP)</strong>. O projeto tem como intuito de representar uma página de login completa. Desde do próprio login, como suas funções de cadastro e esqueci senha. OBS: Para realizar a página de esqueci minha senha,  utilizei uma ferramenta chamada: <strong>Composer</strong>. Que tem com a função de utilizar um e-mail configurado para enviar um conteúdo para outros e-mails. Para mais informações, acesse meu <strong>GitHub</strong>.
                         </h2>
                         <a href='https://github.com/EuzebioBatista2/PaginaPHP' className="flex w-full justify-center items-center">
                             <Button name='GitHub' color='gray' icon={IconGitHub} />

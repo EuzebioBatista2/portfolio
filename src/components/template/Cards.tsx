@@ -44,10 +44,8 @@ export default function Cards() {
     
     return (
         <section id="Skills" className={`h-5/6 w-full overflow-hidden`}>
-            <h1 className={`flex h-1/5 items-center justify-center pt-16 text-3xl 
-                font-bold text-black dark:text-gray-200
-            `}>
-                    <i>{IconEletro}</i>&nbsp;Habilidades
+            <h1 className={`flex h-1/5 items-center justify-center pt-16 text-3xl font-bold text-black dark:text-gray-200`}>
+                <i>{IconEletro}</i>&nbsp;Habilidades
             </h1>
             <div className={`flex h-3/5 transition-transform duration-500 transform -translate-x-${item}`}>
                 {items.map((item, index) => {

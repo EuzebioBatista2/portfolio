@@ -9,13 +9,10 @@ interface IProjectCardProps {
 
 export default function ProjectCard(props: IProjectCardProps) {
     return (
-        <div className={`
-            w-full p-4 small:p-2 border border-gray-600 rounded-md mb-2 transtion duration-500 ease-in-out 
-            cursor-pointer bg-gray-700 dark:bg-gray-200 hover:bg-gray-800 dark:hover:bg-gray-300
-        `}>
+        <div className={`w-full p-4 small:p-2 border border-gray-600 rounded-md mb-2 transtion duration-500 ease-in-out cursor-pointer bg-gray-700 dark:bg-gray-200 hover:bg-gray-800 dark:hover:bg-gray-300`}>
             <Link href={props.link}>
                 <div className="flex mb-1 w-full">
-                    <h2 className=" text-gray-200 dark:text-black small:text-sm"><strong>{props.title}</strong></h2>
+                    <h2 className="text-gray-200 dark:text-black small:text-sm"><strong>{props.title}</strong></h2>
                     <span className="flex grow items-end justify-end">
                         {props.icons.map((icon, index) => 
                             <i key={index} className="flex h-6 w-6 fill-gray-200 dark:fill-black">{icon}</i>)}
