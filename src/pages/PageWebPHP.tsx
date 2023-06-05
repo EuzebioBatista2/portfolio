@@ -5,25 +5,11 @@ import { IconBack, IconGitHub } from "../../public/icons";
 import VideoPlay from "./api/youtube";
 import Head from "next/head";
 import Button from "@/components/assets/Button";
-import { useEffect, useState } from "react";
 import UseAppData from "../data/hooks/UseAppData";
 import Link from "next/link";
 
 export default function PageWebPHP() {
     const { theme } = UseAppData()
-    const [displayH, setDisplayH] = useState<number>();
-
-    useEffect(() => {
-        function handleResize() {
-            setDisplayH(document.documentElement.clientHeight)
-        }
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
 
     return (
         <div className={`${theme}`}>
@@ -42,7 +28,7 @@ export default function PageWebPHP() {
                     <ToggleTheme />
                 </div>
             </Navegation>
-            <Layout theme="dark" hOption={displayH}>
+            <Layout theme="dark">
                 <section className={`flex flex-col lg:flex-row w-full h-[768px] items-center justify-center gap-3 pt-14 px-4 small:px-1 md:px-8 extraBig:px-8`}>
                     <div className={`flex items-center justify-center lg:h-3/5 h-1/2 lg:w-3/5 w-full lg:border-black lg:border-r-2`}>
                         <VideoPlay className={`flex justify-center items-center h-full w-11/12 p-2 small:w-full small:h-5/6 tall:w-full tall:h-5/6 big:w-full big:h-5/6 extraBig:h-11/12 md:w-9/12 md:h-full lg:w-11/12`} link="Cj0no1s2538"/>

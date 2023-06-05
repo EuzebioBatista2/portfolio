@@ -1,7 +1,6 @@
 interface ILayoutProps {
     theme: 'dark' | 'white'
     children?: any
-    hOption?: number
 }
 
 export default function Layout(props: ILayoutProps) {
