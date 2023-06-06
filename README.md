@@ -6,8 +6,28 @@ O projeto tem como intuito de servir de base para compartilhar meus projetos e a
 
 ![](./public/LogoProjeto.png)
 
-# Historio de atualizações
+# Informações sobre o projeto:
 
+> **React**: Utilizei a biblioteca do **Next.js** para criar a estrutura com os ativos e componentes do projeto.
+> **Tailwind**: Framework usado para estilizar e criar responsividade na página de forma eficiente e prática.
+> **TypeScript**: Através de suas diversas ferramentas, ampliei o **JS** e criei uma estrutura sólida e consistente que agrega o projeto de forma evoluída.
+> **Firebase**: Usei o banco de dados do Firebase, que permite o manuseio dessa ferramenta de forma gratuita, para realizar a comunicação com o componente de comentários, permitindo o envio e recebimento dos dados sempre que a página atualizar.
+> **OBS**: A versão gratuita do Firebase possui limitações, devendo ser utilizada apenas para pequenas funções.
+
+# Historio de atualizações:
+
+* 3.0.0
+    * FINISH: Att ReadMe.
+* 2.0.6
+    * UPDATE: Finish pages fixed.
+* 2.0.5
+    * FIX: Fixed coding and bug response.
+* 2.0.4
+    * UPDATE: Fix page AboutMe v3.
+* 2.0.3
+    * UPDATE: Fix page AboutMe v2.
+* 2.0.2
+    * UPDATE: Fix page AboutMe.
 * 2.0.1
     * FINISH: README PAGE UPDATE and fixed bugs.
 * 2.0.0
@@ -52,6 +72,8 @@ O projeto tem como intuito de servir de base para compartilhar meus projetos e a
     * CREATE: Div dark, toggle buttons. beyound the profile.
 * 0.0.0
     * START: first commit.
+
+Créditos: "Agradeço a Kaique pela dica de atualização do ReadMe e Edvaldo pelo apoio."
 
 Euzebio Batista [@Linkedin](https://www.linkedin.com/in/euzebio-batista) - euzebio.batista2@gmail.com
 
