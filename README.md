@@ -9,10 +9,14 @@ O projeto tem como intuito de servir de base para compartilhar meus projetos e a
 # Informações sobre o projeto:
 
 > **React**: Utilizei a biblioteca do **Next.js** para criar a estrutura com os ativos e componentes do projeto.
+
 > **Tailwind**: Framework usado para estilizar e criar responsividade na página de forma eficiente e prática.
+
 > **TypeScript**: Através de suas diversas ferramentas, ampliei o **JS** e criei uma estrutura sólida e consistente que agrega o projeto de forma evoluída.
+
 > **Firebase**: Usei o banco de dados do Firebase, que permite o manuseio dessa ferramenta de forma gratuita, para realizar a comunicação com o componente de comentários, permitindo o envio e recebimento dos dados sempre que a página atualizar.
-> **OBS**: A versão gratuita do Firebase possui limitações, devendo ser utilizada apenas para pequenas funções.
+
+**OBS**: A versão gratuita do Firebase possui limitações, devendo ser utilizada apenas para pequenas funções.
 
 # Historio de atualizações:
 
