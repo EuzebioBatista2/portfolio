@@ -1,10 +1,20 @@
 import Button from "./Button";
 import { IconUser, IconProjects, IconEletro, IconComments, IconHome } from "../../../public/icons";
 import UseToggleData from "../../data/hooks/UseToggleData"
+import { useMediaQuery } from 'react-responsive';
+import { useEffect } from "react";
 
 
 export default function ToggleMenu() {
-    const { isActivate, isRotate } = UseToggleData()
+    const { isActivate, isRotate, disabled } = UseToggleData()
+
+    let isMdScreen = useMediaQuery({ minWidth: '768px' });
+
+    useEffect(() => {
+      if (isMdScreen && disabled) {
+        disabled();
+      }
+    }, [disabled, isMdScreen])
 
     return (
         <div className={`flex flex-col items-center justify-start absolute overflow-hidden ${isActivate ? 'h-72 py-1' : 'h-0'} w-full bg-gray-300 dark:bg-gray-700 bg-opacity-50 dark:bg-opacity-50 top-14 transtion duration-500 ease-in-out `}>
