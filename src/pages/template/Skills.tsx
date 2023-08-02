@@ -3,6 +3,7 @@ import { IconBook, IconDatabase, IconEletro, IconTools } from "../../../public/i
 import ButtonMini from "../components/ButtonMini";
 import { useEffect, useState } from "react";
 import { itemsDb, itemsLanguages, itemsTools } from "@/content/skillsObject";
+import Fade from "react-reveal/Fade";
 
 export default function Skills() {
   let [items, setItems] = useState<any[]>(itemsLanguages)
@@ -84,16 +85,18 @@ export default function Skills() {
         <div className="flex flex-col md:flex-row h-full w-full">
           <div className="flex flex-col items-center justify-center h-full w-full md:w-1/2 relative md:px-4">
             <div className="flex flex-col w-full items-center justify-center overflow-hidden">
-              <div className={`flex items-center justify-end h-full w-full py-10 transition-transform duration-500 transform translate-x-${carrocelMainIcons * 100}`}>
-                {/* Lista de icones principal */}
-                {items.map((item, index) => {
-                  return (
-                    <div key={index} className="flex self-center justify-center w-full flex-shrink-0">
-                      <i className={`flex p-6 mt-2 h-40 w-40 md:h-60 md:w-60 rounded-full bg-white dark:bg-gray-900 animate-bounce-verySlow`}>{item.icon(true)}</i>
-                    </div>
-                  )
-                })}
-              </div>
+              <Fade left>
+                <div className={`flex items-center justify-end h-full w-full py-10 transition-transform duration-500 transform translate-x-${carrocelMainIcons * 100}`}>
+                  {/* Lista de icones principal */}
+                  {items.map((item, index) => {
+                    return (
+                      <div key={index} className="flex self-center justify-center w-full flex-shrink-0">
+                        <i className={`flex p-6 mt-2 h-40 w-40 md:h-60 md:w-60 rounded-full bg-white dark:bg-gray-900 animate-bounce-verySlow`}>{item.icon(true)}</i>
+                      </div>
+                    )
+                  })}
+                </div>
+              </Fade>
             </div>
             <Image
               src={'/handTec.png'}
@@ -105,19 +108,22 @@ export default function Skills() {
             />
           </div>
           <div className="flex flex-col h-[40vh] min-h-[240px] w-full md:mx-2 rounded-md bg-gray-300 dark:bg-gray-700 overflow-hidden z-10" style={{ boxShadow: '-5px 7px 5px 0px rgba(0,0,0,0.75)' }}>
-            <div className={`flex w-full h-full items-center justify-end text-center transition-transform duration-500 transform translate-x-${carrocelMainIcons * 100}`}>
-              {/* Lista a descrição de cada ícone */}
-              {items.map((item, index) => {
-                const words = item.description.split(' ')
-                const firstWord = words[0] + ' '
-                const restOfDescription = words.slice(1).join(' ')
-                return (
-                  <div key={index} className="flex justify-center items-center p-2 flex-shrink-0 h-full w-full">
-                    <h1 className="text-black dark:text-white"><strong className="text-blue-400">{firstWord} </strong>{restOfDescription}</h1>
-                  </div>
-                )
-              })}
-            </div>
+            <Fade>
+
+              <div className={`flex w-full h-full items-center justify-end text-center transition-transform duration-500 transform translate-x-${carrocelMainIcons * 100}`}>
+                {/* Lista a descrição de cada ícone */}
+                {items.map((item, index) => {
+                  const words = item.description.split(' ')
+                  const firstWord = words[0] + ' '
+                  const restOfDescription = words.slice(1).join(' ')
+                  return (
+                    <div key={index} className="flex justify-center items-center p-2 flex-shrink-0 h-full w-full">
+                      <h1 className="text-black dark:text-white"><strong className="text-blue-400">{firstWord} </strong>{restOfDescription}</h1>
+                    </div>
+                  )
+                })}
+              </div>
+            </Fade>
             <div className="flex h-24 w-full bg-gray-400 dark:bg-gray-900 z-10">
               <div className={`flex items-center justify-center h-full w-full`}>
                 <div className={`flex w-1/3 overflow-hidden`}>
