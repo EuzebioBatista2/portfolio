@@ -1,15 +1,16 @@
-import { ToggleProvide } from '@/data/context/ToggleContext'
-import { AppProvider } from '../data/context/AppContext'
+import store from '@/store'
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
+import { Provider } from 'react-redux'
 import 'tailwindcss/tailwind.css'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App({ Component, pageProps }: AppProps) {
-    return (
-        <AppProvider>
-            <ToggleProvide>
-                <Component {...pageProps} />
-            </ToggleProvide>
-        </AppProvider>
-    )
+  return (
+    <Provider store={store}>
+      <ToastContainer />
+      <Component {...pageProps} />
+    </Provider>
+  )
 }

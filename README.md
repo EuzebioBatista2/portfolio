@@ -20,6 +20,8 @@ O projeto tem como intuito de servir de base para compartilhar meus projetos e a
 
 # Historio de atualizações:
 
+* 4.0.0
+    * REFACTOR: new page version.
 * 3.0.0
     * FINISH: Att ReadMe.
 * 2.0.6

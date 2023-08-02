@@ -1,23 +1,12 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+body {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  min-height: 620px;
 }
 
 html {
   scroll-behavior: smooth;
-}
-
-body {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -29,5 +18,4 @@ body {
   border-radius: 2.5px;
   opacity: 0.2;
 }
-
 
