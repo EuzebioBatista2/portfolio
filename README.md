@@ -20,6 +20,8 @@ O projeto tem como intuito de servir de base para compartilhar meus projetos e a
 
 # Historio de atualizações:
 
+* 4.1.0
+    * FEAT: new library.
 * 4.0.4
     * FIX: package.json package 4x.
 * 4.0.3

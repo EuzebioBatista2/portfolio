@@ -16,7 +16,8 @@ import RegisterComents from "./components/RegisterComents";
 import { dbFirebase } from "../../backend/config";
 import CardComment from "./components/CardComment";
 import { downloadCurriculo } from "@/content/downloadCurriculo";
-import Fade from "react-reveal/Fade";
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 export default function Home() {
   const [hover, setHover] = useState(false)
@@ -25,7 +26,7 @@ export default function Home() {
 
   useEffect(() => {
     // Verifica se houve alteração no banco de dados e atualiza em tempo real
-    dbFirebase.onSnapshot((comments) => {
+    dbFirebase.onSnapshot((comments: any) => {
       setComments(comments.docs)
     })
 
@@ -37,6 +38,48 @@ export default function Home() {
       setTheme(false)
     }
   }, [])
+
+  const [ref1, inView1] = useInView({
+    triggerOnce: false,
+    threshold: 0.2,
+  });
+  const [ref2, inView2] = useInView({
+    triggerOnce: false,
+    threshold: 0.2,
+  });
+  const [ref3, inView3] = useInView({
+    triggerOnce: false,
+    threshold: 0.2,
+  });
+  const [ref4, inView4] = useInView({
+    triggerOnce: false,
+    threshold: 0.2,
+  });
+  const [ref5, inView5] = useInView({
+    triggerOnce: false,
+    threshold: 0.2,
+  });
+  const [ref6, inView6] = useInView({
+    triggerOnce: false,
+    threshold: 0.2,
+  });
+  const [ref7, inView7] = useInView({
+    triggerOnce: false,
+    threshold: 0.2,
+  });
+  const [ref8, inView8] = useInView({
+    triggerOnce: false,
+    threshold: 0.2,
+  });
+  const [ref9, inView9] = useInView({
+    triggerOnce: false,
+    threshold: 0.2,
+  });
+  const [ref10, inView10] = useInView({
+    triggerOnce: false,
+    threshold: 0.2,
+  });
+
 
   // Página principal
   return (
@@ -73,7 +116,7 @@ export default function Home() {
       <section className="flex flex-col md:flex-row items-center justify-center py-12 h-full bg-[url('/backgroundAboutMe.jpg')] bg-no-repeat bg-center bg-cover bg-fixed" id="aboutMe">
         {/* Conteúdo sobre min */}
         <div className="h-full w-full">
-          <Fade left>
+        <motion.div ref={ref1} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView1 ? 1 : 0, x: inView1 ? 0 : -50 }} transition={{ duration: 0.5 }}>
             <Image
               src={'/aboutme.png'}
               height={130}
@@ -82,7 +125,7 @@ export default function Home() {
               priority={true}
               className="w-full h-auto p-1"
             />
-          </Fade>
+          </motion.div>
         </div>
         <ContentAboutMe />
         {/* Fim do conteúdo sobre min */}
@@ -98,47 +141,44 @@ export default function Home() {
               <div className="px-2 py-2 bg-gray-400 rounded-md">
                 <h2 className="text-lg font-semibold">Educação</h2>
               </div>
-              <Fade left>
-
-              </Fade>
-              <Fade left>
+              <motion.div ref={ref2} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView2 ? 1 : 0, x: inView2 ? 0 : -50 }} transition={{ duration: 0.5 }}>
                 <CardExperience title="Análise e Desenvolvimento de sistemas(ADS)" date="Jan 2023 - Atual" business="Estacio" >
                   Curso de nível superior voltado para área de desenvolvimento de aplicativos e sistemas de computadores ou aparelhos mobile,
                   com o intuito de criar soluções para os mais diversos setores através da tecnologia.
                 </CardExperience>
-              </Fade>
-              <Fade left>
+              </motion.div>
+              <motion.div ref={ref3} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView3 ? 1 : 0, x: inView3 ? 0 : -50 }} transition={{ duration: 0.5 }}>
                 <CardExperience title="Telemática" date="Abr 2022 - Dez 2022" business="IFPB" >
                   Curso de nível superior tecnologo voltado para área de comunicações usando tecnologia e afins.
                 </CardExperience>
-              </Fade>
-              <Fade left>
+              </motion.div>
+              <motion.div ref={ref4} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView4 ? 1 : 0, x: inView4 ? 0 : -50 }} transition={{ duration: 0.5 }}>
                 <CardExperience title="Curso técnico - Tecinfo" date="Jan 2015 - Dez 2017" business="Lourdinas" >
                   Curso criado com especialização para criar profissionais nas diversas áreas da tecnologia, seja: Manutenção de computadores,
                   redes, design, HTML e desenvolvimento.
                 </CardExperience>
-              </Fade>
+              </motion.div>
             </div>
             <div className="px-1 py-2 bg-gray-300 dark:bg-gray-700 z-10">
               <div className="px-2 py-2 bg-gray-400 rounded-md z-10">
                 <h2 className="text-lg font-semibold">Experiência Profissional</h2>
               </div>
-              <Fade left>
+              <motion.div ref={ref5} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView5 ? 1 : 0, x: inView5 ? 0 : -50 }} transition={{ duration: 0.5 }}>
                 <CardExperience title="Analista de Redes(Estágio)" date="Jan 2013 - Mai 2023" business="Itline" >
                   Estágio com o intuito de auxiliar e monitorar o sistema de redes do clientes, além de prestar suporte.
                 </CardExperience>
-              </Fade>
-              <Fade left>
+              </motion.div>
+              <motion.div ref={ref6} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView6 ? 1 : 0, x: inView6 ? 0 : -50 }} transition={{ duration: 0.5 }}>
                 <CardExperience title="Técnico de TI(Fixo)" date="Jul 2018 - Mar 2022" business="UNESC" >
                   Suporte e manutenção de computadores e notebooks, realizando manutenções preventivas, e prestando suporte a professores e
                   alunos no auxilio as aulas e atividades.
                 </CardExperience>
-              </Fade>
-              <Fade left>
+              </motion.div>
+              <motion.div ref={ref7} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView7 ? 1 : 0, x: inView7 ? 0 : -50 }} transition={{ duration: 0.5 }}>
                 <CardExperience title="Técnico de TI(Estágio)" date="Jan 2018 - Jul 2018" business="UNESC" >
                   Suporte técnico na realização de atividades de manutenção em computadores e notebooks, além de auxiliar no sistema acadêmico.
                 </CardExperience>
-              </Fade>
+              </motion.div>
             </div>
           </div>
           <div className="flex items-center justify-center px-2 py-4 w-full bg-gray-300 dark:bg-gray-700 z-10">
@@ -206,7 +246,7 @@ export default function Home() {
           <div className="h-full w-full">
             <h2 className="text-2xl font-semibold pt-8 md:pt-4 md:pb-0 pb-1 text-black dark:text-white">Outros projetos:</h2>
             <div className="flex flex-col w-full my-2 gap-2">
-              <Fade right>
+              <motion.div ref={ref8} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView8 ? 1 : 0, x: inView8 ? 0 : 50 }} transition={{ duration: 0.5 }}>
                 <Link href={'https://calculadora-react-ar8q.vercel.app/'}>
                   <OthersProjects
                     title="Calculadora React"
@@ -214,8 +254,8 @@ export default function Home() {
                     icons={[IconReact(true), IconJs(true), IconHtml(true), IconCss(true)]}
                   />
                 </Link>
-              </Fade>
-              <Fade rigth>
+              </motion.div>
+              <motion.div ref={ref9} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView9 ? 1 : 0, x: inView9 ? 0 : 50 }} transition={{ duration: 0.5 }}>
                 <Link href={'/pagePHP'}>
                   <OthersProjects
                     title="Pagina Web PHP"
@@ -223,8 +263,8 @@ export default function Home() {
                     icons={[IconHtml(true), IconCss(true), IconPhp(true), IconMySql(true), IconJs(true)]}
                   />
                 </Link>
-              </Fade>
-              <Fade right>
+              </motion.div>
+              <motion.div ref={ref10} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView10 ? 1 : 0, x: inView10 ? 0 : 50 }} transition={{ duration: 0.5 }}>
                 <Link href={'/pageCrud'}>
                   <OthersProjects
                     title="Página CRUD"
@@ -232,7 +272,7 @@ export default function Home() {
                     icons={[IconHtml(true), IconCss(true), IconBootStrap(true), IconJquery(true), IconJs(true)]}
                   />
                 </Link>
-              </Fade>
+              </motion.div>
               <div className="flex items-center justify-center w-full">
                 <Button name="Mais projetos" color="blue" link="https://github.com/EuzebioBatista2" />
               </div>

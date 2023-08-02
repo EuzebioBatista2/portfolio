@@ -3,13 +3,25 @@ import { IconBook, IconDatabase, IconEletro, IconTools } from "../../../public/i
 import ButtonMini from "../components/ButtonMini";
 import { useEffect, useState } from "react";
 import { itemsDb, itemsLanguages, itemsTools } from "@/content/skillsObject";
-import Fade from "react-reveal/Fade";
+import { motion } from 'framer-motion';
+import { useInView } from "react-intersection-observer";
+
+
 
 export default function Skills() {
   let [items, setItems] = useState<any[]>(itemsLanguages)
   let [carrocelMainIcons, setCarrocelMainIcons] = useState<number>(0)
   let [leftListMain, setLeftListMain] = useState<any[]>([])
   let [rightListMain, setRightListMain] = useState<any[]>([])
+
+  const [ref14, inView14] = useInView({
+    triggerOnce: false,
+    threshold: 0.2,
+  });
+  const [ref15, inView15] = useInView({
+    triggerOnce: false,
+    threshold: 0.2,
+  });
 
   useEffect(() => {
     // Verifica a página sempre quando ocorrer uma mudança no movimentos icones, configurando e atualizando seu valor
@@ -85,7 +97,7 @@ export default function Skills() {
         <div className="flex flex-col md:flex-row h-full w-full">
           <div className="flex flex-col items-center justify-center h-full w-full md:w-1/2 relative md:px-4">
             <div className="flex flex-col w-full items-center justify-center overflow-hidden">
-              <Fade left>
+              <motion.div ref={ref14} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView14 ? 1 : 0, x: inView14 ? 0 : -50 }} transition={{ duration: 0.5 }}>
                 <div className={`flex items-center justify-end h-full w-full py-10 transition-transform duration-500 transform translate-x-${carrocelMainIcons * 100}`}>
                   {/* Lista de icones principal */}
                   {items.map((item, index) => {
@@ -96,7 +108,7 @@ export default function Skills() {
                     )
                   })}
                 </div>
-              </Fade>
+              </motion.div>
             </div>
             <Image
               src={'/handTec.png'}
@@ -108,8 +120,7 @@ export default function Skills() {
             />
           </div>
           <div className="flex flex-col h-[40vh] min-h-[240px] w-full md:mx-2 rounded-md bg-gray-300 dark:bg-gray-700 overflow-hidden z-10" style={{ boxShadow: '-5px 7px 5px 0px rgba(0,0,0,0.75)' }}>
-            <Fade>
-
+            <motion.div ref={ref15} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView15 ? 1 : 0, x: inView15 ? 0 : 50 }} transition={{ duration: 0.5 }} className="h-full w-full">
               <div className={`flex w-full h-full items-center justify-end text-center transition-transform duration-500 transform translate-x-${carrocelMainIcons * 100}`}>
                 {/* Lista a descrição de cada ícone */}
                 {items.map((item, index) => {
@@ -123,7 +134,7 @@ export default function Skills() {
                   )
                 })}
               </div>
-            </Fade>
+            </motion.div>
             <div className="flex h-24 w-full bg-gray-400 dark:bg-gray-900 z-10">
               <div className={`flex items-center justify-center h-full w-full`}>
                 <div className={`flex w-1/3 overflow-hidden`}>
