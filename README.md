@@ -20,6 +20,8 @@ O projeto tem como intuito de servir de base para compartilhar meus projetos e a
 
 # Historio de atualizações:
 
+* 4.1.2
+    * FIX: details about me.
 * 4.1.1
     * UPDATE: new projeto and new skill(Laravel).
 * 4.1.0
