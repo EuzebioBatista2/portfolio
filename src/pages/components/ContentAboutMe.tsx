@@ -15,7 +15,7 @@ export default function ContentAboutMe() {
       <motion.div ref={ref13} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView13 ? 1 : 0, x: inView13 ? 0 : 50 }} transition={{ duration: 0.5 }}>
         <div className="flex py-4 px-2">
           <h1 className="text-4xl font-semibold">Sobre&nbsp;</h1>
-          <h1 className="text-4xl font-semibold text-blue-400">min</h1>
+          <h1 className="text-4xl font-semibold text-blue-400">mim</h1>
         </div>
         <div className="p-2">
           <p>

@@ -1,4 +1,4 @@
-import { IconBootStrap, IconCss, IconDocker, IconFireBase, IconGitHub, IconHtml, IconJquery, IconJs, IconMongoDB, IconMySql, IconNextJs, IconNodeJs, IconPhp, IconPostgres, IconPython, IconReact, IconTS, IconTail, IconVueJs } from "../../public/icons";
+import { IconBootStrap, IconCss, IconDocker, IconFireBase, IconGitHub, IconHtml, IconJquery, IconJs, IconLaravel, IconMongoDB, IconMySql, IconNextJs, IconNodeJs, IconPhp, IconPostgres, IconPython, IconReact, IconTS, IconTail, IconVueJs } from "../../public/icons";
 
 // Contém todos os dados das skills e ícones de habilidades adquiridas
 export const itemsLanguages = [
@@ -35,6 +35,12 @@ export const itemsLanguages = [
 ]
 
 export const itemsTools = [
+  {
+    description:
+      "Laravel é um framework de desenvolvimento PHP popular, conhecido por sua elegância, arquitetura MVC e recursos integrados que simplificam o desenvolvimento de aplicativos web.",
+    icon: IconLaravel,
+    position: 9
+  },
   {
     description:
       "React é uma biblioteca JavaScript de código aberto para a construção de interfaces de usuário interativas em aplicações web.",

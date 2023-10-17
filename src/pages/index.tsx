@@ -7,7 +7,7 @@ import ButtonDown from "./components/ButtonDown";
 import ContentAboutMe from "./components/ContentAboutMe";
 import CardExperience from "./components/CardExperience";
 import Button from "./components/Button";
-import { IconBook, IconBootStrap, IconComments, IconCss, IconFireBase, IconGitHubNeutrall, IconHeart, IconHtml, IconJquery, IconJs, IconLinkedin, IconMySql, IconNextJs, IconPhp, IconProjects, IconReact, IconTS, IconTail } from "../../public/icons";
+import { IconBook, IconBootStrap, IconComments, IconCss, IconFireBase, IconGitHubNeutrall, IconHeart, IconHtml, IconJquery, IconJs, IconLaravel, IconLinkedin, IconMySql, IconNextJs, IconPhp, IconProjects, IconReact, IconTS, IconTail, IconVueJs } from "../../public/icons";
 import Skills from "./template/Skills";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -211,10 +211,10 @@ export default function Home() {
         <div className="flex flex-col md:flex-row md:gap-6 h-full w-full z-10 md:px-8">
           <div className="h-full w-full md:mb-20">
             <h2 className="text-3xl font-bold py-2 text-black dark:text-white">Destaque:</h2>
-            <Link href={'https://my-commerce-euzebiobatista2.vercel.app'} className="flex flex-col w-full h-full border border-gray-700 dark:border-gray-300 rounded-md overflow-hidden z-10" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-              <div className="flex items-center justify-center py-10 h-full w-full bg-[url('/cart.jpg')] bg-no-repeat bg-center bg-cover">
+            <Link href={'https://flappybird-program-languages-95dca125abe5.herokuapp.com'} className="flex flex-col w-full h-full border border-gray-700 dark:border-gray-300 rounded-md overflow-hidden z-10" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+              <div className="flex items-center justify-center py-10 h-full w-full bg-[url('/landscape.jpg')] bg-no-repeat bg-center bg-cover">
                 <Image
-                  src={'/LogoMyCommerce.png'}
+                  src={'/birdUp.png'}
                   height={130}
                   width={130}
                   alt="Logo contendo o nome MyCommerce com um carrinho de compras"
@@ -224,12 +224,14 @@ export default function Home() {
               </div>
               <div className={`h-full w-full px-1 bg-gray-300 dark:bg-gray-700 ${hover ? 'bg-white dark:bg-gray-800' : ''} transform duration-300 ease-in-out`}>
                 <div className="flex w-full h-full justify-between items-center py-1">
-                  <h1 className="text-lg font-semibold text-black dark:text-white">My Commerce</h1>
+                  <h1 className="text-lg font-semibold text-black dark:text-white">FlappyBird</h1>
                   <div className="flex gap-1">
-                    <i className="flex h-6 w-6">{IconReact(true)}</i>
-                    <i className="flex h-6 w-6">{IconTS(true)}</i>
-                    <i className="flex h-6 w-6">{IconTail(true)}</i>
-                    <i className="flex h-6 w-6">{IconFireBase(true)}</i>
+                    <i className="flex h-6 w-6">{IconJs(true)}</i>
+                    <i className="flex h-6 w-6">{IconPhp(true)}</i>
+                    <i className="flex h-6 w-6">{IconLaravel(true)}</i>
+                    <i className="flex h-6 w-6">{IconVueJs(true)}</i>
+                    <i className="flex h-6 w-6">{IconBootStrap(true)}</i>
+                    <i className="flex h-6 w-6">{IconMySql(true)}</i>
                   </div>
                 </div>
                 <div>
@@ -273,9 +275,18 @@ export default function Home() {
                   />
                 </Link>
               </motion.div>
-              <div className="flex items-center justify-center w-full">
+              <motion.div ref={ref10} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView10 ? 1 : 0, x: inView10 ? 0 : 50 }} transition={{ duration: 0.5 }}>
+                <Link href={'https://my-commerce-euzebiobatista2.vercel.app'}>
+                  <OthersProjects
+                    title="My Commerce"
+                    description="Projeto realizado com o intuito de auxiliar pequenos donos de comercio com o gerenciamento de suas vendas."
+                    icons={[IconReact(true), IconTS(true), IconTail(true), IconFireBase(true)]}
+                  />
+                </Link>
+              </motion.div>
+              {/* <div className="flex items-center justify-center w-full">
                 <Button name="Mais projetos" color="blue" link="https://github.com/EuzebioBatista2" />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

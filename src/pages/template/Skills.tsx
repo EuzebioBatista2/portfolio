@@ -103,7 +103,7 @@ export default function Skills() {
                   {items.map((item, index) => {
                     return (
                       <div key={index} className="flex self-center justify-center w-full flex-shrink-0">
-                        <i className={`flex p-6 mt-2 h-40 w-40 md:h-60 md:w-60 rounded-full bg-white dark:bg-gray-900 animate-bounce-verySlow`}>{item.icon(true)}</i>
+                        <i className={`flex p-8 mt-2 h-40 w-40 md:h-60 md:w-60 rounded-full bg-white dark:bg-gray-900 animate-bounce-verySlow`}>{item.icon(true)}</i>
                       </div>
                     )
                   })}
