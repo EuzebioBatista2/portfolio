@@ -20,6 +20,8 @@ O projeto tem como intuito de servir de base para compartilhar meus projetos e a
 
 # Historio de atualizações:
 
+* 4.1.3
+    * FIX: details about me(2x).
 * 4.1.2
     * FIX: details about me.
 * 4.1.1
