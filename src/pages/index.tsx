@@ -239,7 +239,7 @@ export default function Home() {
                 <hr className="border-none h-0.5 bg-black dark:bg-white" />
                 <div className="py-2">
                   <h2 className="text-gray-600 dark:text-gray-200 px-2">
-                    Projeto realizado com o intuito de auxiliar pequenos donos de comercio com o gerenciamento de suas vendas.
+                    Projeto criado para representar um flappybird, usando as linguagens de programação como representantes do game.
                   </h2>
                 </div>
               </div>
