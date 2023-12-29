@@ -1,4 +1,4 @@
-import { IconBootStrap, IconCss, IconDocker, IconFireBase, IconGitHub, IconHtml, IconJquery, IconJs, IconLaravel, IconMongoDB, IconMySql, IconNextJs, IconNodeJs, IconPhp, IconPostgres, IconPython, IconReact, IconTS, IconTail, IconVueJs } from "../../public/icons";
+import { IconBootStrap, IconCodeIniter, IconCss, IconDocker, IconFireBase, IconGitHub, IconHtml, IconJquery, IconJs, IconLaravel, IconMongoDB, IconMySql, IconNextJs, IconNodeJs, IconPhp, IconPostgres, IconPython, IconReact, IconTS, IconTail, IconVueJs } from "../../public/icons";
 
 // Contém todos os dados das skills e ícones de habilidades adquiridas
 export const itemsLanguages = [
@@ -35,6 +35,12 @@ export const itemsLanguages = [
 ]
 
 export const itemsTools = [
+  {
+    description:
+      "CodeIgniter é um framework de desenvolvimento web em PHP de código aberto e leve. Ele foi projetado para facilitar o desenvolvimento rápido de aplicativos web, fornecendo um conjunto de bibliotecas e uma estrutura MVC (Model-View-Controller) simplificada.",
+    icon: IconCodeIniter,
+    position: 10
+  },
   {
     description:
       "Laravel é um framework de desenvolvimento PHP popular, conhecido por sua elegância, arquitetura MVC e recursos integrados que simplificam o desenvolvimento de aplicativos web.",

@@ -33,7 +33,7 @@ export default function Skills() {
         } else {
           setCarrocelMainIcons(carrocelMainIcons + 1)
         }
-      }, 10000);
+      }, 20000);
 
       return () => {
         clearTimeout(time);
@@ -75,7 +75,7 @@ export default function Skills() {
   return (
     <div className="flex flex-col w-full h-full">
       <div className="flex flex-col items-center relative w-full h-full min-h-[540px]">
-        <div className="flex items-center justify-center mt-12 relative w-full">
+        <div className="flex items-center justify-center relative w-full">
           <Image
             src={'/htmlTag.png'}
             height={150}
@@ -84,16 +84,19 @@ export default function Skills() {
             priority={true}
             className={`w-auto h-auto absolute -left-2 z-0 opacity-30`}
           />
-          <h1 className="flex items-center justify-center text-black dark:text-white text-2xl text-center font-semibold z-10">
-            <i>{IconEletro}</i>&nbsp;Habilidades
+          <h1 className="flex items-center justify-center w-full py-4 relative text-black dark:text-white gap-2">
+            <i>{IconEletro}</i>
+            <h1 className="flex items-center justify-center text-4xl text-center font-semibold z-10 p-0 m-0">
+              Habilidades
+            </h1>
           </h1>
         </div>
-        <div className="flex gap-4 py-4">
+        <menu className="flex gap-4 py-4">
           {/* Botões responsáveis por alterar a lista de ícones */}
-          <ButtonMini icon={IconBook} color="red" onClick={() => { setItems(itemsLanguages), setCarrocelMainIcons(0) }} />
-          <ButtonMini icon={IconDatabase} color="yellow" onClick={() => { setItems(itemsDb), setCarrocelMainIcons(0) }} />
-          <ButtonMini icon={IconTools} color="blue" onClick={() => { setItems(itemsTools), setCarrocelMainIcons(0) }} />
-        </div>
+          <ButtonMini icon={IconBook} color="red" onClick={() => { setItems(itemsLanguages), setCarrocelMainIcons(0) }} text="Linguagens" />
+          <ButtonMini icon={IconDatabase} color="yellow" onClick={() => { setItems(itemsDb), setCarrocelMainIcons(0) }} text="Utilitários"/>  
+          <ButtonMini icon={IconTools} color="blue" onClick={() => { setItems(itemsTools), setCarrocelMainIcons(0) }} text="Frameworks"/>
+        </menu>
         <div className="flex flex-col md:flex-row h-full w-full">
           <div className="flex flex-col items-center justify-center h-full w-full md:w-1/2 relative md:px-4">
             <div className="flex flex-col w-full items-center justify-center overflow-hidden">
@@ -103,7 +106,10 @@ export default function Skills() {
                   {items.map((item, index) => {
                     return (
                       <div key={index} className="flex self-center justify-center w-full flex-shrink-0">
-                        <i className={`flex p-8 mt-2 h-40 w-40 md:h-60 md:w-60 rounded-full bg-white dark:bg-gray-900 animate-bounce-verySlow`}>{item.icon(true)}</i>
+                        {/* <i className={`flex p-8 mt-2 h-40 w-40 md:h-60 md:w-60 rounded-full bg-[url('/ball1.png')] bg-no-repeat bg-center bg-cover animate-bounce-verySlow`}>{item.icon(true)}</i> */}
+                        <div className={`flex items-center justify-center relative p-8 mt-2 h-40 w-40 md:h-60 md:w-60 rounded-full bg-[url('/ball1.png')] bg-no-repeat bg-center bg-cover animate-bounce-verySlow`}>
+                          <i className="flex items-center justify-center absolute h-32 w-32 md:h-52 md:w-52 opacity-70">{item.icon(true)}</i>
+                        </div>
                       </div>
                     )
                   })}
@@ -112,14 +118,14 @@ export default function Skills() {
             </div>
             <Image
               src={'/handTec.png'}
-              height={130}
-              width={130}
+              height={1000}
+              width={1000}
               alt="Uma mão robotica branca"
               priority={true}
               className="flex w-full h-auto relative -left-2 md:-left-6 bg-transparent"
             />
           </div>
-          <div className="flex flex-col h-[40vh] min-h-[240px] w-full md:mx-2 rounded-md bg-gray-300 dark:bg-gray-700 overflow-hidden z-10" style={{ boxShadow: '-5px 7px 5px 0px rgba(0,0,0,0.75)' }}>
+          <div className="flex flex-col h-[40vh] min-h-[240px] w-full md:mx-2 mt-2 md:mt-6 rounded-md bg-gray-300 dark:bg-gray-700 overflow-hidden z-10" style={{ boxShadow: '-5px 7px 5px 0px rgba(0,0,0,0.75)' }}>
             <motion.div ref={ref15} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView15 ? 1 : 0, x: inView15 ? 0 : 50 }} transition={{ duration: 0.5 }} className="h-full w-full">
               <div className={`flex w-full h-full items-center justify-end text-center transition-transform duration-500 transform translate-x-${carrocelMainIcons * 100}`}>
                 {/* Lista a descrição de cada ícone */}

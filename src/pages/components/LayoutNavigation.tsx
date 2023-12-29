@@ -20,7 +20,7 @@ export default function LayoutNavigation(props: INavegationProps) {
     }
     // Ativa um efeito de opacidade quando a página sair do top
     else if (window.scrollY > 0) {
-      setOpacity(50)
+      setOpacity(80)
       setMenuActive(false)
     } 
     // Ativa o botão para retornar ao inicio da página após atravessar o valor 800 no eixo Y
@@ -40,7 +40,7 @@ export default function LayoutNavigation(props: INavegationProps) {
 
   return (
     // Componente com o botão que leva para o topo da página, além de servir de container para a barra de navegação da página
-    <nav className={`flex items-center h-12 w-full bg-gray-300 dark:bg-gray-700 fixed z-50 bg-opacity-${opacity} dark:bg-opacity-${opacity} transition duration-500 ease-in-out`}>
+    <nav className={`flex items-center h-12 w-full bg-gray-300 dark:bg-gray-700 fixed z-50 bg-opacity-${opacity} dark:bg-opacity-${opacity} transition duration-500 ease-in-out backdrop-blur-sm`}>
       {props.children}
       <div className={`flex items-end justify-center h-screen min-h-[550px] absolute right-0 top-0 py-20 w-0 z-0`}>
         <Link href={'#home'} className={`${upButton ? 'flex w-10 h-10 border border-white' : 'hideen w-0 h-0'} items-center justify-center absolute bg-blue-400 rounded-md transition-all duration-500 ease-in-out -left-16 z-20`}>

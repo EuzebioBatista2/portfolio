@@ -16,8 +16,10 @@ module.exports = {
     'z-100',
 
     'bg-opacity-50',
+    'bg-opacity-80',
     'bg-opacity-100',
     'dark:bg-opacity-50',
+    'dark:bg-opacity-80',
     'dark:bg-opacity-100',
 
     'hover:bg-red-600',
