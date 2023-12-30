@@ -32,7 +32,7 @@ export default function CardComment(props: ICardComment) {
         animate={{ opacity: inView11 ? 1 : 0, x: inView11 ? 0 : -50 }}
         transition={{ duration: 0.5 }}
         key={props.commentKey}
-        className={`flex flex-col w-4/5 float-left animate-bounce-verySlow px-2 my-4 border border-black rounded-md overflow-hidden bg-white dark:bg-gray-600 flex-shrink-0`}
+        className={`flex flex-col w-4/5 float-left animate-bounce-verySlow px-2 my-4 border border-black rounded-3xl overflow-hidden bg-white dark:bg-gray-600 flex-shrink-0 hover:animate-none`}
         style={{ boxShadow: '-5px 7px 5px 0px rgba(0,0,0,0.75)' }}
       >
           <div className="flex w-full items-center justify-center py-2 relative">
@@ -68,7 +68,7 @@ export default function CardComment(props: ICardComment) {
         animate={{ opacity: inView12 ? 1 : 0, x: inView12 ? 0 : 50 }}
         transition={{ duration: 0.5 }}
         key={props.commentKey}
-        className={`flex flex-col w-4/5 float-right animate-bounce-slow px-2 my-8 border border-black rounded-md overflow-hidden bg-white dark:bg-gray-600 flex-shrink-0`}
+        className={`flex flex-col w-4/5 float-right animate-bounce-slow px-2 my-8 border border-black rounded-3xl overflow-hidden bg-white dark:bg-gray-600 flex-shrink-0 hover:animate-none`}
         style={{ boxShadow: '-5px 7px 5px 0px rgba(0,0,0,0.75)' }}
       >
 
