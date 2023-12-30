@@ -20,6 +20,8 @@ O projeto tem como intuito de servir de base para compartilhar meus projetos e a
 
 # Historio de atualizações:
 
+* 4.2.1
+    * UPDATE: 'curriculo' file.
 * 4.2.0
     * REFACT: update pages.
 * 4.1.4
