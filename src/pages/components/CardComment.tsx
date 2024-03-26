@@ -54,7 +54,7 @@ export default function CardComment(props: ICardComment) {
                 className="w-auto h-10 pointer-events-none"
               />
             </div>
-            <h1 className="flex w-full items-start justify-start text-lg text-black dark:text-white font-semibold pl-12 leading-tight py-2">{props.name}</h1>
+            <h3 className="flex w-full items-start justify-start text-lg text-black dark:text-white font-semibold pl-12 leading-tight py-2">{props.name}</h3>
           </div>
           <hr className="border-none h-0.5 bg-black" />
           <div className="p-2">
@@ -91,7 +91,7 @@ export default function CardComment(props: ICardComment) {
               className="w-auto h-10 pointer-events-none"
             />
           </div>
-          <h1 className="flex w-full items-start justify-start text-lg text-black dark:text-white font-semibold pl-12 leading-tight py-2">{props.name}</h1>
+          <h2 className="flex w-full items-start justify-start text-lg text-black dark:text-white font-semibold pl-12 leading-tight py-2">{props.name}</h2>
         </div>
         <hr className="border-none h-0.5 bg-black" />
         <div className="p-2">

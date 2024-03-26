@@ -84,14 +84,14 @@ export default function Skills() {
             priority={true}
             className={`w-auto h-auto absolute -left-2 z-0 opacity-30`}
           />
-          <h1 className="flex items-center justify-center w-full py-4 relative text-black dark:text-white gap-2">
+          <h2 className="flex items-center justify-center w-full py-4 relative text-black dark:text-white gap-2">
             <i>{IconEletro}</i>
-            <h1 className="flex items-center justify-center text-4xl text-center font-semibold z-10 p-0 m-0">
+            <p className="flex items-center justify-center text-4xl text-center font-semibold z-10 p-0 m-0">
               Habilidades
-            </h1>
-          </h1>
+            </p>
+          </h2>
         </div>
-        <menu className="flex gap-4 py-4">
+        <menu className="flex gap-1 md:gap-4 py-4">
           {/* Botões responsáveis por alterar a lista de ícones */}
           <ButtonMini icon={IconBook} color="red" onClick={() => { setItems(itemsLanguages), setCarrocelMainIcons(0) }} text="Linguagens" />
           <ButtonMini icon={IconDatabase} color="yellow" onClick={() => { setItems(itemsDb), setCarrocelMainIcons(0) }} text="Utilitários"/>  
@@ -106,7 +106,6 @@ export default function Skills() {
                   {items.map((item, index) => {
                     return (
                       <div key={index} className="flex self-center justify-center w-full flex-shrink-0">
-                        {/* <i className={`flex p-8 mt-2 h-40 w-40 md:h-60 md:w-60 rounded-full bg-[url('/ball1.png')] bg-no-repeat bg-center bg-cover animate-bounce-verySlow`}>{item.icon(true)}</i> */}
                         <div className={`flex items-center justify-center relative p-8 mt-2 h-40 w-40 md:h-60 md:w-60 rounded-full bg-[url('/ball1.png')] bg-no-repeat bg-center bg-cover animate-bounce-verySlow`}>
                           <i className="flex items-center justify-center absolute h-32 w-32 md:h-52 md:w-52 opacity-70">{item.icon(true)}</i>
                         </div>
@@ -135,7 +134,7 @@ export default function Skills() {
                   const restOfDescription = words.slice(1).join(' ')
                   return (
                     <div key={index} className="flex justify-center items-center p-2 flex-shrink-0 h-full w-full">
-                      <h1 className="text-black dark:text-white"><strong className="text-blue-400">{firstWord} </strong>{restOfDescription}</h1>
+                      <h3 className="text-black dark:text-white"><strong className="text-blue-400">{firstWord} </strong>{restOfDescription}</h3>
                     </div>
                   )
                 })}

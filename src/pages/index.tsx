@@ -7,7 +7,7 @@ import ButtonDown from "./components/ButtonDown";
 import ContentAboutMe from "./components/ContentAboutMe";
 import CardExperience from "./components/CardExperience";
 import Button from "./components/Button";
-import { IconBook, IconBootStrap, IconComments, IconCss, IconFireBase, IconGitHubNeutrall, IconHeart, IconHtml, IconJquery, IconJs, IconLaravel, IconLinkedin, IconMySql, IconNextJs, IconPhp, IconProjects, IconReact, IconTS, IconTail, IconVueJs } from "../../public/icons";
+import { IconBook, IconBootStrap, IconComments, IconCss, IconFireBase, IconGitHubNeutrall, IconHeart, IconHtml, IconJquery, IconJs, IconLaravel, IconLinkedin, IconMySql, IconNextJs, IconPhp, IconPost, IconPostgres, IconProjects, IconReact, IconTS, IconTail, IconVueJs } from "../../public/icons";
 import Skills from "./template/Skills";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -67,15 +67,7 @@ export default function Home() {
     triggerOnce: false,
     threshold: 0.2,
   });
-  const [ref8, inView8] = useInView({
-    triggerOnce: false,
-    threshold: 0.2,
-  });
-  const [ref9, inView9] = useInView({
-    triggerOnce: false,
-    threshold: 0.2,
-  });
-  const [ref10, inView10] = useInView({
+  const [ref16, inView16] = useInView({
     triggerOnce: false,
     threshold: 0.2,
   });
@@ -116,7 +108,7 @@ export default function Home() {
       <section className="flex flex-col md:flex-row items-center justify-center py-12 h-full bg-[url('/backgroundAboutMe.jpg')] bg-no-repeat bg-center bg-cover bg-fixed" id="aboutMe">
         {/* Conteúdo sobre min */}
         <div className="h-full w-full">
-        <motion.div ref={ref1} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView1 ? 1 : 0, x: inView1 ? 0 : -50 }} transition={{ duration: 0.5 }}>
+          <motion.div ref={ref1} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView1 ? 1 : 0, x: inView1 ? 0 : -50 }} transition={{ duration: 0.5 }}>
             <Image
               src={'/aboutme.png'}
               height={1000}
@@ -134,7 +126,7 @@ export default function Home() {
         {/* Conteúdo do cirrículo */}
         <div className="flex flex-col h-full items-center justify-center w-full my-4 z-10" style={{ boxShadow: '-5px 7px 5px 0px rgba(0,0,0,0.75)' }}>
           <div className="w-full py-4 bg-blue-400 rounded-t-lg">
-            <h1 className="text-white text-2xl text-center font-semibold">Currículo</h1>
+            <h2 className="text-white text-2xl text-center font-semibold">Currículo</h2>
           </div>
           <div className="flex flex-col md:flex-row w-full h-full">
             {/* Experiência academica */}
@@ -170,18 +162,18 @@ export default function Home() {
                   Suporte técnico na realização de atividades de manutenção em computadores e notebooks, além de auxiliar no sistema acadêmico.
                 </CardExperience>
               </motion.div>
-              <motion.div ref={ref5} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView5 ? 1 : 0, x: inView5 ? 0 : -50 }} transition={{ duration: 0.5 }}>
+              <motion.div ref={ref6} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView6 ? 1 : 0, x: inView6 ? 0 : -50 }} transition={{ duration: 0.5 }}>
                 <CardExperience title="Analista de Redes(Estágio)" date="Jan 2013 - Mai 2023" business="Itline" >
                   Estágio com o intuito de auxiliar e monitorar o sistema de redes do clientes, além de prestar suporte.
                 </CardExperience>
               </motion.div>
-              <motion.div ref={ref6} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView6 ? 1 : 0, x: inView6 ? 0 : -50 }} transition={{ duration: 0.5 }}>
+              <motion.div ref={ref7} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView7 ? 1 : 0, x: inView7 ? 0 : -50 }} transition={{ duration: 0.5 }}>
                 <CardExperience title="Técnico de TI(Fixo)" date="Jul 2018 - Mar 2022" business="UNESC" >
                   Suporte e manutenção de computadores e notebooks, realizando manutenções preventivas, e prestando suporte a professores e
                   alunos no auxilio as aulas e atividades.
                 </CardExperience>
               </motion.div>
-              <motion.div ref={ref7} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView7 ? 1 : 0, x: inView7 ? 0 : -50 }} transition={{ duration: 0.5 }}>
+              <motion.div ref={ref16} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView16 ? 1 : 0, x: inView16 ? 0 : -50 }} transition={{ duration: 0.5 }}>
                 <CardExperience title="Técnico de TI(Estágio)" date="Jan 2018 - Jul 2018" business="UNESC" >
                   Suporte técnico na realização de atividades de manutenção em computadores e notebooks, além de auxiliar no sistema acadêmico.
                 </CardExperience>
@@ -213,19 +205,19 @@ export default function Home() {
           />
           <div className="flex items-center justify-center w-full py-4 relative text-black dark:text-white gap-2">
             <i>{IconProjects}</i>
-            <h1 className="flex items-center justify-center text-4xl text-center font-semibold z-10 p-0 m-0">
+            <h2 className="flex items-center justify-center text-4xl text-center font-semibold z-10 p-0 m-0">
               Projetos
-            </h1>
+            </h2>
           </div>
         </div>
-        
+
         <div className="flex flex-col items-start md:flex-row md:gap-6 h-full w-full z-10 md:px-8">
-          <div className="h-full w-full mb-2">
+          <div className="h-full w-full mb-2 px-1">
             <h2 className="text-2xl font-bold h-12 text-black dark:text-white">Destaque:</h2>
-            <Link href={'https://my-commerce-euzebiobatista2.vercel.app'} className="flex flex-col w-full h-full border border-gray-700 dark:border-gray-300 rounded-md overflow-hidden z-10" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-              <div className="flex items-center justify-center py-10 h-full w-full bg-[url('/cart.jpg')] bg-no-repeat bg-center bg-cover">
+            <Link href={'https://carcontrol-production.up.railway.app'} className="flex flex-col w-full h-full border border-gray-700 dark:border-gray-300 rounded-md overflow-hidden z-10" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+              <div className="flex items-center justify-center py-10 h-[300px] w-full bg-[url('/BackgroundProject.png')] bg-no-repeat bg-center bg-cover">
                 <Image
-                  src={'/LogoMyCommerce.png'}
+                  src={'/LogoProject.png'}
                   height={130}
                   width={130}
                   alt="Logo contendo o nome MyCommerce com um carrinho de compras"
@@ -235,12 +227,13 @@ export default function Home() {
               </div>
               <div className={`h-full w-full px-1 bg-gray-300 dark:bg-gray-700 ${hover ? 'bg-white dark:bg-gray-800' : ''} transform duration-300 ease-in-out`}>
                 <div className="flex w-full h-full justify-between items-center py-1">
-                  <h1 className="text-lg font-semibold text-black dark:text-white">MyCommerce</h1>
+                  <h2 className="text-lg font-semibold text-black dark:text-white pl-1">Car control</h2>
                   <div className="flex gap-1">
-                    <i className="flex h-6 w-6">{IconReact(true)}</i>
-                    <i className="flex h-6 w-6">{IconTS(true)}</i>
-                    <i className="flex h-6 w-6">{IconTail(true)}</i>
-                    <i className="flex h-6 w-6">{IconFireBase(true)}</i>
+                    <i className="flex h-6 w-6">{IconLaravel(true)}</i>
+                    <i className="flex h-6 w-6">{IconVueJs(true)}</i>
+                    <i className="flex h-6 w-6">{IconBootStrap(true)}</i>
+                    <i className="flex h-6 w-6">{IconPostgres(true)}</i>
+                    <i className="flex h-6 w-6">{IconJquery(true)}</i>
                   </div>
                 </div>
                 <div>
@@ -256,43 +249,42 @@ export default function Home() {
           </div>
           <div className="h-full w-full mb-2">
             <h2 className="text-lg font-semibold pt-2 h-12 text-black dark:text-white">Outros projetos:</h2>
-            <div className="flex flex-col w-full gap-2">
-              <motion.div ref={ref8} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView8 ? 1 : 0, x: inView8 ? 0 : 50 }} transition={{ duration: 0.5 }}>
-                <Link href={'https://calculadora-react-ar8q.vercel.app/'}>
-                  <OthersProjects
-                    title="Calculadora React"
-                    description="Calculadora desenvolvida com a funcionalidade de auxiliar e permitir apenas equações validas."
-                    icons={[IconReact(true), IconJs(true), IconHtml(true), IconCss(true)]}
-                  />
-                </Link>
-              </motion.div>
-              <motion.div ref={ref9} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView9 ? 1 : 0, x: inView9 ? 0 : 50 }} transition={{ duration: 0.5 }}>
-                <Link href={'/pagePHP'}>
-                  <OthersProjects
-                    title="Pagina Web PHP"
-                    description="Projeto para representar uma página de login e sessão de login, com cadastro e esqueci minha senha."
-                    icons={[IconHtml(true), IconCss(true), IconPhp(true), IconMySql(true), IconJs(true)]}
-                  />
-                </Link>
-              </motion.div>
-              <motion.div ref={ref10} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView10 ? 1 : 0, x: inView10 ? 0 : 50 }} transition={{ duration: 0.5 }}>
-                <Link href={'/pageCrud'}>
-                  <OthersProjects
-                    title="Página CRUD"
-                    description="Pagina CRUD usando os métodos GET, POST, PUT e DELETE usando o XMLHttprequest."
-                    icons={[IconHtml(true), IconCss(true), IconBootStrap(true), IconJquery(true), IconJs(true)]}
-                  />
-                </Link>
-              </motion.div>
-              <motion.div ref={ref10} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView10 ? 1 : 0, x: inView10 ? 0 : 50 }} transition={{ duration: 0.5 }}>
-                <Link href={'/pageFlappy'}>
-                  <OthersProjects
-                    title="FlappyBird"
-                    description="Projeto criado para representar um flappybird, usando as linguagens de programação como representantes do game."
-                    icons={[IconPhp(true), IconLaravel(true), IconVueJs(true), IconBootStrap(true), IconMySql(true)]}
-                  />
-                </Link>
-              </motion.div>
+            <div className="flex flex-col w-full gap-2 overflow-y-auto overflow-x-hidden h-[400px] pl-1 pr-2">
+              <Link href={'https://flappybird-program-languages-production.up.railway.app'}>
+                <OthersProjects
+                  title="FlappyBird"
+                  description="Projeto criado para representar um flappybird, usando as linguagens de programação como representantes do game."
+                  icons={[IconPhp(true), IconLaravel(true), IconVueJs(true), IconBootStrap(true), IconMySql(true)]}
+                />
+              </Link>
+              <Link href={'https://my-commerce-euzebiobatista2.vercel.app'}>
+                <OthersProjects
+                  title="My Commerce"
+                  description="Projeto realizado com o intuito de auxiliar pequenos donos de comercio com o gerenciamento de suas vendas."
+                  icons={[IconReact(true), IconTS(true), IconTail(true), IconFireBase(true)]}
+                />
+              </Link>
+              <Link href={'/pagePHP'}>
+                <OthersProjects
+                  title="Pagina Web PHP"
+                  description="Projeto para representar uma página de login e sessão de login, com cadastro e esqueci minha senha."
+                  icons={[IconHtml(true), IconCss(true), IconPhp(true), IconMySql(true), IconJs(true)]}
+                />
+              </Link>
+              <Link href={'https://calculadora-react-ar8q.vercel.app/'}>
+                <OthersProjects
+                  title="Calculadora React"
+                  description="Calculadora desenvolvida com a funcionalidade de auxiliar e permitir apenas equações validas."
+                  icons={[IconReact(true), IconJs(true), IconHtml(true), IconCss(true)]}
+                />
+              </Link>
+              <Link href={'/pageCrud'}>
+                <OthersProjects
+                  title="Página CRUD"
+                  description="Pagina CRUD usando os métodos GET, POST, PUT e DELETE usando o XMLHttprequest."
+                  icons={[IconHtml(true), IconCss(true), IconBootStrap(true), IconJquery(true), IconJs(true)]}
+                />
+              </Link>
               {/* <div className="flex items-center justify-center w-full">
                 <Button name="Mais projetos" color="blue" link="https://github.com/EuzebioBatista2" />
               </div> */}
@@ -305,9 +297,9 @@ export default function Home() {
         {/* Conteúdo dos comentários */}
         <div className="flex items-center justify-center w-full py-4 relative bg-gray-300 dark:bg-gray-900 text-black dark:text-white gap-2">
           <i>{IconComments}</i>
-          <h1 className="flex items-center justify-center text-4xl text-center font-semibold z-10 p-0 m-0">
+          <h2 className="flex items-center justify-center text-4xl text-center font-semibold z-20 p-0 m-0">
             Comentários
-          </h1>
+          </h2>
         </div>
         {/* Fim conteúdo dos comentários */}
         <div className="flex flex-col w-full h-full items-start justify-center">
@@ -354,8 +346,10 @@ export default function Home() {
             </a>
           </div>
           <div className="flex w-5/6">
-            <p className={`flex items-center justify-end w-full mr-2 lg:mr-4 small:text-xs text-black dark:text-gray-200`}>
-              Desenvolvido com&nbsp;<i className="flex h-5 w-5 fill-red-500">{IconHeart}</i>&nbsp;por&nbsp;<strong>Euzebio Batista</strong>
+            <p className={`flex flex-col md:flex-row items-center justify-end w-full mr-2 lg:mr-4 small:text-xs text-black dark:text-gray-200`}>
+              <span>Desenvolvido com&nbsp;</span>
+              <span className="flex"><i className="flex h-5 w-5 fill-red-500">{IconHeart}</i>&nbsp;por&nbsp;</span>
+              <span><strong>Euzebio Batista</strong></span>
             </p>
           </div>
         </div>
