@@ -19,11 +19,11 @@ export default function CardExperience(props: ICard) {
         <hr className="w-full h-0.5 absolute top-1/2 border-none bg-blue-400" />
       </span>
       <span className="w-full h-full py-2">
-        <div className="flex w-full h-full bg-white dark:bg-gray-800 rounded-r-md border border-gray-400 border-l-4 border-l-blue-400">
+        <div className="flex w-full h-full bg-white dark:bg-gray-800 rounded-r-md border border-gray-400 border-l-4 border-l-blue-400 transition duration-300 ease-in-out">
           <div className="flex flex-col w-full h-1/5 items-center p-2 relative">
             <i className="right-2 absolute dark:text-white">{Iconjob}</i>
             <h2 className="w-full text-center font-semibold text-lg px-8 dark:text-white">{props.title}</h2>
-            <h3 className="w-full text-center "><span className="text-blue-400">{props.date}</span> | <span className="text-gray-600 ">{props.business}</span></h3>
+            <h3 className="w-full text-center"><span className="text-blue-400">{props.date}</span> | <span className="text-gray-600 z-20">{props.business}</span></h3>
             <p className="w-full h-full p-2 dark:text-white">{props.children}</p>
           </div>
         </div>

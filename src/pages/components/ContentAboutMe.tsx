@@ -19,24 +19,11 @@ export default function ContentAboutMe() {
         </div>
         <div className="p-2">
           <p>
-            Sou um <strong>desenvolvedor Web</strong>, em busca da minha primeira oportunidade.<br />
-            curso ADS(Analise e desenvolvimento de sistemas),<br />
-            me considero uma pessoa responsável, esforçada e resiliente.<br />
+            Olá! Meu nome é <strong>Euzebio</strong>, sou um entusiasta da tecnologia e <strong>DESENVOLVEDOR FULL-STACK</strong> apaixonado por transformar ideias em realidade digital. Com uma sólida formação e uma sede insaciável de aprendizado, estou sempre em busca de novas oportunidades.<br />
             <br />
-            Possuo conhecimento sobre algumas linguagens e frameworks, além de ferramentas de auxilio.<br />
+            Atualmente, curso <strong>Análise e Desenvolvimento de Sistemas</strong> com previsão de conclusão em julho de 2025. Sou uma pessoa esforçada e focada, sempre buscando adquirir novos conhecimentos além da faculdade, realizando cursos na plataforma Udemy e melhorando meus conhecimentos sobre <strong>React</strong>, <strong>React Native</strong>, <strong>Laravel</strong>, <strong>Node.js</strong>, <strong>PHP</strong> e outras tecnologias. Sou adaptável, comunicativo e tenho uma forte capacidade de resolução de problemas.<br /> 
             <br />
-            Linguagens:<br />
-            <strong className="text-gray-700">#JavaScript</strong>, <strong className="text-gray-700">#HTML</strong>, <strong className="text-gray-700">#CSS</strong>, <strong className="text-gray-700">#PHP</strong> e <strong className="text-gray-700">#Python</strong>.<br />
-            <br />
-            Ferramentas de desenvolvimento:<br />
-            <strong className="text-gray-700">#ReactJs</strong>, <strong className="text-gray-700">#NextJs</strong>, <strong className="text-gray-700">#Tailwind</strong>, <strong className="text-gray-700">#TypeScript</strong>, <strong className="text-gray-700">#VueJs</strong>, <strong className="text-gray-700">#Bootstrap</strong>, <strong className="text-gray-700">#Git/GitHub</strong>, <strong className="text-gray-700">#Jquery</strong>, <strong className="text-gray-700">#Laravel</strong>, <strong className="text-gray-700">#CodeIgniter</strong> e <strong className="text-gray-700">#NodeJs</strong>.<br />
-            <br />
-            Banco de dados / container:<br />
-            <strong className="text-gray-700">#MySQL</strong>,  <strong className="text-gray-700">#MongoDB</strong>, <strong className="text-gray-700">#PostgreSQL</strong>, <strong className="text-gray-700">#Firebase</strong> e <strong className="text-gray-700">#Docker</strong>.<br />
-            <br />
-            Ferramentas adicionais:<br />
-            <strong className="text-gray-700">Inglês(nível técnico)</strong> - Venho estudando e adquirindo conhecimento para alcançar a fluência na lingua.<br />
-            <strong className="text-gray-700">Photoshop(nível técnico)</strong> - Capaz de criar marcas e logos simples, além de edição e criação de imagens.<br />
+            Além do conhecimento em desenvolvimento, possuo uma base sólida em edição de imagens e prototipação, utilizando ferramentas como <strong>Photoshop</strong>, <strong>Figma</strong> e <strong>Canva</strong>. Gosto de trabalhar em equipe e sou criativo, sempre contribuindo com novas ideias e soluções para os projetos.
           </p>
         </div>
       </motion.div>
