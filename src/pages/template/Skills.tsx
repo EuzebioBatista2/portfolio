@@ -84,7 +84,7 @@ export default function Skills() {
             priority={true}
             className={`w-auto h-auto absolute -left-2 z-0 opacity-30`}
           />
-          <h2 className="flex items-center justify-center w-full py-4 relative text-black dark:text-white gap-2">
+          <h2 className="flex items-center justify-center w-full pb-4 pt-12 relative text-black dark:text-white gap-2">
             <i>{IconEletro}</i>
             <p className="flex items-center justify-center text-4xl text-center font-semibold z-10 p-0 m-0">
               Habilidades
@@ -124,7 +124,7 @@ export default function Skills() {
               className="flex w-full h-auto relative -left-2 md:-left-6 bg-transparent"
             />
           </div>
-          <div className="flex flex-col h-[40vh] min-h-[240px] w-full md:mx-2 mt-2 md:mt-6 rounded-md bg-gray-300 dark:bg-gray-700 overflow-hidden z-10" style={{ boxShadow: '-5px 7px 5px 0px rgba(0,0,0,0.75)' }}>
+          <div className="flex flex-col h-[40vh] min-h-[240px] w-[98%] md:w-full ml-1 mr-2 md:ml-2 md:mr-8 mt-2 md:mt-6 rounded-md bg-gray-300 dark:bg-gray-700 border-1 border-gray-400 dark:border-gray-900 overflow-hidden z-10" style={{ boxShadow: '-2px 4px 18px 0px rgba(0,0,0,0.75)' }}>
             <motion.div ref={ref15} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView15 ? 1 : 0, x: inView15 ? 0 : 50 }} transition={{ duration: 0.5 }} className="h-full w-full">
               <div className={`flex w-full h-full items-center justify-end text-center transition-transform duration-500 transform translate-x-${carrocelMainIcons * 100}`}>
                 {/* Lista a descrição de cada ícone */}
@@ -133,7 +133,7 @@ export default function Skills() {
                   const firstWord = words[0] + ' '
                   const restOfDescription = words.slice(1).join(' ')
                   return (
-                    <div key={index} className="flex justify-center items-center p-2 flex-shrink-0 h-full w-full">
+                    <div key={index} className="flex justify-center items-center p-2 md:p-8 flex-shrink-0 h-full w-full">
                       <h3 className="text-black dark:text-white"><strong className="text-blue-400">{firstWord} </strong>{restOfDescription}</h3>
                     </div>
                   )

@@ -80,7 +80,7 @@ export default function Home() {
         <title>Portfolio EuzebioDev</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <header className="h-screen min-h-[550px] bg-[url('/backgroundHeader.png')] bg-no-repeat bg-center bg-cover bg-fixed bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out" id="home">
+      <header className="h-screen min-h-[550px] bg-[url('/backgroundHeader.png')] bg-no-repeat bg-center bg-cover  bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out" id="home">
         {/* Conteúdo da página inicial */}
         <Navigation />
         <div className="flex flex-col h-full w-full items-center justify-center relative">
@@ -98,7 +98,7 @@ export default function Home() {
               speed={100}
               eraseSpeed={50}
               eraseDelay={3000}
-              className="text-3xl text-blue-400 text-center font-medium"
+              className="text-3xl text-black dark:text-white text-center font-medium transition duration-300 ease-in-out"
             />
           </div>
           <ButtonDown link='aboutMe' />
@@ -124,15 +124,15 @@ export default function Home() {
       </section>
       <section className="flex p-2 bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out" id="curriculo">
         {/* Conteúdo do cirrículo */}
-        <div className="flex flex-col h-full items-center justify-center w-full my-4 z-10" style={{ boxShadow: '-5px 7px 5px 0px rgba(0,0,0,0.75)' }}>
-          <div className="w-full py-4 bg-blue-400 rounded-t-lg">
+        <div className="flex flex-col h-full items-center justify-center w-full mt-12 mb-4 z-10 rounded-t-lg overflow-hidden" style={{ boxShadow: '-1px 6px 18px 0px rgba(0,0,0,0.75)' }}>
+          <div className="w-full py-4 bg-blue-400">
             <h2 className="text-white text-2xl text-center font-semibold">Currículo</h2>
           </div>
           <div className="flex flex-col md:flex-row w-full h-full">
             {/* Experiência academica */}
-            <div className="px-1 py-2 bg-gray-300 dark:bg-gray-700 z-10">
-              <div className="px-2 py-2 bg-gray-400 rounded-md">
-                <h2 className="text-lg font-semibold">Educação</h2>
+            <div className="px-1 py-2 bg-gray-100 dark:bg-gray-700 z-10">
+              <div className="px-2 py-2 bg-blue-400 rounded-md">
+                <h2 className="text-lg font-semibold text-white">Educação</h2>
               </div>
               <motion.div ref={ref2} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView2 ? 1 : 0, x: inView2 ? 0 : -50 }} transition={{ duration: 0.5 }}>
                 <CardExperience title="Análise e Desenvolvimento de sistemas(ADS)" date="Jan 2023 - Atual" business="Estacio" >
@@ -153,34 +153,24 @@ export default function Home() {
               </motion.div>
             </div>
             {/* Experiência profissional */}
-            <div className="px-1 py-2 bg-gray-300 dark:bg-gray-700 z-10">
-              <div className="px-2 py-2 bg-gray-400 rounded-md z-10">
-                <h2 className="text-lg font-semibold">Experiência Profissional</h2>
+            <div className="px-1 py-2 bg-gray-100 dark:bg-gray-700 z-10">
+              <div className="px-2 py-2 bg-blue-400 rounded-md z-10">
+                <h2 className="text-lg font-semibold text-white">Experiências profissionais</h2>
               </div>
               <motion.div ref={ref5} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView5 ? 1 : 0, x: inView5 ? 0 : -50 }} transition={{ duration: 0.5 }}>
-                <CardExperience title="Técnico de TI" date="Set 2023 - Nov 2023" business="CITYMIX HOTEL" >
+                <CardExperience title="Técnico de informática" date="Set 2023 - Nov 2023" business="CITYMIX HOTEL" >
                   Suporte técnico na realização de atividades de manutenção em computadores e notebooks, além de auxiliar no sistema acadêmico.
                 </CardExperience>
               </motion.div>
               <motion.div ref={ref6} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView6 ? 1 : 0, x: inView6 ? 0 : -50 }} transition={{ duration: 0.5 }}>
-                <CardExperience title="Analista de Redes(Estágio)" date="Jan 2013 - Mai 2023" business="Itline" >
-                  Estágio com o intuito de auxiliar e monitorar o sistema de redes do clientes, além de prestar suporte.
-                </CardExperience>
-              </motion.div>
-              <motion.div ref={ref7} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView7 ? 1 : 0, x: inView7 ? 0 : -50 }} transition={{ duration: 0.5 }}>
-                <CardExperience title="Técnico de TI(Fixo)" date="Jul 2018 - Mar 2022" business="UNESC" >
+                <CardExperience title="Técnico de informática" date="Jan 2018 - Mar 2022" business="UNESC" >
                   Suporte e manutenção de computadores e notebooks, realizando manutenções preventivas, e prestando suporte a professores e
                   alunos no auxilio as aulas e atividades.
                 </CardExperience>
               </motion.div>
-              <motion.div ref={ref16} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView16 ? 1 : 0, x: inView16 ? 0 : -50 }} transition={{ duration: 0.5 }}>
-                <CardExperience title="Técnico de TI(Estágio)" date="Jan 2018 - Jul 2018" business="UNESC" >
-                  Suporte técnico na realização de atividades de manutenção em computadores e notebooks, além de auxiliar no sistema acadêmico.
-                </CardExperience>
-              </motion.div>
             </div>
           </div>
-          <div className="flex items-center justify-center px-2 py-8 w-full bg-gray-300 dark:bg-gray-700 z-10">
+          <div className="flex items-center justify-center px-2 py-8 w-full bg-gray-100 dark:bg-gray-700 z-10">
             <Button color="blue" name="DONWLOAD CURRÍCULO" icon={IconBook} onClick={() => downloadCurriculo()} />
           </div>
         </div>
@@ -214,13 +204,13 @@ export default function Home() {
         <div className="flex flex-col items-start md:flex-row md:gap-6 h-full w-full z-10 md:px-8">
           <div className="h-full w-full mb-2 px-1">
             <h2 className="text-2xl font-bold h-12 text-black dark:text-white">Destaque:</h2>
-            <Link href={'https://carcontrol-production.up.railway.app'} className="flex flex-col w-full h-full border border-gray-700 dark:border-gray-300 rounded-md overflow-hidden z-10" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+            <Link href={'https://carcontrol.great-site.net'} className="flex flex-col w-full h-full border border-gray-700 dark:border-gray-300 rounded-md overflow-hidden z-10" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
               <div className="flex items-center justify-center py-10 h-[300px] w-full bg-[url('/BackgroundProject.png')] bg-no-repeat bg-center bg-cover">
                 <Image
                   src={'/LogoProject.png'}
                   height={130}
                   width={130}
-                  alt="Logo contendo o nome MyCommerce com um carrinho de compras"
+                  alt="Logo de um caro vermelho com preto"
                   priority={true}
                   className={`w-2/4 h-auto ${hover ? 'scale-110 -rotate-12' : ''} transform duration-300 ease-in-out`}
                 />
@@ -250,7 +240,7 @@ export default function Home() {
           <div className="h-full w-full mb-2">
             <h2 className="text-lg font-semibold pt-2 h-12 text-black dark:text-white">Outros projetos:</h2>
             <div className="flex flex-col w-full gap-2 overflow-y-auto overflow-x-hidden h-[400px] pl-1 pr-2">
-              <Link href={'https://flappybird-program-languages-production.up.railway.app'}>
+              <Link href={'https://vueflappybird.great-site.net'}>
                 <OthersProjects
                   title="FlappyBird"
                   description="Projeto criado para representar um flappybird, usando as linguagens de programação como representantes do game."
@@ -293,9 +283,9 @@ export default function Home() {
         </div>
         {/* Fim conteúdo dos projetos */}
       </section>
-      <section className="flex flex-col justify-center items-center h-full bg-[url('/backgroundHeader.png')] bg-no-repeat bg-center bg-cover bg-fixed bg-gray-300 dark:bg-gray-900 transition duration-500 ease-in-out" id="comments">
+      <section className="flex flex-col justify-center items-center h-full bg-[url('/backgroundHeader.png')] bg-no-repeat bg-center bg-cover bg-fixed bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out" id="comments">
         {/* Conteúdo dos comentários */}
-        <div className="flex items-center justify-center w-full py-4 relative bg-gray-300 dark:bg-gray-900 text-black dark:text-white gap-2">
+        <div className="flex items-center justify-center w-full pb-4 pt-12 relative bg-gray-200 dark:bg-gray-800 text-black dark:text-white gap-2 transition duration-500 ease-in-out">
           <i>{IconComments}</i>
           <h2 className="flex items-center justify-center text-4xl text-center font-semibold z-20 p-0 m-0">
             Comentários
@@ -303,7 +293,7 @@ export default function Home() {
         </div>
         {/* Fim conteúdo dos comentários */}
         <div className="flex flex-col w-full h-full items-start justify-center">
-          <div className="flex flex-col w-full h-full bg-gray-300 dark:bg-gray-900 transform duration-500 ease-in-out overflow-hidden relative">
+          <div className="flex flex-col w-full h-full bg-gray-200 dark:bg-gray-800 transform duration-500 ease-in-out overflow-hidden relative">
             <Image
               src={'/db.png'}
               height={1000}
@@ -317,7 +307,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <section className="h-screen min-h-[550px] bg-[url('/backgroundHeader.png')] bg-no-repeat bg-center bg-cover bg-fixed bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out" id="home">
+        <section className="h-screen min-h-[550px] bg-[url('/backgroundHeader.png')] bg-no-repeat bg-center bg-cover bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out" id="home">
           <div className="flex items-start justify-center w-[98%] overflow-y-scroll h-[650px] md:h-full z-20">
             <div className="w-full md:w-3/4 pl-2">
               {comments.map((comment, index) => (
