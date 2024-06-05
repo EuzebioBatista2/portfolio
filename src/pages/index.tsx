@@ -14,20 +14,28 @@ import { useEffect, useState } from "react";
 import OthersProjects from "./components/OthersProjects";
 import RegisterComents from "./components/RegisterComents";
 import { dbFirebase } from "../../backend/config";
-import CardComment from "./components/CardComment";
 import { downloadCurriculo } from "@/content/downloadCurriculo";
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation as SwiperNavigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import CardComment from "./components/CardComment";
 
 export default function Home() {
-  const [hover, setHover] = useState(false)
-  const [comments, setComments] = useState<any[]>([])
-  const { darkTheme, setTheme } = useDarkThemeReducer()
+  const [hover, setHover] = useState(false);
+  const [comments, setComments] = useState<any[]>([]);
+  const [ amountOfItems, setAumountOfItems ] = useState<number>(4);
+  const { darkTheme, setTheme } = useDarkThemeReducer();
 
   useEffect(() => {
     // Verifica se houve alteração no banco de dados e atualiza em tempo real
-    dbFirebase.onSnapshot((comments: any) => {
-      setComments(comments.docs)
+    dbFirebase.onSnapshot((response: any) => {
+      setComments(response.docs)
     })
 
     // Verifica se o tema setado no cookie é dark ou não
@@ -36,6 +44,29 @@ export default function Home() {
       setTheme(true)
     } else {
       setTheme(false)
+    }
+
+  }, [])
+
+  useEffect(() => {
+    function heandleResize () {
+      if (window.innerWidth < 768) {
+        setAumountOfItems(1);
+      } else if(window.innerWidth < 1150) {
+          setAumountOfItems(2);
+      } else if(window.innerWidth < 1280) {
+        setAumountOfItems(3);
+      } else if(window.innerWidth >= 1280) {
+        setAumountOfItems(4)
+      }
+    }
+    
+    heandleResize();
+
+    window.addEventListener('resize', heandleResize);
+
+    return () => {
+      window.removeEventListener('resize', heandleResize);
     }
   }, [])
 
@@ -63,15 +94,6 @@ export default function Home() {
     triggerOnce: false,
     threshold: 0.2,
   });
-  const [ref7, inView7] = useInView({
-    triggerOnce: false,
-    threshold: 0.2,
-  });
-  const [ref16, inView16] = useInView({
-    triggerOnce: false,
-    threshold: 0.2,
-  });
-
 
   // Página principal
   return (
@@ -105,7 +127,7 @@ export default function Home() {
         </div>
         {/* Fim conteúdo da página inicial */}
       </header>
-      <section className="flex flex-col md:flex-row items-center justify-center py-12 h-full bg-[url('/backgroundAboutMe.jpg')] bg-no-repeat bg-center bg-cover bg-fixed" id="aboutMe">
+      <section className="flex flex-col md:flex-row items-center justify-center pt-20 pb-20 md:pt-12 md:pb-16 h-full bg-[url('/backgroundAboutMe.png')] bg-no-repeat bg-[length:100%_100%] bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out" id="aboutMe">
         {/* Conteúdo sobre min */}
         <div className="h-full w-full">
           <motion.div ref={ref1} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView1 ? 1 : 0, x: inView1 ? 0 : -50 }} transition={{ duration: 0.5 }}>
@@ -191,7 +213,7 @@ export default function Home() {
             width={150}
             alt="Icone do react cortado ao meio"
             priority={true}
-            className={`w-auto h-auto absolute -right-2 z-0 opacity-30`}
+            className={`w-auto h-[300px] md:h-[500px] absolute -right-2 z-0 opacity-30`}
           />
           <div className="flex items-center justify-center w-full py-4 relative text-black dark:text-white gap-2">
             <i>{IconProjects}</i>
@@ -300,27 +322,31 @@ export default function Home() {
               width={1000}
               alt="Icone de um banco de dados cortado ao meio"
               priority={true}
-              className={`w-auto h-auto absolute -left-2 top-0 opacity-30`}
+              className={`w-auto h-[300px] md:h-[500px] absolute -left-2 top-0 opacity-30`}
             />
             <div className="w-full h-full py-10">
               <RegisterComents />
             </div>
           </div>
         </div>
-        <section className="h-screen min-h-[550px] bg-[url('/backgroundHeader.png')] bg-no-repeat bg-center bg-cover bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out" id="home">
-          <div className="flex items-start justify-center w-[98%] overflow-y-scroll h-[650px] md:h-full z-20">
-            <div className="w-full md:w-3/4 pl-2">
+        <section className="flex flex-col h-[650px] w-full overflow-hidden justify-center items-center px-10 bg-[url('/backgroundComments.png')] bg-no-repeat bg-center bg-[length:1200px_650px] md:bg-[length:100vw_650px] bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out">
+          <div className="w-full h-full">
+            <Swiper
+              modules={[SwiperNavigation, Pagination, Scrollbar, A11y]}
+              slidesPerView={amountOfItems}
+              pagination={{ clickable: true }}
+              navigation
+            >
               {comments.map((comment, index) => (
-                <CardComment
-                  key={index}
-                  commentKey={index}
-                  name={comment.data().name}
-                  comment={comment.data().comment}
-                  file={comment.data().file ? comment.data().file : '/userUnknown.jpg'}
-                  side={index % 2 === 0 ? 'left' : 'right'}
-                />
+                <SwiperSlide key={index}>
+                  <CardComment
+                    name={comment.data().name}
+                    comment={comment.data().comment}
+                    file={comment.data().file ? comment.data().file : '/userUnknown.jpg'}
+                  />
+                </SwiperSlide>
               ))}
-            </div>
+            </Swiper>
           </div>
         </section>
       </section>

@@ -41,3 +41,7 @@ html {
   transition: opacity 500ms, transform 500ms;
 }
 
+.swiper-pagination {
+  bottom: 10px !important; 
+}
+

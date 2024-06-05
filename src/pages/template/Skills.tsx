@@ -2,17 +2,18 @@ import Image from "next/image";
 import { IconBook, IconDatabase, IconEletro, IconTools } from "../../../public/icons";
 import ButtonMini from "../components/ButtonMini";
 import { useEffect, useState } from "react";
-import { itemsDb, itemsLanguages, itemsTools } from "@/content/skillsObject";
+import { frontItems, backItems, toolsItems } from "../../content/skillsObject";
 import { motion } from 'framer-motion';
 import { useInView } from "react-intersection-observer";
 
 
 
 export default function Skills() {
-  let [items, setItems] = useState<any[]>(itemsLanguages)
+  let [items, setItems] = useState<any[]>(backItems)
   let [carrocelMainIcons, setCarrocelMainIcons] = useState<number>(0)
   let [leftListMain, setLeftListMain] = useState<any[]>([])
   let [rightListMain, setRightListMain] = useState<any[]>([])
+  let [active, setActive] = useState<string>('Back-end');
 
   const [ref14, inView14] = useInView({
     triggerOnce: false,
@@ -82,7 +83,7 @@ export default function Skills() {
             width={150}
             alt="Imagem de um tag html cortado ao meio"
             priority={true}
-            className={`w-auto h-auto absolute -left-2 z-0 opacity-30`}
+            className={`w-auto h-[300px] md:h-[500px] absolute -left-2 z-0 opacity-30`}
           />
           <h2 className="flex items-center justify-center w-full pb-4 pt-12 relative text-black dark:text-white gap-2">
             <i>{IconEletro}</i>
@@ -93,14 +94,14 @@ export default function Skills() {
         </div>
         <menu className="flex gap-1 md:gap-4 py-4">
           {/* Botões responsáveis por alterar a lista de ícones */}
-          <ButtonMini icon={IconBook} color="red" onClick={() => { setItems(itemsLanguages), setCarrocelMainIcons(0) }} text="Linguagens" />
-          <ButtonMini icon={IconDatabase} color="yellow" onClick={() => { setItems(itemsDb), setCarrocelMainIcons(0) }} text="Utilitários"/>  
-          <ButtonMini icon={IconTools} color="blue" onClick={() => { setItems(itemsTools), setCarrocelMainIcons(0) }} text="Frameworks"/>
+          <ButtonMini icon={IconBook} onClick={() => { setItems(frontItems), setCarrocelMainIcons(0), setActive('Front-end') }} text="Front-end" active={active} />
+          <ButtonMini icon={IconDatabase} onClick={() => { setItems(backItems), setCarrocelMainIcons(0), setActive('Back-end') }} text="Back-end" active={active}/>  
+          <ButtonMini icon={IconTools} onClick={() => { setItems(toolsItems), setCarrocelMainIcons(0), setActive('Tools') }} text="Tools" active={active}/>
         </menu>
         <div className="flex flex-col md:flex-row h-full w-full">
           <div className="flex flex-col items-center justify-center h-full w-full md:w-1/2 relative md:px-4">
             <div className="flex flex-col w-full items-center justify-center overflow-hidden">
-              <motion.div ref={ref14} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView14 ? 1 : 0, x: inView14 ? 0 : -50 }} transition={{ duration: 0.5 }}>
+              <div>
                 <div className={`flex items-center justify-end h-full w-full py-10 transition-transform duration-500 transform translate-x-${carrocelMainIcons * 100}`}>
                   {/* Lista de icones principal */}
                   {items.map((item, index) => {
@@ -113,7 +114,7 @@ export default function Skills() {
                     )
                   })}
                 </div>
-              </motion.div>
+              </div>
             </div>
             <Image
               src={'/handTec.png'}
@@ -124,8 +125,8 @@ export default function Skills() {
               className="flex w-full h-auto relative -left-2 md:-left-6 bg-transparent"
             />
           </div>
-          <div className="flex flex-col h-[40vh] min-h-[240px] w-[98%] md:w-full ml-1 mr-2 md:ml-2 md:mr-8 mt-2 md:mt-6 rounded-md bg-gray-300 dark:bg-gray-700 border-1 border-gray-400 dark:border-gray-900 overflow-hidden z-10" style={{ boxShadow: '-2px 4px 18px 0px rgba(0,0,0,0.75)' }}>
-            <motion.div ref={ref15} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView15 ? 1 : 0, x: inView15 ? 0 : 50 }} transition={{ duration: 0.5 }} className="h-full w-full">
+          <div className="flex flex-col h-[300px] min-h-[300px] w-[98%] md:w-full ml-1 mr-2 md:ml-2 md:mr-8 mt-2 md:mt-6 rounded-md bg-gray-300 dark:bg-gray-700 border-1 border-gray-400 dark:border-gray-900 overflow-hidden z-10" style={{ boxShadow: '-2px 4px 18px 0px rgba(0,0,0,0.75)' }}>
+            <div className="h-full w-full">
               <div className={`flex w-full h-full items-center justify-end text-center transition-transform duration-500 transform translate-x-${carrocelMainIcons * 100}`}>
                 {/* Lista a descrição de cada ícone */}
                 {items.map((item, index) => {
@@ -139,7 +140,7 @@ export default function Skills() {
                   )
                 })}
               </div>
-            </motion.div>
+            </div>
             <div className="flex h-24 w-full bg-gray-400 dark:bg-gray-900 z-10">
               <div className={`flex items-center justify-center h-full w-full`}>
                 <div className={`flex w-1/3 overflow-hidden`}>

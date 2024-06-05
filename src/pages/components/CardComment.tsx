@@ -1,13 +1,9 @@
 import Image from "next/image";
-import { motion } from 'framer-motion';
-import { useInView } from "react-intersection-observer";
 
 interface ICardComment {
   name: string
   comment: string
   file: any
-  side: 'left' | 'right'
-  commentKey: number
 }
 
 
@@ -16,71 +12,22 @@ export default function CardComment(props: ICardComment) {
 
   // Componente que gera o card ou o container que vai receber os dados dos comentários vindo das pessoas
   return (
-    props.side === 'left' ? (
-      <div
-        key={props.commentKey}
-        className={`flex flex-col w-4/5 float-left animate-bounce-verySlow px-2 my-4 border border-black rounded-3xl overflow-hidden bg-white dark:bg-gray-800 hover:animate-none flex-shrink-0 transition duration-300 ease-in-out`}
-        style={{ boxShadow: '-5px 6px 18px 0px rgba(0,0,0,0.75)' }}
-      >
-          <div className="flex w-full items-center justify-center py-2 relative">
-            <Image
-              src={'/balão.png'}
-              alt="Balão de fala"
-              width={130}
-              height={130}
-              priority={true}
-              className="h-auto w-auto absolute justify-self-center opacity-10 pointer-events-none"
-            />
-            <div className="flex absolute left-0 items-center justify-center h-10 w-10 overflow-hidden border border-gray-600 rounded-full">
-              <Image
-                src={`${props.file}`}
-                alt="FotoDePerfil"
-                width={30}
-                height={30}
-                priority={true}
-                className="w-auto h-10 pointer-events-none"
-              />
-            </div>
-            <h3 className="flex w-full items-start justify-start text-lg text-black dark:text-white font-semibold pl-12 leading-tight py-2 transition duration-300 ease-in-out">{props.name}</h3>
-          </div>
-          <hr className="border-none h-0.5 bg-black" />
-          <div className="p-2">
-            <h2 className="text-blue-500">{props.comment}</h2>
-          </div>
+    <div className="flex w-full h-full items-center justify-center py-20">
+      <div className="w-[260px]">
+        <Image
+          src={`${props.file}`}
+          alt="Balão de fala"
+          width={250}
+          height={250}
+          priority={true}
+          className="h-160 w-full object-cover"
+        />
+        <div className="px-2 bg-white">
+          <h3 className="text-xl text-black py-2">{props.name}</h3>
+          <p className="text-gray-400 text-sm">Comentário:</p>
+          <p className="text-gray-500 italic pb-2">"{props.comment}"</p>
+        </div>
       </div>
-    ) : (
-      <div
-        key={props.commentKey}
-        className={`flex flex-col w-4/5 float-right animate-bounce-slow px-2 my-8 border border-black rounded-3xl overflow-hidden bg-white dark:bg-gray-800 flex-shrink-0 hover:animate-none transition duration-300 ease-in-out`}
-        style={{ boxShadow: '-5px 6px 18px 0px rgba(0,0,0,0.75)' }}
-      >
-
-        <div className="flex w-full items-center justify-center py-2 relative">
-          <Image
-            src={'/balão.png'}
-            alt="Balão de fala"
-            width={130}
-            height={130}
-            priority={true}
-            className="h-auto w-auto absolute justify-self-center opacity-10 pointer-events-none"
-          />
-          <div className="flex absolute left-0 items-center justify-center h-10 w-10 overflow-hidden border border-gray-600 rounded-full">
-            <Image
-              src={`${props.file}`}
-              alt="FotoDePerfil"
-              width={30}
-              height={30}
-              priority={true}
-              className="w-auto h-10 pointer-events-none"
-            />
-          </div>
-          <h2 className="flex w-full items-start justify-start text-lg text-black dark:text-white font-semibold pl-12 leading-tight py-2 transition duration-300 ease-in-out">{props.name}</h2>
-        </div>
-        <hr className="border-none h-0.5 bg-black" />
-        <div className="p-2">
-          <h2 className="text-blue-500">{props.comment}</h2>
-        </div>
-      </div >
-    )
-  )
+    </div>
+  );
 }
