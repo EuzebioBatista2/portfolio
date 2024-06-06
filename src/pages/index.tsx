@@ -256,24 +256,24 @@ export default function Home() {
                     Projeto realizado com o intuito de auxiliar pequenos donos de comercio com o gerenciamento de suas vendas.
                   </h2>
                 </div>
-                <hr className="border-none h-0.5 bg-black dark:bg-white" />
+                <hr className="border-none h-[0.3px] bg-black dark:bg-white" />
                 <div className="flex h-[60px] items-center justify-center py-2 gap-4">
                   <Link
-                    className="flex flex-row gap-2 px-8 py-2 bg-orange-400 text-white rounded-md border border-white hover:bg-orange-500 transition duration-500 ease-in-out"
+                    className="flex flex-row gap-2 px-8 py-2 bg-gray-400 dark:bg-gray-900 rounded-md border border-black dark:border-white hover:bg-orange-600 dark:hover:bg-orange-600 transition duration-500 ease-in-out"
                     href={'https://github.com/EuzebioBatista2/car_control'}
                     onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} target="_blank"
                   >
-                    <p>GitHub</p>
-                    <i className="h=6 w-6 fill-white">{IconGitHubNeutrall}</i>
+                    <p className="text-black dark:text-white">GitHub</p>
+                    <i className="h=6 w-6 fill-black dark:fill-white">{IconGitHubNeutrall}</i>
                   </Link>
 
                   <Link
-                    className="flex flex-row gap-2 px-8 py-2 bg-blue-400 text-white rounded-md border border-white hover:bg-blue-500 transition duration-500 ease-in-out"
+                    className="flex flex-row gap-2 px-8 py-2 bg-gray-400 dark:bg-gray-900 rounded-md border border-black dark:border-white hover:bg-blue-500 dark:hover:bg-blue-500 transition duration-500 ease-in-out"
                     href={'https://carcontrol.great-site.net'}
                     onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} target="_blank"
                   >
-                    <p>Site</p>
-                    <i className="h=6 w-6 fill-white">{IconWeb}</i>
+                    <p className="text-black dark:text-white">Site</p>
+                    <i className="h=6 w-6 fill-black dark:fill-white">{IconWeb}</i>
                   </Link>
                 </div>
               </div>

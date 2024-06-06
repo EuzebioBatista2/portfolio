@@ -32,32 +32,32 @@ export default function OthersProjects(props: IOthersProjects) {
       <div className="flex flex-row items-center justify-center py-2 gap-2 md:gap-4">
         {props.github && (
           <Link
-            className="flex flex-row gap-2 px-4 md:px-6 items-center justify-center py-1 bg-orange-400 text-white rounded-md border border-white hover:bg-orange-500 transition duration-500 ease-in-out"
+            className="flex flex-row gap-2 px-4 md:px-6 items-center justify-center py-1 bg-gray-400 dark:bg-gray-900 rounded-md border border-black dark:border-white hover:bg-orange-600 dark:hover:bg-orange-600 transition duration-500 ease-in-out"
             href={props.github}
             target="_blank"
           >
-            <p>GitHub</p>
-            <i className="h=6 w-6 fill-white">{IconGitHubNeutrall}</i>
+            <p className="text-black dark:text-white">GitHub</p>
+            <i className="h=6 w-6 fill-black dark:fill-white">{IconGitHubNeutrall}</i>
           </Link>
         )}
         {props.youtube && (
           <Link
-            className="flex flex-row gap-2 items-center justify-center px-4 md:px-6  py-1 bg-red-400 text-white rounded-md border border-white hover:bg-red-500 transition duration-500 ease-in-out"
+            className="flex flex-row gap-2 items-center justify-center px-4 md:px-6  py-1 bg-gray-400 dark:bg-gray-900 rounded-md border border-black dark:border-white hover:bg-red-500 dark:hover:bg-red-500 transition duration-500 ease-in-out"
             href={props.youtube}
             target="_blank"
           >
-            <p>Youtube</p>
-            <i className="h=6 w-6">{IconYoutube}</i>
+            <p className="text-black dark:text-white">Youtube</p>
+            <i className="h=6 w-6 fill-black dark:fill-white">{IconYoutube}</i>
           </Link>
         )}
         {props.site && (
           <Link
-            className="flex flex-row items-center justify-center gap-2 px-4 md:px-6 py-1 bg-blue-400 text-white rounded-md border border-white hover:bg-blue-500 transition duration-500 ease-in-out"
+            className="flex flex-row items-center justify-center gap-2 px-4 md:px-6 py-1 bg-gray-400 dark:bg-gray-900 rounded-md border border-black dark:border-white hover:bg-blue-500 dark:hover:bg-blue-500 transition duration-500 ease-in-out"
             href={props.site}
             target="_blank"
           >
-            <p>Site</p>
-            <i className="h=6 w-6">{IconWeb}</i>
+            <p className="text-black dark:text-white">Site</p>
+            <i className="h=6 w-6 fill-black dark:fill-white">{IconWeb}</i>
           </Link>
         )}
       </div>

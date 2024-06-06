@@ -20,6 +20,8 @@ O projeto tem como intuito de servir de base para compartilhar meus projetos e a
 
 # Historio de atualizações:
 
+* 4.3.2
+    * 📝 Update project design.
 * 4.3.1
     * 📝 Update project design.
 * 4.3.0
