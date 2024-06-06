@@ -125,7 +125,7 @@ export default function Skills() {
               className="flex w-full h-auto relative -left-2 md:-left-6 bg-transparent"
             />
           </div>
-          <div className="flex flex-col h-[300px] min-h-[300px] w-[98%] md:w-full ml-1 mr-2 md:ml-2 md:mr-8 mt-2 md:mt-6 rounded-md bg-gray-300 dark:bg-gray-700 border-1 border-gray-400 dark:border-gray-900 overflow-hidden z-10" style={{ boxShadow: '-2px 4px 18px 0px rgba(0,0,0,0.75)' }}>
+          <div className="flex flex-col h-[300px] min-h-[300px] w-[98%] md:w-full ml-[1%] mr-[1%] md:ml-2 md:mr-8 mt-2 md:mt-6 rounded-md bg-gray-300 dark:bg-gray-700 border-1 border-gray-400 dark:border-gray-900 overflow-hidden z-10" style={{ boxShadow: '-2px 4px 18px 0px rgba(0,0,0,0.75)' }}>
             <div className="h-full w-full">
               <div className={`flex w-full h-full items-center justify-end text-center transition-transform duration-500 transform translate-x-${carrocelMainIcons * 100}`}>
                 {/* Lista a descrição de cada ícone */}

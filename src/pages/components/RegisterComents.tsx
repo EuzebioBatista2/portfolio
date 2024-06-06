@@ -40,7 +40,7 @@ export default function RegisterComents() {
           width={160}
           height={140}
           priority={true}
-          className="h-auto w-auto z-10"
+          className="w-auto h-[150px] z-10 object-cover"
         />
       </div>
       <form 

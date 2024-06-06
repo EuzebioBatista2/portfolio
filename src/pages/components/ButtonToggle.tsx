@@ -11,7 +11,7 @@ export default function ButtonToggle() {
       <span className={`w-full border-2 z-20 border-yellow-600 dark:border-gray-700 ${activateToggleButton ? 'scale-0' : ''} transtion duration-500 ease-in-out`}></span>
       <span className={`w-full border-2 z-20 ${activateToggleButton ? '-rotate-45 -translate-y-1.5 border-red-600 bg-red-600 dark:border-red-400 dark:bg-red-400' : 'border-yellow-600 dark:border-gray-700 '} transtion duration-500 ease-in-out`}></span>
       <div
-        className={`flex items-center flex-col gap-4 h-screen min-h-[550px] absolute text-lg text-black dark:text-white font-semibold pt-12 bg-gray-200 dark:bg-gray-700 bg-opacity-80 dark:bg-opacity-80 top-12 overflow-hidden left-0 z-10 ${activateToggleButton ? 'w-4/5' : 'w-0'} transtion duration-500 ease-in-out`}
+        className={`flex items-center flex-col gap-4 h-screen min-h-[550px] absolute text-lg text-black dark:text-white font-semibold pt-12 bg-gray-200 dark:bg-gray-700 top-[46px] bg-opacity-95 dark:bg-opacity-95 overflow-hidden left-0 z-[9px] ${activateToggleButton ? 'w-4/5' : 'w-0'} transtion duration-500 ease-in-out`}
       >
         <NavDesktop href="home" name="Página Inicial" />
         <NavDesktop href="aboutMe" name="Sobre mim" />

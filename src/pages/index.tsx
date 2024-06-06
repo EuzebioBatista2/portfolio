@@ -7,7 +7,7 @@ import ButtonDown from "./components/ButtonDown";
 import ContentAboutMe from "./components/ContentAboutMe";
 import CardExperience from "./components/CardExperience";
 import Button from "./components/Button";
-import { IconBook, IconBootStrap, IconComments, IconCss, IconFireBase, IconGitHubNeutrall, IconHeart, IconHtml, IconJquery, IconJs, IconLaravel, IconLinkedin, IconMySql, IconNextJs, IconPhp, IconPost, IconPostgres, IconProjects, IconReact, IconTS, IconTail, IconVueJs } from "../../public/icons";
+import { IconBook, IconBootStrap, IconComments, IconCss, IconFireBase, IconGitHubNeutrall, IconHeart, IconHtml, IconJquery, IconJs, IconLaravel, IconLinkedin, IconMySql, IconNextJs, IconPhp, IconPost, IconPostgres, IconProjects, IconReact, IconTS, IconTail, IconVueJs, IconWeb } from "../../public/icons";
 import Skills from "./template/Skills";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -29,7 +29,7 @@ import CardComment from "./components/CardComment";
 export default function Home() {
   const [hover, setHover] = useState(false);
   const [comments, setComments] = useState<any[]>([]);
-  const [ amountOfItems, setAumountOfItems ] = useState<number>(4);
+  const [amountOfItems, setAumountOfItems] = useState<number>(4);
   const { darkTheme, setTheme } = useDarkThemeReducer();
 
   useEffect(() => {
@@ -49,18 +49,18 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    function heandleResize () {
+    function heandleResize() {
       if (window.innerWidth < 768) {
         setAumountOfItems(1);
-      } else if(window.innerWidth < 1150) {
-          setAumountOfItems(2);
-      } else if(window.innerWidth < 1280) {
+      } else if (window.innerWidth < 1150) {
+        setAumountOfItems(2);
+      } else if (window.innerWidth < 1280) {
         setAumountOfItems(3);
-      } else if(window.innerWidth >= 1280) {
+      } else if (window.innerWidth >= 1280) {
         setAumountOfItems(4)
       }
     }
-    
+
     heandleResize();
 
     window.addEventListener('resize', heandleResize);
@@ -226,7 +226,7 @@ export default function Home() {
         <div className="flex flex-col items-start md:flex-row md:gap-6 h-full w-full z-10 md:px-8">
           <div className="h-full w-full mb-2 px-1">
             <h2 className="text-2xl font-bold h-12 text-black dark:text-white">Destaque:</h2>
-            <Link href={'https://carcontrol.great-site.net'} className="flex flex-col w-full h-full border border-gray-700 dark:border-gray-300 rounded-md overflow-hidden z-10" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+            <div className="flex flex-col w-full h-full border border-gray-700 dark:border-gray-300 rounded-md overflow-hidden z-10" style={{ boxShadow: '-2px 4px 18px 0px rgba(0,0,0,0.75)' }}>
               <div className="flex items-center justify-center py-10 h-[300px] w-full bg-[url('/BackgroundProject.png')] bg-no-repeat bg-center bg-cover">
                 <Image
                   src={'/LogoProject.png'}
@@ -237,8 +237,8 @@ export default function Home() {
                   className={`w-2/4 h-auto ${hover ? 'scale-110 -rotate-12' : ''} transform duration-300 ease-in-out`}
                 />
               </div>
-              <div className={`h-full w-full px-1 bg-gray-300 dark:bg-gray-700 ${hover ? 'bg-white dark:bg-gray-800' : ''} transform duration-300 ease-in-out`}>
-                <div className="flex w-full h-full justify-between items-center py-1">
+              <div className={`h-full w-full px-1 bg-gray-300 dark:bg-gray-700 transform duration-300 ease-in-out`}>
+                <div className="flex w-full h-[40px] justify-between items-center py-1">
                   <h2 className="text-lg font-semibold text-black dark:text-white pl-1">Car control</h2>
                   <div className="flex gap-1">
                     <i className="flex h-6 w-6">{IconLaravel(true)}</i>
@@ -251,55 +251,72 @@ export default function Home() {
                 <div>
                 </div>
                 <hr className="border-none h-0.5 bg-black dark:bg-white" />
-                <div className="py-2">
+                <div className="flex items-center py-2 md:h-[70px]">
                   <h2 className="text-gray-600 dark:text-gray-200 px-2">
                     Projeto realizado com o intuito de auxiliar pequenos donos de comercio com o gerenciamento de suas vendas.
                   </h2>
                 </div>
+                <hr className="border-none h-0.5 bg-black dark:bg-white" />
+                <div className="flex h-[60px] items-center justify-center py-2 gap-4">
+                  <Link
+                    className="flex flex-row gap-2 px-8 py-2 bg-orange-400 text-white rounded-md border border-white hover:bg-orange-500 transition duration-500 ease-in-out"
+                    href={'https://github.com/EuzebioBatista2/car_control'}
+                    onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} target="_blank"
+                  >
+                    <p>GitHub</p>
+                    <i className="h=6 w-6 fill-white">{IconGitHubNeutrall}</i>
+                  </Link>
+
+                  <Link
+                    className="flex flex-row gap-2 px-8 py-2 bg-blue-400 text-white rounded-md border border-white hover:bg-blue-500 transition duration-500 ease-in-out"
+                    href={'https://carcontrol.great-site.net'}
+                    onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} target="_blank"
+                  >
+                    <p>Site</p>
+                    <i className="h=6 w-6 fill-white">{IconWeb}</i>
+                  </Link>
+                </div>
               </div>
-            </Link>
+            </div>
           </div>
           <div className="h-full w-full mb-2">
             <h2 className="text-lg font-semibold pt-2 h-12 text-black dark:text-white">Outros projetos:</h2>
-            <div className="flex flex-col w-full gap-2 overflow-y-auto overflow-x-hidden h-[400px] pl-1 pr-2">
-              <Link href={'https://vueflappybird.great-site.net'}>
-                <OthersProjects
-                  title="FlappyBird"
-                  description="Projeto criado para representar um flappybird, usando as linguagens de programação como representantes do game."
-                  icons={[IconPhp(true), IconLaravel(true), IconVueJs(true), IconBootStrap(true), IconMySql(true)]}
-                />
-              </Link>
-              <Link href={'https://my-commerce-euzebiobatista2.vercel.app'}>
-                <OthersProjects
-                  title="My Commerce"
-                  description="Projeto realizado com o intuito de auxiliar pequenos donos de comercio com o gerenciamento de suas vendas."
-                  icons={[IconReact(true), IconTS(true), IconTail(true), IconFireBase(true)]}
-                />
-              </Link>
-              <Link href={'/pagePHP'}>
-                <OthersProjects
-                  title="Pagina Web PHP"
-                  description="Projeto para representar uma página de login e sessão de login, com cadastro e esqueci minha senha."
-                  icons={[IconHtml(true), IconCss(true), IconPhp(true), IconMySql(true), IconJs(true)]}
-                />
-              </Link>
-              <Link href={'https://calculadora-react-ar8q.vercel.app/'}>
-                <OthersProjects
-                  title="Calculadora React"
-                  description="Calculadora desenvolvida com a funcionalidade de auxiliar e permitir apenas equações validas."
-                  icons={[IconReact(true), IconJs(true), IconHtml(true), IconCss(true)]}
-                />
-              </Link>
-              <Link href={'/pageCrud'}>
-                <OthersProjects
-                  title="Página CRUD"
-                  description="Pagina CRUD usando os métodos GET, POST, PUT e DELETE usando o XMLHttprequest."
-                  icons={[IconHtml(true), IconCss(true), IconBootStrap(true), IconJquery(true), IconJs(true)]}
-                />
-              </Link>
-              {/* <div className="flex items-center justify-center w-full">
-                <Button name="Mais projetos" color="blue" link="https://github.com/EuzebioBatista2" />
-              </div> */}
+            <div className="flex flex-col w-full gap-2 overflow-y-auto overflow-x-hidden h-[474px] pl-1 pr-2 pb-[0.1px]">
+              <OthersProjects
+                title="FlappyBird"
+                description="Projeto criado para representar um flappybird, usando as linguagens de programação como representantes do game."
+                icons={[IconPhp(true), IconLaravel(true), IconVueJs(true), IconBootStrap(true), IconMySql(true)]}
+                github="https://github.com/EuzebioBatista2/flappybird-program-languages"
+                site="https://vueflappybird.great-site.net"
+              />
+              <OthersProjects
+                title="My Commerce"
+                description="Projeto realizado com o intuito de auxiliar pequenos donos de comercio com o gerenciamento de suas vendas."
+                icons={[IconReact(true), IconTS(true), IconTail(true), IconFireBase(true)]}
+                github="https://vueflappybird.great-site.net"
+                site="https://my-commerce-euzebiobatista2.vercel.app"
+              />
+              <OthersProjects
+                title="Pagina Web PHP"
+                description="Projeto para representar uma página de login e sessão de login, com cadastro e esqueci minha senha."
+                icons={[IconHtml(true), IconCss(true), IconPhp(true), IconMySql(true), IconJs(true)]}
+                github="https://github.com/EuzebioBatista2/ProjetoPaginaWeb"
+                youtube="/pagePHP"
+              />
+              <OthersProjects
+                title="Calculadora React"
+                description="Calculadora desenvolvida com a funcionalidade de auxiliar e permitir apenas equações validas."
+                icons={[IconReact(true), IconJs(true), IconHtml(true), IconCss(true)]}
+                github="https://github.com/EuzebioBatista2/CalculadoraReact"
+                site="https://calculadora-react-ar8q.vercel.app"
+              />
+              <OthersProjects
+                title="Página CRUD"
+                description="Pagina CRUD usando os métodos GET, POST, PUT e DELETE usando o XMLHttprequest."
+                icons={[IconHtml(true), IconCss(true), IconBootStrap(true), IconJquery(true), IconJs(true)]}
+                github="https://github.com/EuzebioBatista2/ProjetoPaginaWeb"
+                youtube="/pageCrud"
+              />
             </div>
           </div>
         </div>
