@@ -257,9 +257,9 @@ export default function Home() {
                   </h2>
                 </div>
                 <hr className="border-none h-[0.3px] bg-black dark:bg-white" />
-                <div className="flex h-[60px] items-center justify-center py-2 gap-4">
+                <div className="flex h-[60px] items-center justify-center py-2 gap-2 md:gap-4">
                   <Link
-                    className="flex flex-row gap-2 px-8 py-2 bg-gray-400 dark:bg-gray-900 rounded-md border border-black dark:border-white hover:bg-orange-600 dark:hover:bg-orange-600 transition duration-500 ease-in-out"
+                    className="flex flex-row gap-2 px-6 md:px-8  py-2 bg-gray-400 dark:bg-gray-900 rounded-md border border-black dark:border-white hover:bg-orange-600 dark:hover:bg-orange-600 transition duration-500 ease-in-out"
                     href={'https://github.com/EuzebioBatista2/car_control'}
                     onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} target="_blank"
                   >
@@ -268,7 +268,7 @@ export default function Home() {
                   </Link>
 
                   <Link
-                    className="flex flex-row gap-2 px-8 py-2 bg-gray-400 dark:bg-gray-900 rounded-md border border-black dark:border-white hover:bg-blue-500 dark:hover:bg-blue-500 transition duration-500 ease-in-out"
+                    className="flex flex-row gap-2 px-6 md:px-8 py-2 bg-gray-400 dark:bg-gray-900 rounded-md border border-black dark:border-white hover:bg-blue-500 dark:hover:bg-blue-500 transition duration-500 ease-in-out"
                     href={'https://carcontrol.great-site.net'}
                     onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} target="_blank"
                   >
