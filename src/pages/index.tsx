@@ -102,7 +102,7 @@ export default function Home() {
         <title>Portfolio EuzebioDev</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <header className="h-screen min-h-[550px] bg-[url('/backgroundHeader.png')] bg-no-repeat bg-center bg-cover  bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out" id="home">
+      <header className="h-screen min-h-[550px] bg-[url('/backgroundHeader.png')] bg-no-repeat bg-center bg-cover bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out" id="home">
         {/* Conteúdo da página inicial */}
         <Navigation />
         <div className="flex flex-col h-full w-full items-center justify-center relative">
@@ -127,7 +127,7 @@ export default function Home() {
         </div>
         {/* Fim conteúdo da página inicial */}
       </header>
-      <section className="flex flex-col md:flex-row items-center justify-center pt-20 pb-20 md:pt-12 md:pb-16 h-full bg-[url('/backgroundAboutMe.png')] bg-no-repeat bg-[length:100%_100%] bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out" id="aboutMe">
+      <section className="flex flex-col md:flex-row items-center justify-center pt-20 pb-20 md:pt-12 md:pb-16 h-full bg-[url('/backgroundAboutMe.png')] bg-no-repeat bg-[length:600px_100%] md:bg-[length:100vw_100%] bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out" id="aboutMe">
         {/* Conteúdo sobre min */}
         <div className="h-full w-full">
           <motion.div ref={ref1} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView1 ? 1 : 0, x: inView1 ? 0 : -50 }} transition={{ duration: 0.5 }}>

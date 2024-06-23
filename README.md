@@ -20,6 +20,8 @@ O projeto tem como intuito de servir de base para compartilhar meus projetos e a
 
 # Historio de atualizações:
 
+* 4.3.4
+    * 📝 Update aboutMe background.
 * 4.3.3
     * 📝 Update px-8 -> px-6.
 * 4.3.2
