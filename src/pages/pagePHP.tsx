@@ -27,7 +27,7 @@ export default function PagePHP() {
     <main className={`${darkTheme ? 'dark' : ''} flex flex-col overflow-hidden h-screen min-h-[650px] w-full`}>
       <Head>
         <title>Portfolio EuzebioDev</title>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href="/favicon.webp" />
       </Head>
       {/* Conteúdo da página de navegação */}
       <LayoutNavigation>
@@ -43,7 +43,7 @@ export default function PagePHP() {
       </LayoutNavigation>
       <div className="flex flex-col items-center justify-center  md:flex-row gap-2 bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out w-full h-full px-2 relative">
         <Image
-          src={'/points.png'}
+          src={'/points.webp'}
           height={130}
           width={130}
           alt="Vários pontinhos formando um circulo"
@@ -51,7 +51,7 @@ export default function PagePHP() {
           className={`absolute z-0 w-2/3 md:w-1/2 h-auto p-2 -top-[20%] md:-top-1/4 -left-1/4 opacity-20`}
         />
         <Image
-          src={'/points.png'}
+          src={'/points.webp'}
           height={130}
           width={130}
           alt="Vários pontinhos formando um circulo"
@@ -59,7 +59,7 @@ export default function PagePHP() {
           className={`absolute z-0 w-2/3 md:w-1/2 h-auto p-2 -bottom-[20%] md:-bottom-1/4 -right-1/4 opacity-20`}
         />
         <Image
-          src={'/favicon.png'}
+          src={'/favicon.webp'}
           height={130}
           width={130}
           alt="Logo com um desenho de um notebook no centro"

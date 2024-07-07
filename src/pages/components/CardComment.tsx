@@ -16,7 +16,7 @@ export default function CardComment(props: ICardComment) {
       <div className="w-[260px]">
         <Image
           src={`${props.file}`}
-          alt="Balão de fala"
+          alt="profile photo"
           width={250}
           height={250}
           priority={true}

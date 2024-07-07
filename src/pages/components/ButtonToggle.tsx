@@ -20,7 +20,7 @@ export default function ButtonToggle() {
         <NavDesktop href="projects" name="Projetos" />
         <NavDesktop href="comments" name="Comentários" />
         <Image
-          src={'/favicon.png'}
+          src={'/favicon.webp'}
           height={50}
           width={50}
           alt="Logo com um desenho de um notebook no centro"

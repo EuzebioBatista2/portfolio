@@ -7,7 +7,7 @@ import ButtonDown from "./components/ButtonDown";
 import ContentAboutMe from "./components/ContentAboutMe";
 import CardExperience from "./components/CardExperience";
 import Button from "./components/Button";
-import { IconBook, IconBootStrap, IconComments, IconCss, IconFireBase, IconGitHubNeutrall, IconHeart, IconHtml, IconJquery, IconJs, IconLaravel, IconLinkedin, IconMySql, IconNextJs, IconPhp, IconPost, IconPostgres, IconProjects, IconReact, IconTS, IconTail, IconVueJs, IconWeb } from "../../public/icons";
+import { IconBook, IconBootStrap, IconComments, IconCss, IconFireBase, IconGitHubNeutrall, IconHeart, IconHtml, IconJquery, IconJs, IconLaravel, IconLinkedin, IconMongoDB, IconMySql, IconNextJs, IconNodeJs, IconPhp, IconPost, IconPostgres, IconProjects, IconReact, IconStyledComponents, IconTS, IconTail, IconVueJs, IconWeb } from "../../public/icons";
 import Skills from "./template/Skills";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -100,14 +100,14 @@ export default function Home() {
     <main className={`${darkTheme ? 'dark' : ''} overflow-hidden`}>
       <Head>
         <title>Portfolio EuzebioDev</title>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href="/favicon.webp" />
       </Head>
-      <header className="h-screen min-h-[550px] bg-[url('/backgroundHeader.png')] bg-no-repeat bg-center bg-cover bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out" id="home">
+      <header className="h-screen min-h-[550px] bg-[url('/backgroundHeader.webp')] bg-no-repeat bg-center bg-cover bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out" id="home">
         {/* Conteúdo da página inicial */}
         <Navigation />
         <div className="flex flex-col h-full w-full items-center justify-center relative">
           <Image
-            src={'/Profile.png'}
+            src={'/Profile.webp'}
             height={130}
             width={130}
             alt="Foto de perfil com filtro de desenho"
@@ -127,12 +127,12 @@ export default function Home() {
         </div>
         {/* Fim conteúdo da página inicial */}
       </header>
-      <section className="flex flex-col md:flex-row items-center justify-center pt-20 pb-20 md:pt-12 md:pb-16 h-full bg-[url('/backgroundAboutMe.png')] bg-no-repeat bg-[length:600px_100%] md:bg-[length:100vw_100%] bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out" id="aboutMe">
+      <section className="flex flex-col md:flex-row items-center justify-center pt-20 pb-20 md:pt-12 md:pb-16 h-full bg-[url('/backgroundAboutMe.webp')] bg-no-repeat bg-[length:600px_100%] md:bg-[length:100vw_100%] bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out" id="aboutMe">
         {/* Conteúdo sobre min */}
         <div className="h-full w-full">
           <motion.div ref={ref1} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView1 ? 1 : 0, x: inView1 ? 0 : -50 }} transition={{ duration: 0.5 }}>
             <Image
-              src={'/aboutme.png'}
+              src={'/aboutme.webp'}
               height={1000}
               width={1000}
               alt="Desenho com um rapaz e vários objetos em sua volta"
@@ -208,7 +208,7 @@ export default function Home() {
         {/* Conteúdo dos projetos */}
         <div className="flex items-center justify-center mt-12 mb-4 relative">
           <Image
-            src={'/reactBackground.png'}
+            src={'/reactBackground.webp'}
             height={150}
             width={150}
             alt="Icone do react cortado ao meio"
@@ -227,9 +227,9 @@ export default function Home() {
           <div className="h-full w-full mb-2 px-1">
             <h2 className="text-2xl font-bold h-12 text-black dark:text-white">Destaque:</h2>
             <div className="flex flex-col w-full h-full border border-gray-700 dark:border-gray-300 rounded-md overflow-hidden z-10" style={{ boxShadow: '-2px 4px 18px 0px rgba(0,0,0,0.75)' }}>
-              <div className="flex items-center justify-center py-10 h-[300px] w-full bg-[url('/BackgroundProject.png')] bg-no-repeat bg-center bg-cover">
+              <div className="flex items-center justify-center py-10 h-[300px] w-full bg-[url('/BackgroundProject.webp')] bg-no-repeat bg-center bg-cover">
                 <Image
-                  src={'/LogoProject.png'}
+                  src={'/LogoProject.webp'}
                   height={130}
                   width={130}
                   alt="Logo de um caro vermelho com preto"
@@ -241,11 +241,10 @@ export default function Home() {
                 <div className="flex w-full h-[40px] justify-between items-center py-1">
                   <h2 className="text-lg font-semibold text-black dark:text-white pl-1">Car control</h2>
                   <div className="flex gap-1">
-                    <i className="flex h-6 w-6">{IconLaravel(true)}</i>
-                    <i className="flex h-6 w-6">{IconVueJs(true)}</i>
-                    <i className="flex h-6 w-6">{IconBootStrap(true)}</i>
-                    <i className="flex h-6 w-6">{IconPostgres(true)}</i>
-                    <i className="flex h-6 w-6">{IconJquery(true)}</i>
+                    <i className="flex h-6 w-6">{IconReact(true)}</i>
+                    <i className="flex h-6 w-6">{IconStyledComponents(true)}</i>
+                    <i className="flex h-6 w-6">{IconNodeJs(true)}</i>
+                    <i className="flex h-6 w-6">{IconMongoDB(true)}</i>
                   </div>
                 </div>
                 <div>
@@ -253,14 +252,14 @@ export default function Home() {
                 <hr className="border-none h-0.5 bg-black dark:bg-white" />
                 <div className="flex items-center py-2 md:h-[70px]">
                   <h2 className="text-gray-600 dark:text-gray-200 px-2">
-                    Projeto realizado com o intuito de auxiliar pequenos donos de comercio com o gerenciamento de suas vendas.
+                    Projeto criado com o objetivo de escrever anotações das mais diversas formas, permitindo também o acesso através de diferentes aparelhos.
                   </h2>
                 </div>
                 <hr className="border-none h-[0.3px] bg-black dark:bg-white" />
                 <div className="flex h-[60px] items-center justify-center py-2 gap-2 md:gap-4">
                   <Link
                     className="flex flex-row gap-2 px-6 md:px-8  py-2 bg-gray-400 dark:bg-gray-900 rounded-md border border-black dark:border-white hover:bg-orange-600 dark:hover:bg-orange-600 transition duration-500 ease-in-out"
-                    href={'https://github.com/EuzebioBatista2/car_control'}
+                    href={'https://github.com/EuzebioBatista2/DevNotes'}
                     onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} target="_blank"
                   >
                     <p className="text-black dark:text-white">GitHub</p>
@@ -269,7 +268,7 @@ export default function Home() {
 
                   <Link
                     className="flex flex-row gap-2 px-6 md:px-8 py-2 bg-gray-400 dark:bg-gray-900 rounded-md border border-black dark:border-white hover:bg-blue-500 dark:hover:bg-blue-500 transition duration-500 ease-in-out"
-                    href={'https://carcontrol.great-site.net'}
+                    href={'https://my-dev-notes.vercel.app'}
                     onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} target="_blank"
                   >
                     <p className="text-black dark:text-white">Site</p>
@@ -282,6 +281,13 @@ export default function Home() {
           <div className="h-full w-full mb-2">
             <h2 className="text-lg font-semibold pt-2 h-12 text-black dark:text-white">Outros projetos:</h2>
             <div className="flex flex-col w-full gap-2 overflow-y-auto overflow-x-hidden h-[474px] pl-1 pr-2 pb-[0.1px]">
+              <OthersProjects
+                title="Car control"
+                description="Projeto criado para fornecer um controle abrangente sobre os veículos, oferecendo funcionalidades para cadastrar clientes, veículos e revisões."
+                icons={[IconLaravel(true), IconVueJs(true), IconBootStrap(true), IconPostgres(true), IconJquery(true)]}
+                github="https://github.com/EuzebioBatista2/car_control"
+                site="https://carcontrol.great-site.net"
+              />
               <OthersProjects
                 title="FlappyBird"
                 description="Projeto criado para representar um flappybird, usando as linguagens de programação como representantes do game."
@@ -322,7 +328,7 @@ export default function Home() {
         </div>
         {/* Fim conteúdo dos projetos */}
       </section>
-      <section className="flex flex-col justify-center items-center h-full bg-[url('/backgroundHeader.png')] bg-no-repeat bg-center bg-cover bg-fixed bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out" id="comments">
+      <section className="flex flex-col justify-center items-center h-full bg-[url('/backgroundHeader.webp')] bg-no-repeat bg-center bg-cover bg-fixed bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out" id="comments">
         {/* Conteúdo dos comentários */}
         <div className="flex items-center justify-center w-full pb-4 pt-12 relative bg-gray-200 dark:bg-gray-800 text-black dark:text-white gap-2 transition duration-500 ease-in-out">
           <i>{IconComments}</i>
@@ -334,7 +340,7 @@ export default function Home() {
         <div className="flex flex-col w-full h-full items-start justify-center">
           <div className="flex flex-col w-full h-full bg-gray-200 dark:bg-gray-800 transform duration-500 ease-in-out overflow-hidden relative">
             <Image
-              src={'/db.png'}
+              src={'/db.webp'}
               height={1000}
               width={1000}
               alt="Icone de um banco de dados cortado ao meio"
@@ -346,7 +352,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <section className="flex flex-col h-[650px] w-full overflow-hidden justify-center items-center px-10 bg-[url('/backgroundComments.png')] bg-no-repeat bg-center bg-[length:1200px_650px] md:bg-[length:100vw_650px] bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out">
+        <section className="flex flex-col h-[650px] w-full overflow-hidden justify-center items-center px-10 bg-[url('/backgroundComments.webp')] bg-no-repeat bg-center bg-[length:1200px_650px] md:bg-[length:100vw_650px] bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out">
           <div className="w-full h-full">
             <Swiper
               modules={[SwiperNavigation, Pagination, Scrollbar, A11y]}
@@ -359,7 +365,7 @@ export default function Home() {
                   <CardComment
                     name={comment.data().name}
                     comment={comment.data().comment}
-                    file={comment.data().file ? comment.data().file : '/userUnknown.jpg'}
+                    file={comment.data().file ? comment.data().file : '/userUnknown.webp'}
                   />
                 </SwiperSlide>
               ))}

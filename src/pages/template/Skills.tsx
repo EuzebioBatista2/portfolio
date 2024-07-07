@@ -78,7 +78,7 @@ export default function Skills() {
       <div className="flex flex-col items-center relative w-full h-full min-h-[540px]">
         <div className="flex items-center justify-center relative w-full">
           <Image
-            src={'/htmlTag.png'}
+            src={'/htmlTag.webp'}
             height={150}
             width={150}
             alt="Imagem de um tag html cortado ao meio"
@@ -107,7 +107,7 @@ export default function Skills() {
                   {items.map((item, index) => {
                     return (
                       <div key={index} className="flex self-center justify-center w-full flex-shrink-0">
-                        <div className={`flex items-center justify-center relative p-8 mt-2 h-40 w-40 md:h-60 md:w-60 rounded-full bg-[url('/ball1.png')] bg-no-repeat bg-center bg-cover animate-bounce-verySlow`}>
+                        <div className={`flex items-center justify-center relative p-8 mt-2 h-40 w-40 md:h-60 md:w-60 rounded-full bg-[url('/ball.webp')] bg-no-repeat bg-center bg-cover animate-bounce-verySlow`}>
                           <i className="flex items-center justify-center absolute h-32 w-32 md:h-52 md:w-52 opacity-70">{item.icon(true)}</i>
                         </div>
                       </div>
@@ -117,7 +117,7 @@ export default function Skills() {
               </div>
             </div>
             <Image
-              src={'/handTec.png'}
+              src={'/handTec.webp'}
               height={1000}
               width={1000}
               alt="Uma mão robotica branca"

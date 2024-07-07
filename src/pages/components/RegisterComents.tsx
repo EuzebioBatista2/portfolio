@@ -24,7 +24,7 @@ export default function RegisterComents() {
           setPreviewImage(reader.result)
         };
       } else {
-        setPreviewImage('/userUnknown.jpg')
+        setPreviewImage('/userUnknown.webp')
         setImage('')
       }
     }
@@ -35,7 +35,7 @@ export default function RegisterComents() {
     <div className="flex flex-col items-center justify-center w-full h-full px-4">
       <div className="flex items-center justify-center h-32 w-32 rounded-full overflow-hidden border border-gray-300 bg-white">
         <Image
-          src={previewImage ? previewImage : '/userUnknown.jpg'}
+          src={previewImage ? previewImage : '/userUnknown.webp'}
           alt="FotoDePerfil"
           width={160}
           height={140}
