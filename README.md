@@ -20,6 +20,8 @@ O projeto tem como intuito de servir de base para compartilhar meus projetos e a
 
 # Historio de atualizações:
 
+- 4.4.4
+  - 📝 Main title updated.
 - 4.4.3
   - 📸 Updated type of photo(.png -> .webp).
   - 📝 Added new project(DevNotes).

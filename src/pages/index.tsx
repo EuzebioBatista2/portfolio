@@ -232,14 +232,14 @@ export default function Home() {
                   src={'/LogoProject.webp'}
                   height={130}
                   width={130}
-                  alt="Logo de um caro vermelho com preto"
+                  alt="Logo de uma pasta amarela"
                   priority={true}
                   className={`w-2/4 h-auto ${hover ? 'scale-110 -rotate-12' : ''} transform duration-300 ease-in-out`}
                 />
               </div>
               <div className={`h-full w-full px-1 bg-gray-300 dark:bg-gray-700 transform duration-300 ease-in-out`}>
                 <div className="flex w-full h-[40px] justify-between items-center py-1">
-                  <h2 className="text-lg font-semibold text-black dark:text-white pl-1">Car control</h2>
+                  <h2 className="text-lg font-semibold text-black dark:text-white pl-1">DevNotes</h2>
                   <div className="flex gap-1">
                     <i className="flex h-6 w-6">{IconReact(true)}</i>
                     <i className="flex h-6 w-6">{IconStyledComponents(true)}</i>
