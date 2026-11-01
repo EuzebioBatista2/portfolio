@@ -107,18 +107,57 @@ const skills = [
   "WooCommerce",
   "PHP",
   "Laravel",
-  "React",
+  "JavaScript",
   "TypeScript",
   "Node.js",
-  "JavaScript",
+  "React",
+  "React Native",
+  "Vue.js",
+  "Angular",
+  "Python",
+  "C#",
+  "jQuery",
   "MySQL",
   "PostgreSQL",
   "MongoDB",
+  "Firebase",
   "Git",
+  "Styled Components",
+  "Bootstrap",
+  "Figma",
+  "Photoshop",
+  "Canva",
   "AWS",
   "OpenClaw",
   "Hermes Agent",
 ];
+
+const siteUrl = "https://portfolio-euzebiobatista.vercel.app";
+const siteTitle = "Euzebio Batista | Desenvolvedor Full-Stack PHP e WordPress";
+const siteDescription =
+  "Desenvolvedor full-stack com foco em PHP e WordPress. Conheça projetos com Laravel, React, Node.js, Python e C#, além da minha experiência e habilidades.";
+
+const profileStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  url: siteUrl,
+  mainEntity: {
+    "@type": "Person",
+    "@id": `${siteUrl}/#euzebio-batista`,
+    name: "Euzebio Batista",
+    jobTitle: "Desenvolvedor Full-Stack",
+    description: siteDescription,
+    url: siteUrl,
+    image: `${siteUrl}/profile.jpeg`,
+    sameAs: [
+      "https://www.linkedin.com/in/euzebio-batista/",
+      "https://github.com/EuzebioBatista2",
+    ],
+    knowsAbout: skills,
+  },
+};
+
+const marqueeSkills = [skills.slice(0, 13), skills.slice(13)];
 
 export default function Home() {
   const [dark, setDark] = useState(false);
@@ -190,10 +229,25 @@ export default function Home() {
   return (
     <div className={`site${dark ? " site-dark" : ""}`} id="inicio">
       <Head>
-        <title>Euzebio Batista · Desenvolvedor Full-Stack</title>
-        <meta
-          name="description"
-          content="Portfólio de Euzebio Batista, desenvolvedor full-stack com experiência em WordPress, PHP, Laravel e React."
+        <title>{siteTitle}</title>
+        <meta name="description" content={siteDescription} />
+        <meta name="author" content="Euzebio Batista" />
+        <link rel="canonical" href={`${siteUrl}/`} />
+        <meta property="og:type" content="profile" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta property="og:site_name" content="Euzebio Batista" />
+        <meta property="og:title" content={siteTitle} />
+        <meta property="og:description" content={siteDescription} />
+        <meta property="og:url" content={`${siteUrl}/`} />
+        <meta property="og:image" content={`${siteUrl}/profile.jpeg`} />
+        <meta property="og:image:alt" content="Euzebio Batista, desenvolvedor full-stack" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={siteTitle} />
+        <meta name="twitter:description" content={siteDescription} />
+        <meta name="twitter:image" content={`${siteUrl}/profile.jpeg`} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(profileStructuredData).replace(/</g, "\\u003c") }}
         />
         <meta name="theme-color" content={dark ? "#152323" : "#f5f5ef"} />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -275,12 +329,18 @@ export default function Home() {
           </div>
         </section>
 
-        <div className="tech-strip" aria-label="Tecnologias principais" data-reveal>
-          <div className="container tech-strip-inner">
-            <strong>WordPress &amp; WooCommerce</strong><span>PHP · Laravel</span>
-            <span>React · TypeScript</span><span>APIs · Integrações</span>
-            <span>Aprendizado contínuo</span>
-          </div>
+        <div className="tech-tapes" aria-hidden="true">
+          {marqueeSkills.map((track, index) => (
+            <div className={`tech-tape ${index === 0 ? "tech-tape-green" : "tech-tape-orange"}`} key={index}>
+              <div className={`tech-tape__track${index === 1 ? " tech-tape__track--reverse" : ""}`}>
+                {[0, 1, 2, 3, 4].map((copy) => (
+                  <div className="tech-tape__group" key={copy}>
+                    {track.map((skill) => <span key={skill}>{skill}</span>)}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
 
         <section className="section container about-section" id="sobre" data-reveal>
@@ -290,9 +350,10 @@ export default function Home() {
           </div>
           <div className="about-copy">
             <p>
-              Sou desenvolvedor full-stack com experiência em <strong>WordPress e WooCommerce</strong>,
-              criação e manutenção de plugins, integrações e APIs. Também desenvolvo aplicações
-              com Laravel, React e Node.js.
+              Sou desenvolvedor full-stack, com atuação principal em <strong>PHP e WordPress</strong>.
+              Crio e mantenho plugins, integro APIs e trabalho na evolução de sites e aplicações.
+              Também desenvolvo projetos com Laravel, JavaScript, TypeScript, React, Vue.js,
+              Angular, Node.js, Python e C#.
             </p>
             <p>
               Gosto de entender o problema antes de escolher a ferramenta. No dia a dia,
@@ -300,8 +361,7 @@ export default function Home() {
               e fáceis de manter.
             </p>
             <p>
-              Também estudo serviços da <strong>AWS</strong> e exploro automação com agentes de IA,
-              incluindo <strong>OpenClaw</strong> e <strong>Hermes Agent</strong>.
+              Também estudo serviços da AWS e uso o Figma para criar e prototipar interfaces.
             </p>
             <div className="skill-list" aria-label="Tecnologias e competências">
               {skills.map((skill) => <span className="skill-tag" key={skill}>{skill}</span>)}
