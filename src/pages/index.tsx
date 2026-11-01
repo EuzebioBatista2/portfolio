@@ -1,399 +1,412 @@
-import Image from "next/image";
-import ReactTypingEffect from "react-typing-effect";
-import Navigation from "./template/Navigation";
-import { useDarkThemeReducer } from "@/store/reducers/darkThemeReducers/useDarkThemeReducer";
 import Head from "next/head";
-import ButtonDown from "./components/ButtonDown";
-import ContentAboutMe from "./components/ContentAboutMe";
-import CardExperience from "./components/CardExperience";
-import Button from "./components/Button";
-import { IconBook, IconBootStrap, IconComments, IconCss, IconFireBase, IconGitHubNeutrall, IconHeart, IconHtml, IconJquery, IconJs, IconLaravel, IconLinkedin, IconMongoDB, IconMySql, IconNextJs, IconNodeJs, IconPhp, IconPost, IconPostgres, IconProjects, IconReact, IconStyledComponents, IconTS, IconTail, IconVueJs, IconWeb } from "../../public/icons";
-import Skills from "./template/Skills";
-import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
-import OthersProjects from "./components/OthersProjects";
-import RegisterComents from "./components/RegisterComents";
-import { dbFirebase } from "../../backend/config";
-import { downloadCurriculo } from "@/content/downloadCurriculo";
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation as SwiperNavigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import ActionIcon from "./components/ActionIcon";
+import RegisterComments from "./components/RegisterComments";
 
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-import CardComment from "./components/CardComment";
+type Comment = {
+  id: string;
+  name: string;
+  comment: string;
+  avatar?: string;
+  createdAt?: string;
+};
+
+const projects = [
+  {
+    number: "01",
+    type: "Aplicação web",
+    title: "Car Control",
+    color: "sage",
+    description:
+      "Gestão de clientes, veículos e revisões com painel para acompanhar os dados.",
+    stack: "Laravel · Vue.js · PostgreSQL",
+    href: "https://carcontrol.great-site.net",
+  },
+  {
+    number: "02",
+    type: "Produtividade",
+    title: "DevNotes",
+    color: "blue",
+    description:
+      "Aplicação de anotações acessível em diferentes dispositivos, criada para organizar ideias e referências.",
+    stack: "React · Styled Components · Node.js",
+    href: "https://my-dev-notes.vercel.app",
+  },
+  {
+    number: "03",
+    type: "Gestão comercial",
+    title: "My Commerce",
+    color: "sand",
+    description:
+      "Ferramenta para apoiar pequenos comerciantes no controle de vendas.",
+    stack: "React · TypeScript",
+    href: "https://my-commerce-euzebiobatista2.vercel.app",
+  },
+  {
+    number: "04",
+    type: "Produtividade",
+    title: "Crono Todo List",
+    color: "lavender",
+    description:
+      "Lista de tarefas responsiva com cartões, histórico, recorrência e prazos para organizar projetos e atividades.",
+    stack: "JavaScript · CSS",
+    href: "https://crono-todo-list.vercel.app",
+  },
+  {
+    number: "05",
+    type: "Jogo web",
+    title: "Vue FlappyBird",
+    color: "peach",
+    description:
+      "Jogo inspirado em Flappy Bird com login, cadastro e ranking global de pontuações.",
+    stack: "PHP · Laravel · Vue.js",
+    href: "https://vueflappybird.great-site.net",
+  },
+  {
+    number: "06",
+    type: "Jogo web",
+    title: "Azura Tactics",
+    color: "mint",
+    description:
+      "RPG tático web em estilo 8-bit com batalhas por turnos, classes de personagens e partidas online.",
+    stack: "JavaScript · CSS · Multiplayer",
+    href: "https://azura-tactics.vercel.app",
+  },
+];
+
+const experiences = [
+  {
+    date: "09/2024 — atual",
+    title: "Desenvolvedor WordPress",
+    company: "LINKNACIONAL",
+    detail:
+      "Manutenção e evolução de plugins WooCommerce, integrações de pagamento e segurança, APIs em Laravel e otimização de performance.",
+  },
+  {
+    date: "01/2018 — 03/2022",
+    title: "Técnico de Informática",
+    company: "UNESC",
+    detail:
+      "Suporte a professores e alunos, manutenção preventiva e corretiva de computadores e notebooks.",
+  },
+];
+
+const courses = [
+  { date: "01/2025", title: "CS50 — Ciência da Computação", provider: "Harvard" },
+  { date: "01/2024", title: "Figma: Design de Interfaces do Zero ao Profissional", provider: "Udemy" },
+  { date: "08/2023", title: "Desenvolvimento Web Avançado com PHP, Laravel e Vue.js", provider: "Udemy" },
+  { date: "06/2023", title: "Curso Completo do Desenvolvedor Node.js e MongoDB", provider: "Udemy" },
+  { date: "05/2023", title: "Next.js e React — Curso Completo", provider: "Udemy" },
+  { date: "05/2023", title: "Entendendo TypeScript", provider: "Udemy" },
+  { date: "04/2023", title: "Git e GitHub Essencial para o Desenvolvedor", provider: "Udemy" },
+];
+
+const skills = [
+  "WordPress",
+  "WooCommerce",
+  "PHP",
+  "Laravel",
+  "React",
+  "TypeScript",
+  "Node.js",
+  "JavaScript",
+  "MySQL",
+  "PostgreSQL",
+  "MongoDB",
+  "Git",
+  "AWS",
+  "OpenClaw",
+  "Hermes Agent",
+];
 
 export default function Home() {
-  const [hover, setHover] = useState(false);
-  const [comments, setComments] = useState<any[]>([]);
-  const [amountOfItems, setAumountOfItems] = useState<number>(4);
-  const { darkTheme, setTheme } = useDarkThemeReducer();
+  const [dark, setDark] = useState(false);
+  const [comments, setComments] = useState<Comment[]>([]);
+  const [commentsError, setCommentsError] = useState("");
+  const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => {
-    // Verifica se houve alteração no banco de dados e atualiza em tempo real
-    dbFirebase.onSnapshot((response: any) => {
-      setComments(response.docs)
-    })
-
-    // Verifica se o tema setado no cookie é dark ou não
-    const theme = localStorage.getItem('themeMyPortfolio')
-    if (theme === 'dark') {
-      setTheme(true)
-    } else {
-      setTheme(false)
-    }
-
-  }, [])
+    setDark(window.localStorage.getItem("themeMyPortfolio") === "dark");
+  }, []);
 
   useEffect(() => {
-    function heandleResize() {
-      if (window.innerWidth < 768) {
-        setAumountOfItems(1);
-      } else if (window.innerWidth < 1150) {
-        setAumountOfItems(2);
-      } else if (window.innerWidth < 1280) {
-        setAumountOfItems(3);
-      } else if (window.innerWidth >= 1280) {
-        setAumountOfItems(4)
-      }
+    const targets = document.querySelectorAll<HTMLElement>("[data-reveal]");
+    document.documentElement.classList.add("motion-ready");
+
+    if (!("IntersectionObserver" in window)) {
+      targets.forEach((target) => target.classList.add("is-visible"));
+      return;
     }
 
-    heandleResize();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -30px 0px" });
 
-    window.addEventListener('resize', heandleResize);
+    targets.forEach((target) => observer.observe(target));
+    return () => observer.disconnect();
+  }, []);
 
-    return () => {
-      window.removeEventListener('resize', heandleResize);
-    }
-  }, [])
+  useEffect(() => {
+    const controller = new AbortController();
 
-  const [ref1, inView1] = useInView({
-    triggerOnce: false,
-    threshold: 0.2,
-  });
-  const [ref2, inView2] = useInView({
-    triggerOnce: false,
-    threshold: 0.2,
-  });
-  const [ref3, inView3] = useInView({
-    triggerOnce: false,
-    threshold: 0.2,
-  });
-  const [ref4, inView4] = useInView({
-    triggerOnce: false,
-    threshold: 0.2,
-  });
-  const [ref5, inView5] = useInView({
-    triggerOnce: false,
-    threshold: 0.2,
-  });
-  const [ref6, inView6] = useInView({
-    triggerOnce: false,
-    threshold: 0.2,
-  });
+    fetch("/api/comments", { signal: controller.signal })
+      .then(async (response) => {
+        if (!response.ok) throw new Error("Não foi possível carregar os comentários.");
+        return (await response.json()) as Comment[];
+      })
+      .then((items) => {
+        setCommentsError("");
+        setComments(items);
+      })
+      .catch((error: Error) => {
+        if (error.name !== "AbortError") setCommentsError(error.message);
+      });
 
-  // Página principal
+    return () => controller.abort();
+  }, [refreshKey]);
+
+  function toggleTheme() {
+    setDark((current) => {
+      const next = !current;
+      window.localStorage.setItem("themeMyPortfolio", next ? "dark" : "light");
+      return next;
+    });
+  }
+
   return (
-    <main className={`${darkTheme ? 'dark' : ''} overflow-hidden`}>
+    <div className={`site${dark ? " site-dark" : ""}`} id="inicio">
       <Head>
-        <title>Portfolio EuzebioDev</title>
-        <link rel="icon" href="/favicon.webp" />
+        <title>Euzebio Batista · Desenvolvedor Full-Stack</title>
+        <meta
+          name="description"
+          content="Portfólio de Euzebio Batista, desenvolvedor full-stack com experiência em WordPress, PHP, Laravel e React."
+        />
+        <meta name="theme-color" content={dark ? "#152323" : "#f5f5ef"} />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </Head>
-      <header className="h-screen min-h-[550px] bg-[url('/backgroundHeader.webp')] bg-no-repeat bg-center bg-cover bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out" id="home">
-        {/* Conteúdo da página inicial */}
-        <Navigation />
-        <div className="flex flex-col h-full w-full items-center justify-center relative">
-          <Image
-            src={'/Profile.webp'}
-            height={130}
-            width={130}
-            alt="Foto de perfil com filtro de desenho"
-            priority={true}
-            className="w-auto h-[40%] p-1"
-          />
-          <div className="flex items-center justify-center h-1/4 p-4">
-            <ReactTypingEffect
-              text={["Hi!", "My name is Euzebio.", "I'm web developer."]}
-              speed={100}
-              eraseSpeed={50}
-              eraseDelay={3000}
-              className="text-3xl text-black dark:text-white text-center font-medium transition duration-300 ease-in-out"
-            />
-          </div>
-          <ButtonDown link='aboutMe' />
-        </div>
-        {/* Fim conteúdo da página inicial */}
-      </header>
-      <section className="flex flex-col md:flex-row items-center justify-center pt-20 pb-20 md:pt-12 md:pb-16 h-full bg-[url('/backgroundAboutMe.webp')] bg-no-repeat bg-[length:600px_100%] md:bg-[length:100vw_100%] bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out" id="aboutMe">
-        {/* Conteúdo sobre min */}
-        <div className="h-full w-full">
-          <motion.div ref={ref1} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView1 ? 1 : 0, x: inView1 ? 0 : -50 }} transition={{ duration: 0.5 }}>
-            <Image
-              src={'/aboutme.webp'}
-              height={1000}
-              width={1000}
-              alt="Desenho com um rapaz e vários objetos em sua volta"
-              priority={true}
-              className="w-full h-auto p-1"
-            />
-          </motion.div>
-        </div>
-        <ContentAboutMe />
-        {/* Fim do conteúdo sobre min */}
-      </section>
-      <section className="flex p-2 bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out" id="curriculo">
-        {/* Conteúdo do cirrículo */}
-        <div className="flex flex-col h-full items-center justify-center w-full mt-12 mb-4 z-10 rounded-t-lg overflow-hidden" style={{ boxShadow: '-1px 6px 18px 0px rgba(0,0,0,0.75)' }}>
-          <div className="w-full py-4 bg-blue-400">
-            <h2 className="text-white text-2xl text-center font-semibold">Currículo</h2>
-          </div>
-          <div className="flex flex-col md:flex-row w-full h-full">
-            {/* Experiência academica */}
-            <div className="px-1 py-2 bg-gray-100 dark:bg-gray-700 z-10">
-              <div className="px-2 py-2 bg-blue-400 rounded-md">
-                <h2 className="text-lg font-semibold text-white">Educação</h2>
-              </div>
-              <motion.div ref={ref2} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView2 ? 1 : 0, x: inView2 ? 0 : -50 }} transition={{ duration: 0.5 }}>
-                <CardExperience title="Análise e Desenvolvimento de sistemas(ADS)" date="Jan 2023 - Atual" business="Estacio" >
-                  Curso de nível superior voltado para área de desenvolvimento de aplicativos e sistemas de computadores ou aparelhos mobile,
-                  com o intuito de criar soluções para os mais diversos setores através da tecnologia.
-                </CardExperience>
-              </motion.div>
-              <motion.div ref={ref3} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView3 ? 1 : 0, x: inView3 ? 0 : -50 }} transition={{ duration: 0.5 }}>
-                <CardExperience title="Telemática" date="Abr 2022 - Dez 2022" business="IFPB" >
-                  Curso de nível superior tecnologo voltado para área de comunicações usando tecnologia e afins.
-                </CardExperience>
-              </motion.div>
-              <motion.div ref={ref4} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView4 ? 1 : 0, x: inView4 ? 0 : -50 }} transition={{ duration: 0.5 }}>
-                <CardExperience title="Curso técnico - Tecinfo" date="Jan 2015 - Dez 2017" business="Lourdinas" >
-                  Curso criado com especialização para criar profissionais nas diversas áreas da tecnologia, seja: Manutenção de computadores,
-                  redes, design, HTML e desenvolvimento.
-                </CardExperience>
-              </motion.div>
-            </div>
-            {/* Experiência profissional */}
-            <div className="px-1 py-2 bg-gray-100 dark:bg-gray-700 z-10">
-              <div className="px-2 py-2 bg-blue-400 rounded-md z-10">
-                <h2 className="text-lg font-semibold text-white">Experiências profissionais</h2>
-              </div>
-              <motion.div ref={ref5} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView5 ? 1 : 0, x: inView5 ? 0 : -50 }} transition={{ duration: 0.5 }}>
-                <CardExperience title="Técnico de informática" date="Set 2023 - Nov 2023" business="CITYMIX HOTEL" >
-                  Suporte técnico na realização de atividades de manutenção em computadores e notebooks, além de auxiliar no sistema acadêmico.
-                </CardExperience>
-              </motion.div>
-              <motion.div ref={ref6} initial={{ opacity: 0, x: -50 }} animate={{ opacity: inView6 ? 1 : 0, x: inView6 ? 0 : -50 }} transition={{ duration: 0.5 }}>
-                <CardExperience title="Técnico de informática" date="Jan 2018 - Mar 2022" business="UNESC" >
-                  Suporte e manutenção de computadores e notebooks, realizando manutenções preventivas, e prestando suporte a professores e
-                  alunos no auxilio as aulas e atividades.
-                </CardExperience>
-              </motion.div>
-            </div>
-          </div>
-          <div className="flex items-center justify-center px-2 py-8 w-full bg-gray-100 dark:bg-gray-700 z-10">
-            <Button color="blue" name="DONWLOAD CURRÍCULO" icon={IconBook} onClick={() => downloadCurriculo()} />
-          </div>
-        </div>
 
-        {/* Fim conteúdo do currículo */}
-      </section>
-      <section className="flex flex-col items-center justify-center bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out" id="skills">
-        {/* Conteúdo das habilidades */}
-        <Skills />
-        {/* Fim conteúdo das habilidades */}
-      </section>
-      <section className="flex flex-col min-h-[550px] bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out" id="projects">
-        {/* Conteúdo dos projetos */}
-        <div className="flex items-center justify-center mt-12 mb-4 relative">
-          <Image
-            src={'/reactBackground.webp'}
-            height={150}
-            width={150}
-            alt="Icone do react cortado ao meio"
-            priority={true}
-            className={`w-auto h-[300px] md:h-[500px] absolute -right-2 z-0 opacity-30`}
-          />
-          <div className="flex items-center justify-center w-full py-4 relative text-black dark:text-white gap-2">
-            <i>{IconProjects}</i>
-            <h2 className="flex items-center justify-center text-4xl text-center font-semibold z-10 p-0 m-0">
-              Projetos
-            </h2>
-          </div>
-        </div>
-
-        <div className="flex flex-col items-start md:flex-row md:gap-6 h-full w-full z-10 md:px-8">
-          <div className="h-full w-full mb-2 px-1">
-            <h2 className="text-2xl font-bold h-12 text-black dark:text-white">Destaque:</h2>
-            <div className="flex flex-col w-full h-full border border-gray-700 dark:border-gray-300 rounded-md overflow-hidden z-10" style={{ boxShadow: '-2px 4px 18px 0px rgba(0,0,0,0.75)' }}>
-              <div className="flex items-center justify-center py-10 h-[300px] w-full bg-[url('/BackgroundProject.webp')] bg-no-repeat bg-center bg-cover">
-                <Image
-                  src={'/LogoProject.webp'}
-                  height={130}
-                  width={130}
-                  alt="Logo de uma pasta amarela"
-                  priority={true}
-                  className={`w-2/4 h-auto ${hover ? 'scale-110 -rotate-12' : ''} transform duration-300 ease-in-out`}
-                />
-              </div>
-              <div className={`h-full w-full px-1 bg-gray-300 dark:bg-gray-700 transform duration-300 ease-in-out`}>
-                <div className="flex w-full h-[40px] justify-between items-center py-1">
-                  <h2 className="text-lg font-semibold text-black dark:text-white pl-1">DevNotes</h2>
-                  <div className="flex gap-1">
-                    <i className="flex h-6 w-6">{IconReact(true)}</i>
-                    <i className="flex h-6 w-6">{IconStyledComponents(true)}</i>
-                    <i className="flex h-6 w-6">{IconNodeJs(true)}</i>
-                    <i className="flex h-6 w-6">{IconMongoDB(true)}</i>
-                  </div>
-                </div>
-                <div>
-                </div>
-                <hr className="border-none h-0.5 bg-black dark:bg-white" />
-                <div className="flex items-center py-2 md:h-[70px]">
-                  <h2 className="text-gray-600 dark:text-gray-200 px-2">
-                    Projeto criado com o objetivo de escrever anotações das mais diversas formas, permitindo também o acesso através de diferentes aparelhos.
-                  </h2>
-                </div>
-                <hr className="border-none h-[0.3px] bg-black dark:bg-white" />
-                <div className="flex h-[60px] items-center justify-center py-2 gap-2 md:gap-4">
-                  <Link
-                    className="flex flex-row gap-2 px-6 md:px-8  py-2 bg-gray-400 dark:bg-gray-900 rounded-md border border-black dark:border-white hover:bg-orange-600 dark:hover:bg-orange-600 transition duration-500 ease-in-out"
-                    href={'https://github.com/EuzebioBatista2/DevNotes'}
-                    onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} target="_blank"
-                  >
-                    <p className="text-black dark:text-white">GitHub</p>
-                    <i className="h=6 w-6 fill-black dark:fill-white">{IconGitHubNeutrall}</i>
-                  </Link>
-
-                  <Link
-                    className="flex flex-row gap-2 px-6 md:px-8 py-2 bg-gray-400 dark:bg-gray-900 rounded-md border border-black dark:border-white hover:bg-blue-500 dark:hover:bg-blue-500 transition duration-500 ease-in-out"
-                    href={'https://my-dev-notes.vercel.app'}
-                    onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} target="_blank"
-                  >
-                    <p className="text-black dark:text-white">Site</p>
-                    <i className="h=6 w-6 fill-black dark:fill-white">{IconWeb}</i>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="h-full w-full mb-2">
-            <h2 className="text-lg font-semibold pt-2 h-12 text-black dark:text-white">Outros projetos:</h2>
-            <div className="flex flex-col w-full gap-2 overflow-y-auto overflow-x-hidden h-[474px] pl-1 pr-2 pb-[0.1px]">
-              <OthersProjects
-                title="Car control"
-                description="Projeto criado para fornecer um controle abrangente sobre os veículos, oferecendo funcionalidades para cadastrar clientes, veículos e revisões."
-                icons={[IconLaravel(true), IconVueJs(true), IconBootStrap(true), IconPostgres(true), IconJquery(true)]}
-                github="https://github.com/EuzebioBatista2/car_control"
-                site="https://carcontrol.great-site.net"
-              />
-              <OthersProjects
-                title="FlappyBird"
-                description="Projeto criado para representar um flappybird, usando as linguagens de programação como representantes do game."
-                icons={[IconPhp(true), IconLaravel(true), IconVueJs(true), IconBootStrap(true), IconMySql(true)]}
-                github="https://github.com/EuzebioBatista2/flappybird-program-languages"
-                site="https://vueflappybird.great-site.net"
-              />
-              <OthersProjects
-                title="My Commerce"
-                description="Projeto realizado com o intuito de auxiliar pequenos donos de comercio com o gerenciamento de suas vendas."
-                icons={[IconReact(true), IconTS(true), IconTail(true), IconFireBase(true)]}
-                github="https://vueflappybird.great-site.net"
-                site="https://my-commerce-euzebiobatista2.vercel.app"
-              />
-              <OthersProjects
-                title="Pagina Web PHP"
-                description="Projeto para representar uma página de login e sessão de login, com cadastro e esqueci minha senha."
-                icons={[IconHtml(true), IconCss(true), IconPhp(true), IconMySql(true), IconJs(true)]}
-                github="https://github.com/EuzebioBatista2/ProjetoPaginaWeb"
-                youtube="/pagePHP"
-              />
-              <OthersProjects
-                title="Calculadora React"
-                description="Calculadora desenvolvida com a funcionalidade de auxiliar e permitir apenas equações validas."
-                icons={[IconReact(true), IconJs(true), IconHtml(true), IconCss(true)]}
-                github="https://github.com/EuzebioBatista2/CalculadoraReact"
-                site="https://calculadora-react-ar8q.vercel.app"
-              />
-              <OthersProjects
-                title="Página CRUD"
-                description="Pagina CRUD usando os métodos GET, POST, PUT e DELETE usando o XMLHttprequest."
-                icons={[IconHtml(true), IconCss(true), IconBootStrap(true), IconJquery(true), IconJs(true)]}
-                github="https://github.com/EuzebioBatista2/ProjetoPaginaWeb"
-                youtube="/pageCrud"
-              />
-            </div>
-          </div>
-        </div>
-        {/* Fim conteúdo dos projetos */}
-      </section>
-      <section className="flex flex-col justify-center items-center h-full bg-[url('/backgroundHeader.webp')] bg-no-repeat bg-center bg-cover bg-fixed bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out" id="comments">
-        {/* Conteúdo dos comentários */}
-        <div className="flex items-center justify-center w-full pb-4 pt-12 relative bg-gray-200 dark:bg-gray-800 text-black dark:text-white gap-2 transition duration-500 ease-in-out">
-          <i>{IconComments}</i>
-          <h2 className="flex items-center justify-center text-4xl text-center font-semibold z-20 p-0 m-0">
-            Comentários
-          </h2>
-        </div>
-        {/* Fim conteúdo dos comentários */}
-        <div className="flex flex-col w-full h-full items-start justify-center">
-          <div className="flex flex-col w-full h-full bg-gray-200 dark:bg-gray-800 transform duration-500 ease-in-out overflow-hidden relative">
-            <Image
-              src={'/db.webp'}
-              height={1000}
-              width={1000}
-              alt="Icone de um banco de dados cortado ao meio"
-              priority={true}
-              className={`w-auto h-[300px] md:h-[500px] absolute -left-2 top-0 opacity-30`}
-            />
-            <div className="w-full h-full py-10">
-              <RegisterComents />
-            </div>
-          </div>
-        </div>
-        <section className="flex flex-col h-[650px] w-full overflow-hidden justify-center items-center px-10 bg-[url('/backgroundComments.webp')] bg-no-repeat bg-center bg-[length:1200px_650px] md:bg-[length:100vw_650px] bg-gray-200 dark:bg-gray-800 transition duration-500 ease-in-out">
-          <div className="w-full h-full">
-            <Swiper
-              modules={[SwiperNavigation, Pagination, Scrollbar, A11y]}
-              slidesPerView={amountOfItems}
-              pagination={{ clickable: true }}
-              navigation
+      <header className="site-header">
+        <div className="container nav-bar">
+          <a className="brand" href="#inicio" aria-label="Euzebio Batista, início">
+            euzebio<span>.</span>dev
+          </a>
+          <nav className="desktop-nav" aria-label="Navegação principal">
+            <a href="#sobre">Sobre</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#trajetoria">Trajetória</a>
+            <a href="#comentarios">Comentários</a>
+          </nav>
+          <div className="nav-actions">
+            <button
+              className="theme-toggle"
+              type="button"
+              aria-label={dark ? "Ativar tema claro" : "Ativar tema escuro"}
+              aria-pressed={dark}
+              onClick={toggleTheme}
             >
-              {comments.map((comment, index) => (
-                <SwiperSlide key={index}>
-                  <CardComment
-                    name={comment.data().name}
-                    comment={comment.data().comment}
-                    file={comment.data().file ? comment.data().file : '/userUnknown.webp'}
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+              {dark ? (
+                <svg className="theme-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20.2 15.4A8.5 8.5 0 0 1 8.6 3.8 8.5 8.5 0 1 0 20.2 15.4Z" /></svg>
+              ) : (
+                <svg className="theme-icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" /></svg>
+              )}
+            </button>
+            <a className="button button-outline nav-contact" href="#contato">
+              <span className="button-label">Vamos conversar</span><ActionIcon name="contact" />
+            </a>
+            <details className="mobile-nav">
+              <summary aria-label="Abrir navegação">Menu</summary>
+              <div className="mobile-nav-links">
+                <a href="#sobre">Sobre</a>
+                <a href="#projetos">Projetos</a>
+                <a href="#trajetoria">Trajetória</a>
+                <a href="#comentarios">Comentários</a>
+                <a href="#contato">Contato</a>
+              </div>
+            </details>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section className="hero container">
+          <div className="hero-copy" data-reveal>
+            <p className="eyebrow"><span className="availability-dot" /> Desenvolvedor Full-Stack</p>
+            <h1>Olá, sou<br /><em>Euzebio Batista.</em></h1>
+            <p className="hero-intro">
+              Transformo necessidades reais em experiências digitais. Trabalho com
+              WordPress, PHP, Laravel e aplicações web modernas — do back-end à interface.
+            </p>
+            <div className="hero-actions">
+              <a className="button button-primary" href="#projetos"><span className="button-label">Conheça meu trabalho</span><ActionIcon name="projects" /></a>
+              <a className="button button-outline" href="#contato"><span className="button-label">Entre em contato</span></a>
+            </div>
+            <div className="social-links" aria-label="Perfis profissionais">
+              <a href="https://www.linkedin.com/in/euzebio-batista/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+              <a href="https://github.com/EuzebioBatista2" target="_blank" rel="noreferrer">GitHub ↗</a>
+              <a href="/curriculo.pdf" target="_blank" rel="noreferrer">Currículo PDF ↗</a>
+            </div>
+          </div>
+          <div className="portrait-wrap" data-reveal>
+            <div className="portrait-frame" />
+            <Image
+              className="portrait"
+              src="/profile.jpeg"
+              width={400}
+              height={400}
+              alt="Retrato de Euzebio Batista"
+              priority
+              sizes="(max-width: 680px) 380px, (max-width: 900px) 40vw, 430px"
+            />
+            <span className="photo-caption">DESENVOLVIMENTO COM PROPÓSITO</span>
           </div>
         </section>
-      </section>
-      <footer className="h-full w-full">
-        {/* Conteúdo do rodapé */}
-        <div className={`flex w-full items-center h-full py-4 bg-gray-300 dark:bg-gray-900 text-sm px-2 transition duration-500 ease-in-out`}>
-          <div className="flex w-1/6">
-            <a href='https://www.linkedin.com/in/euzebio-batista/'>
-              <i className="flex h-5 w-5 mr-1 fill-black dark:fill-gray-200">{IconLinkedin}</i>
-            </a>
-            <a href='https://github.com/EuzebioBatista2'>
-              <i className="flex h-5 w-5 fill-black dark:fill-gray-200">{IconGitHubNeutrall}</i>
-            </a>
-          </div>
-          <div className="flex w-5/6">
-            <p className={`flex flex-col md:flex-row items-center justify-end w-full mr-2 lg:mr-4 small:text-xs text-black dark:text-gray-200`}>
-              <span>Desenvolvido com&nbsp;</span>
-              <span className="flex"><i className="flex h-5 w-5 fill-red-500">{IconHeart}</i>&nbsp;por&nbsp;</span>
-              <span><strong>Euzebio Batista</strong></span>
-            </p>
+
+        <div className="tech-strip" aria-label="Tecnologias principais" data-reveal>
+          <div className="container tech-strip-inner">
+            <strong>WordPress &amp; WooCommerce</strong><span>PHP · Laravel</span>
+            <span>React · TypeScript</span><span>APIs · Integrações</span>
+            <span>Aprendizado contínuo</span>
           </div>
         </div>
-        {/* Fim conteúdo do rodapé */}
+
+        <section className="section container about-section" id="sobre" data-reveal>
+          <div className="section-heading">
+            <p className="eyebrow">01 / Sobre mim</p>
+            <h2>Tecnologia que<br />resolve problemas.</h2>
+          </div>
+          <div className="about-copy">
+            <p>
+              Sou desenvolvedor full-stack com experiência em <strong>WordPress e WooCommerce</strong>,
+              criação e manutenção de plugins, integrações e APIs. Também desenvolvo aplicações
+              com Laravel, React e Node.js.
+            </p>
+            <p>
+              Gosto de entender o problema antes de escolher a ferramenta. No dia a dia,
+              colaboro com equipes, reviso código e busco entregar soluções claras, seguras
+              e fáceis de manter.
+            </p>
+            <p>
+              Também estudo serviços da <strong>AWS</strong> e exploro automação com agentes de IA,
+              incluindo <strong>OpenClaw</strong> e <strong>Hermes Agent</strong>.
+            </p>
+            <div className="skill-list" aria-label="Tecnologias e competências">
+              {skills.map((skill) => <span className="skill-tag" key={skill}>{skill}</span>)}
+            </div>
+          </div>
+        </section>
+
+        <section className="projects-section" id="projetos">
+          <div className="container section projects-inner">
+            <div className="section-title-row">
+              <div><p className="eyebrow">02 / Projetos selecionados</p><h2>Feito na prática.</h2></div>
+              <a className="button button-outline" href="https://github.com/EuzebioBatista2" target="_blank" rel="noreferrer"><span className="button-label">Ver GitHub</span><ActionIcon name="code" /></a>
+            </div>
+            <div className="project-grid">
+              {projects.map((project) => (
+                <a
+                  className={`project-card project-card-${project.color}`}
+                  key={project.number}
+                  data-reveal
+                  href={project.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Abrir ${project.title} em nova aba`}
+                >
+                  <div>
+                    <div className="project-meta"><span>{project.number} / {project.type}</span></div>
+                    <h3>{project.title}</h3>
+                    <p>{project.description}</p>
+                  </div>
+                  <div className="project-footer"><span>{project.stack}</span></div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section container career-section" id="trajetoria" data-reveal>
+          <div className="career-intro">
+            <p className="eyebrow">03 / Trajetória</p>
+            <h2>Experiência<br />profissional.</h2>
+            <p>Minha atuação profissional em suporte técnico e desenvolvimento web.</p>
+            <a className="button button-outline" href="/curriculo.pdf" target="_blank" rel="noreferrer"><span className="button-label">Abrir currículo</span><ActionIcon name="resume" /></a>
+          </div>
+          <div className="timeline">
+            {experiences.map((experience) => (
+              <article className="timeline-entry" key={experience.title}>
+                <time>{experience.date}</time>
+                <div><h3>{experience.title} <span>· {experience.company}</span></h3><p>{experience.detail}</p></div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="education-section" id="formacao">
+          <div className="container section" data-reveal>
+            <div className="section-title-row">
+              <div><p className="eyebrow">04 / Formação e cursos</p><h2>Estudos em tecnologia.</h2></div>
+            </div>
+            <div className="education-grid">
+              <article className="education-card">
+                <p className="eyebrow">Formação superior</p>
+                <h3>Análise e Desenvolvimento de Sistemas</h3>
+                <p>Estácio</p>
+                <time>01/2023 — 06/2025</time>
+              </article>
+              <div className="course-list" aria-label="Cursos complementares">
+                {courses.map((course) => (
+                  <article className="course-entry" key={course.title}>
+                    <time>{course.date}</time>
+                    <div><h3>{course.title}</h3><p>{course.provider}</p></div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="comments-section" id="comentarios">
+          <div className="container section" data-reveal>
+            <div className="section-title-row comments-title">
+              <div><p className="eyebrow">05 / Comentários</p><h2>Vamos trocar uma ideia.</h2></div>
+              <p>Seu feedback ajuda a melhorar este portfólio. Deixe uma mensagem sobre os projetos ou compartilhe uma sugestão.</p>
+            </div>
+            <div className="comments-layout">
+              <RegisterComments onSubmitted={() => setRefreshKey((key) => key + 1)} />
+              <div className="comment-feed" aria-live="polite">
+                {commentsError && <p className="form-error" role="alert">{commentsError}</p>}
+                {!commentsError && comments.length === 0 && <p className="comment-empty">Ainda não há comentários. Seja o primeiro a deixar um feedback.</p>}
+                {comments.map((comment) => (
+                  <article className="comment-card" key={comment.id}>
+                    <Image src={comment.avatar || "/userUnknown.webp"} width={48} height={48} alt="" className="comment-avatar" unoptimized={Boolean(comment.avatar?.startsWith("data:"))} />
+                    <div><h3>{comment.name}</h3><p>{comment.comment}</p></div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="contact-section" id="contato">
+          <div className="container contact-inner" data-reveal>
+            <div><p className="eyebrow">06 / Contato</p><h2>Tem um projeto em mente?</h2><p>Estou aberto a conversar sobre desafios e oportunidades.</p></div>
+            <a className="button button-primary" href="mailto:euzebio.batista2@gmail.com"><span className="button-label">Fale comigo</span><ActionIcon name="contact" /></a>
+          </div>
+        </section>
+      </main>
+
+      <footer className="site-footer">
+        <div className="container footer-inner">
+          <span>© {new Date().getFullYear()} Euzebio Batista</span>
+          <div><a href="https://www.linkedin.com/in/euzebio-batista/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://github.com/EuzebioBatista2" target="_blank" rel="noreferrer">GitHub</a><a href="mailto:euzebio.batista2@gmail.com">Email</a></div>
+        </div>
       </footer>
-    </main>
-  )
+    </div>
+  );
 }
