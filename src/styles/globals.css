@@ -144,8 +144,8 @@ html.motion-ready .project-card[data-reveal]:hover { transform: translateY(-5px)
 .course-entry p { margin: 0; color: var(--muted); font-size: 11px; }
 
 .comments-section { background: #f2f1eb; }
-.comments-title { align-items: end; }
-.comments-title > p { max-width: 400px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+.comments-title { align-items: flex-start; flex-direction: column; gap: 14px; }
+.comments-title > p { max-width: 650px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.75; }
 .comments-layout { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 48px; }
 .comment-form { display: grid; gap: 10px; }
 .comment-form h3 { margin-bottom: 3px; font-size: 16px; }
@@ -159,12 +159,21 @@ html.motion-ready .project-card[data-reveal]:hover { transform: translateY(-5px)
 .avatar-picker .button { min-height: 40px; padding-inline: 13px; font-size: 11px; }
 .form-message, .form-hint, .form-error { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
 .form-error { color: #ad3e2c; }
-.comment-feed { display: grid; gap: 12px; }
+.comment-feed { display: grid; align-content: start; gap: 12px; min-width: 0; }
 .comment-empty { padding: 18px; border-left: 2px solid #a5bd79; background: color-mix(in srgb, var(--surface) 65%, transparent); color: var(--muted); font-size: 12px; }
-.comment-card { padding: 17px; display: flex; align-items: flex-start; gap: 13px; border: 1px solid var(--line); background: var(--surface); }
-.comment-avatar { flex: 0 0 auto; width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
-.comment-card h3 { margin-bottom: 4px; font-size: 13px; }
-.comment-card p { margin-bottom: 0; color: var(--muted); font-size: 12px; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; }
+.comment-card { min-width: 0; padding: 19px 20px; display: flex; align-items: center; gap: 15px; border: 1px solid var(--line); border-left: 3px solid #bdd58f; border-radius: 4px 16px 4px 4px; background: var(--surface); box-shadow: 0 5px 18px rgb(21 35 35 / 4%); transition: transform .2s ease, box-shadow .2s ease; }
+.site-dark .comment-card { border-left-color: #829d57; box-shadow: 0 5px 18px rgb(0 0 0 / 12%); }
+.comment-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.comment-card > div { min-width: 0; flex: 1; }
+.comment-avatar { flex: 0 0 auto; width: 48px; height: 48px; border: 1px solid var(--line); border-radius: 50%; object-fit: cover; }
+.comment-card h3 { margin-bottom: 5px; font-size: 13px; line-height: 1.35; }
+.comment-card p { margin-bottom: 0; color: var(--muted); font-size: 13px; line-height: 1.65; white-space: pre-wrap; overflow-wrap: anywhere; }
+.comment-pagination { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 7px; }
+.pagination-button { min-height: 38px; padding: 0 13px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; border: 1px solid var(--line); border-radius: 99px; background: var(--surface); color: var(--ink); font-size: 11px; font-weight: 700; cursor: pointer; transition: border-color .2s ease, background .2s ease; }
+.pagination-button:hover:not(:disabled) { border-color: #8ca76a; background: color-mix(in srgb, var(--green) 12%, var(--surface)); }
+.pagination-button:disabled { opacity: .45; cursor: not-allowed; }
+.pagination-button .button-icon { width: 14px; height: 14px; }
+.pagination-status { min-width: 76px; color: var(--muted); font-size: 11px; text-align: center; }
 .contact-section { padding-block: 64px; background: #152323; color: #f5f5ed; }
 .contact-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
 .contact-section .eyebrow { color: var(--green); }

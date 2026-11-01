@@ -125,6 +125,14 @@ export default function Home() {
   const [comments, setComments] = useState<Comment[]>([]);
   const [commentsError, setCommentsError] = useState("");
   const [refreshKey, setRefreshKey] = useState(0);
+  const [commentPage, setCommentPage] = useState(1);
+  const commentsPerPage = 5;
+  const totalCommentPages = Math.max(1, Math.ceil(comments.length / commentsPerPage));
+  const currentCommentPage = Math.min(commentPage, totalCommentPages);
+  const visibleComments = comments.slice(
+    (currentCommentPage - 1) * commentsPerPage,
+    currentCommentPage * commentsPerPage,
+  );
 
   useEffect(() => {
     setDark(window.localStorage.getItem("themeMyPortfolio") === "dark");
@@ -378,16 +386,37 @@ export default function Home() {
               <p>Seu feedback ajuda a melhorar este portfólio. Deixe uma mensagem sobre os projetos ou compartilhe uma sugestão.</p>
             </div>
             <div className="comments-layout">
-              <RegisterComments onSubmitted={() => setRefreshKey((key) => key + 1)} />
+              <RegisterComments onSubmitted={() => { setCommentPage(1); setRefreshKey((key) => key + 1); }} />
               <div className="comment-feed" aria-live="polite">
                 {commentsError && <p className="form-error" role="alert">{commentsError}</p>}
                 {!commentsError && comments.length === 0 && <p className="comment-empty">Ainda não há comentários. Seja o primeiro a deixar um feedback.</p>}
-                {comments.map((comment) => (
+                {visibleComments.map((comment) => (
                   <article className="comment-card" key={comment.id}>
                     <Image src={comment.avatar || "/userUnknown.webp"} width={48} height={48} alt="" className="comment-avatar" unoptimized={Boolean(comment.avatar?.startsWith("data:"))} />
                     <div><h3>{comment.name}</h3><p>{comment.comment}</p></div>
                   </article>
                 ))}
+                {comments.length > commentsPerPage && (
+                  <nav className="comment-pagination" aria-label="Paginação dos comentários">
+                    <button
+                      className="pagination-button"
+                      type="button"
+                      onClick={() => setCommentPage((page) => Math.max(1, Math.min(page, totalCommentPages) - 1))}
+                      disabled={currentCommentPage === 1}
+                    >
+                      <ActionIcon name="previous" /><span>Anterior</span>
+                    </button>
+                    <span className="pagination-status" aria-live="polite">Página {currentCommentPage} de {totalCommentPages}</span>
+                    <button
+                      className="pagination-button"
+                      type="button"
+                      onClick={() => setCommentPage((page) => Math.min(totalCommentPages, Math.min(page, totalCommentPages) + 1))}
+                      disabled={currentCommentPage === totalCommentPages}
+                    >
+                      <span>Próxima</span><ActionIcon name="next" />
+                    </button>
+                  </nav>
+                )}
               </div>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { ObjectId } from "mongodb";
+import { MongoServerError, MongoServerSelectionError, ObjectId } from "mongodb";
 import getMongoClient from "@/lib/mongodb";
 
 type CommentRecord = {
@@ -7,7 +7,7 @@ type CommentRecord = {
   name: string;
   comment: string;
   avatar?: string;
-  createdAt: Date;
+  createdAt?: Date | string | number | null;
 };
 
 type CommentResponse = {
@@ -21,14 +21,27 @@ type CommentResponse = {
 const databaseName = process.env.MONGODB_DB_NAME || "portfolio";
 const avatarPattern = /^data:image\/(?:jpeg|png|webp|gif);base64,[A-Za-z0-9+/]+={0,2}$/;
 
+function toIsoDate(value: unknown, id?: ObjectId) {
+  const date = value instanceof Date
+    ? value
+    : typeof value === "string" || typeof value === "number"
+      ? new Date(value)
+      : undefined;
+
+  if (date && Number.isFinite(date.getTime())) return date.toISOString();
+  return id?.getTimestamp().toISOString() || new Date(0).toISOString();
+}
+
 export const config = {
   api: { bodyParser: { sizeLimit: "5mb" } },
 };
 
 export default async function commentsHandler(
   request: NextApiRequest,
-  response: NextApiResponse<CommentResponse[] | CommentResponse | { error: string }>,
+  response: NextApiResponse<CommentResponse[] | CommentResponse | { error: string; code?: string }>,
 ) {
+  if (request.method === "GET") response.setHeader("Cache-Control", "no-store, max-age=0");
+
   if (request.method !== "GET" && request.method !== "POST") {
     response.setHeader("Allow", ["GET", "POST"]);
     return response.status(405).json({ error: "Método não permitido." });
@@ -47,10 +60,10 @@ export default async function commentsHandler(
 
       return response.status(200).json(comments.map((item) => ({
         id: item._id?.toString() || "",
-        name: item.name,
-        comment: item.comment,
-        avatar: item.avatar ? `/api/comments/${item._id}/avatar` : undefined,
-        createdAt: item.createdAt.toISOString(),
+        name: typeof item.name === "string" ? item.name : "Visitante",
+        comment: typeof item.comment === "string" ? item.comment : "",
+        avatar: typeof item.avatar === "string" && item.avatar && item._id ? `/api/comments/${item._id}/avatar` : undefined,
+        createdAt: toIsoDate(item.createdAt, item._id),
       })));
     }
 
@@ -68,7 +81,8 @@ export default async function commentsHandler(
       return response.status(400).json({ error: "A imagem deve ser JPG, PNG, WebP ou GIF e ter até 3 MB." });
     }
 
-    const record: CommentRecord = { name, comment, createdAt: new Date() };
+    const createdAt = new Date();
+    const record: CommentRecord = { name, comment, createdAt };
     if (avatar) record.avatar = avatar;
     const result = await collection.insertOne(record);
 
@@ -77,10 +91,19 @@ export default async function commentsHandler(
       name: record.name,
       comment: record.comment,
       avatar: record.avatar ? `/api/comments/${result.insertedId}/avatar` : undefined,
-      createdAt: record.createdAt.toISOString(),
+      createdAt: createdAt.toISOString(),
     });
   } catch (error) {
-    console.error("Falha ao acessar comentários do MongoDB:", error);
-    return response.status(503).json({ error: "Não foi possível acessar os comentários no momento." });
+    const systemCode = typeof error === "object" && error && "code" in error ? error.code : undefined;
+    const systemCall = typeof error === "object" && error && "syscall" in error ? error.syscall : undefined;
+    const code = systemCode === "ETIMEOUT" && systemCall === "querySrv"
+      ? "MONGODB_DNS_TIMEOUT"
+      : error instanceof MongoServerError && error.code === 13
+      ? "MONGODB_PERMISSION_DENIED"
+      : error instanceof MongoServerSelectionError
+        ? "MONGODB_CONNECTION_FAILED"
+        : "MONGODB_QUERY_FAILED";
+    console.error(`Falha ${request.method} em /api/comments (${code}):`, error);
+    return response.status(503).json({ error: "Não foi possível acessar os comentários no momento.", code });
   }
 }
