@@ -388,6 +388,7 @@ export default function Home() {
             <div className="comments-layout">
               <RegisterComments onSubmitted={() => { setCommentPage(1); setRefreshKey((key) => key + 1); }} />
               <div className="comment-feed" aria-live="polite">
+                <h3 className="comment-feed-title">Comentários</h3>
                 {commentsError && <p className="form-error" role="alert">{commentsError}</p>}
                 {!commentsError && comments.length === 0 && <p className="comment-empty">Ainda não há comentários. Seja o primeiro a deixar um feedback.</p>}
                 {visibleComments.map((comment) => (

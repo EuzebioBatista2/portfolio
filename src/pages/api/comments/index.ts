@@ -3,7 +3,7 @@ import { MongoServerError, MongoServerSelectionError, ObjectId } from "mongodb";
 import getMongoClient from "@/lib/mongodb";
 
 type CommentRecord = {
-  _id?: ObjectId;
+  _id?: ObjectId | string;
   name: string;
   comment: string;
   avatar?: string;
@@ -21,7 +21,7 @@ type CommentResponse = {
 const databaseName = process.env.MONGODB_DB_NAME || "portfolio";
 const avatarPattern = /^data:image\/(?:jpeg|png|webp|gif);base64,[A-Za-z0-9+/]+={0,2}$/;
 
-function toIsoDate(value: unknown, id?: ObjectId) {
+function toIsoDate(value: unknown, id?: ObjectId | string) {
   const date = value instanceof Date
     ? value
     : typeof value === "string" || typeof value === "number"
@@ -29,7 +29,7 @@ function toIsoDate(value: unknown, id?: ObjectId) {
       : undefined;
 
   if (date && Number.isFinite(date.getTime())) return date.toISOString();
-  return id?.getTimestamp().toISOString() || new Date(0).toISOString();
+  return id instanceof ObjectId ? id.getTimestamp().toISOString() : new Date(0).toISOString();
 }
 
 export const config = {
@@ -38,7 +38,11 @@ export const config = {
 
 export default async function commentsHandler(
   request: NextApiRequest,
-  response: NextApiResponse<CommentResponse[] | CommentResponse | { error: string; code?: string }>,
+  response: NextApiResponse<CommentResponse[] | CommentResponse | {
+    error: string;
+    code?: string;
+    diagnostic?: { name: string; mongoCode?: number | string; mongoCodeName?: string; systemCode?: unknown; systemCall?: unknown };
+  }>,
 ) {
   if (request.method === "GET") response.setHeader("Cache-Control", "no-store, max-age=0");
 
@@ -62,7 +66,7 @@ export default async function commentsHandler(
         id: item._id?.toString() || "",
         name: typeof item.name === "string" ? item.name : "Visitante",
         comment: typeof item.comment === "string" ? item.comment : "",
-        avatar: typeof item.avatar === "string" && item.avatar && item._id ? `/api/comments/${item._id}/avatar` : undefined,
+        avatar: typeof item.avatar === "string" && item.avatar && item._id instanceof ObjectId ? `/api/comments/${item._id}/avatar` : undefined,
         createdAt: toIsoDate(item.createdAt, item._id),
       })));
     }
@@ -96,14 +100,23 @@ export default async function commentsHandler(
   } catch (error) {
     const systemCode = typeof error === "object" && error && "code" in error ? error.code : undefined;
     const systemCall = typeof error === "object" && error && "syscall" in error ? error.syscall : undefined;
+    const mongoCode = error instanceof MongoServerError ? error.code : undefined;
+    const mongoCodeName = error instanceof MongoServerError ? error.codeName : undefined;
+    const errorName = error instanceof Error ? error.name : "UnknownError";
     const code = systemCode === "ETIMEOUT" && systemCall === "querySrv"
       ? "MONGODB_DNS_TIMEOUT"
-      : error instanceof MongoServerError && error.code === 13
+      : mongoCode === 13 || mongoCodeName === "Unauthorized"
       ? "MONGODB_PERMISSION_DENIED"
-      : error instanceof MongoServerSelectionError
+      : mongoCode === 18 || mongoCodeName?.includes("Authentication")
+        ? "MONGODB_AUTHENTICATION_FAILED"
+        : error instanceof MongoServerSelectionError || errorName.includes("MongoNetwork")
         ? "MONGODB_CONNECTION_FAILED"
         : "MONGODB_QUERY_FAILED";
     console.error(`Falha ${request.method} em /api/comments (${code}):`, error);
-    return response.status(503).json({ error: "Não foi possível acessar os comentários no momento.", code });
+    return response.status(503).json({
+      error: "Não foi possível acessar os comentários no momento.",
+      code,
+      diagnostic: { name: errorName, mongoCode, mongoCodeName, systemCode, systemCall },
+    });
   }
 }
