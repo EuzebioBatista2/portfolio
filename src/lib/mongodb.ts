@@ -1,12 +1,4 @@
 import { MongoClient } from "mongodb";
-import { setServers } from "node:dns";
-
-const configuredDnsServers = process.env.MONGODB_DNS_SERVERS
-  ?.split(",")
-  .map((server) => server.trim())
-  .filter(Boolean);
-
-if (configuredDnsServers?.length) setServers(configuredDnsServers);
 
 declare global {
   // eslint-disable-next-line no-var
@@ -14,8 +6,16 @@ declare global {
 }
 
 export default async function getMongoClient() {
-  const uri = process.env.MONGODB_URI;
-  if (!uri) throw new Error("MONGODB_URI não foi definida no ambiente.");
+  const username = process.env.MONGODB_USERNAME;
+  const password = process.env.MONGODB_PASSWORD;
+  const hosts = process.env.MONGODB_HOSTS;
+  const replicaSet = process.env.MONGODB_REPLICA_SET;
+  const uri = process.env.MONGODB_URI || (username && password && hosts && replicaSet
+    ? `mongodb://${encodeURIComponent(username)}:${encodeURIComponent(password)}@${hosts}/?tls=true&authSource=admin&replicaSet=${encodeURIComponent(replicaSet)}&retryWrites=true&w=majority`
+    : undefined);
+  if (!uri) {
+    throw new Error("Configure MONGODB_URI ou usuário, senha, hosts e replica set do MongoDB.");
+  }
 
   let clientPromise = global.mongoClientPromise;
   if (!clientPromise) {
