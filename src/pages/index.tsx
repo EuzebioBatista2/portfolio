@@ -93,12 +93,12 @@ const experiences = [
 ];
 
 const courses = [
+  { date: "11/2026", title: "AWS, na prática!", provider: "Udemy" },
   { date: "01/2025", title: "CS50 — Ciência da Computação", provider: "Harvard" },
   { date: "01/2024", title: "Figma: Design de Interfaces do Zero ao Profissional", provider: "Udemy" },
   { date: "08/2023", title: "Desenvolvimento Web Avançado com PHP, Laravel e Vue.js", provider: "Udemy" },
   { date: "06/2023", title: "Curso Completo do Desenvolvedor Node.js e MongoDB", provider: "Udemy" },
   { date: "05/2023", title: "Next.js e React — Curso Completo", provider: "Udemy" },
-  { date: "05/2023", title: "Entendendo TypeScript", provider: "Udemy" },
   { date: "04/2023", title: "Git e GitHub Essencial para o Desenvolvedor", provider: "Udemy" },
 ];
 
